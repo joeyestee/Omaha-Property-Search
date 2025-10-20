@@ -10,10 +10,23 @@
   header .topbar .inner-wrap{ max-width:none; margin:0; display:flex; align-items:center; justify-content:space-between; gap:16px; width:100%; }
   header .brand{ display:flex; align-items:center; gap:1px; color:var(--opg-fg); text-decoration:none; font-weight:700; letter-spacing:.2px; }
   /* Logos scale by height so they match and don't clip on mobile */
-  header .brand > .logo,
+  header .brand > .logo {
+    width: auto;
+    height: 46px;        /* increased from 38px */
+    object-fit: contain;
+    display: block;
+    max-width: none;
+    border-radius: 0;
+    background: none;
+    opacity: 1;
+    filter: none;
+    position: static;
+    margin-left: 0;
+    flex: 0 0 auto;
+  }
   header .brand .parent {
     width: auto;
-    height: 38px;        /* desktop/tablet */
+    height: 38px;        /* keeps Berkshire logo the same */
     object-fit: contain;
     display: block;
     max-width: none;
@@ -33,7 +46,9 @@
   }
 
   @media (max-width: 900px){
-    header .brand > .logo,
+    header .brand > .logo {
+      height: 34px;
+    }
     header .brand .parent { height: 34px; }
     header .brand .divider { height: 34px; }
   }
