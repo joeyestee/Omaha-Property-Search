@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Commercial | Omaha Property Group</title>
+  <meta name="description" content="Commercial real estate in Omaha: office, retail, industrial, and multifamily. Search, filter, maps, floor plans, and expert advisory." />
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+  <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin>
+  <style>
+    :root{ --bg:#0c1116; --surface:#ffffff; --ink:#0f1720; --muted:#667085; --line:#e8edf3; --soft:#f5f7fb; --brand:#4FA3D1; --brand-2:#1f6a91; --ring:rgba(79,163,209,.28); --wrap:1200px; --radius:14px; --shadow:0 10px 30px rgba(16,24,40,.08); --shadow-hover:0 16px 44px rgba(16,24,40,.14); }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0; background:#fff; color:var(--ink); font:16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif}
+    img{max-width:100%; display:block}
+    a{color:var(--brand); text-decoration:none} a:hover{color:var(--brand-2)}
+    .wrap{max-width:var(--wrap); margin:0 auto; padding:0 20px}
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(6px); background:linear-gradient(180deg, rgba(12,17,22,.85), rgba(12,17,22,.65)); border-bottom:1px solid rgba(255,255,255,.06); color:#e9f6ff}
+    .topbar{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:10px; color:#fff}
+    .logo{width:32px; height:32px; border-radius:10px;}
+    nav{display:flex; gap:22px; align-items:center}
+    nav a{color:#cfe8f6; font-weight:600}
+    .cta{display:inline-flex; align-items:center; justify-content:center; background:var(--brand); color:#fff; border-radius:999px; padding:10px 16px; font-weight:700; box-shadow:0 6px 14px var(--ring)}
+    .hero{color:#fff; background:linear-gradient(180deg, rgba(12,17,22,.66), rgba(12,17,22,.88)), url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=2400&auto=format&fit=crop') center/cover no-repeat}
+    .hero-inner{display:grid; grid-template-columns:1.2fr .8fr; gap:38px; align-items:center; padding:68px 0}
+    .badge{display:inline-flex; gap:8px; align-items:center; border:1px solid rgba(255,255,255,.28); color:#e8f6ff; padding:8px 12px; border-radius:12px; background:rgba(255,255,255,.08)}
+    .section{padding:64px 0}
+    .section-h{font-size:32px; margin:0 0 8px}
+    .section-sub{color:var(--muted); margin:0 0 24px}
+    .grid{display:grid; grid-template-columns:repeat(12, minmax(0,1fr)); gap:22px}
+    .col-6{grid-column:span 6} .col-4{grid-column:span 4} .col-8{grid-column:span 8}
+    @media (max-width:960px){ .hero-inner{grid-template-columns:1fr} .col-6,.col-4,.col-8{grid-column:span 12} }
+    .card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden}
+    .card > img{display:block; width:100%; height:220px; object-fit:cover}
+    .card-body{padding:16px}
+    .pill{display:inline-block; background:var(--soft); color:#0d4e6f; border:1px solid #d3e6f2; padding:4px 10px; border-radius:999px; font-size:12px; font-weight:700}
+    .meta{color:var(--muted); font-size:14px}
+    .form{display:grid; grid-template-columns:repeat(12, minmax(0,1fr)); gap:16px; background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    label{display:flex; flex-direction:column; gap:6px; color:#344054; font-weight:600}
+    input, select{border:1px solid #d8dee8; border-radius:10px; padding:12px 14px; font:inherit; outline:0}
+    .btn-primary{all:unset; display:inline-block; background:var(--brand); color:#fff; padding:12px 18px; border-radius:999px; cursor:pointer; font-weight:800; box-shadow:0 10px 20px var(--ring)}
+    .map-embed{width:100%; height:360px; border:0; border-radius:12px; box-shadow:var(--shadow)}
+    footer{background:#0f1720; color:#b7c6d2} .foot{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:24px; padding:36px 0}
+    .teaser{display:flex; gap:14px; border:1px solid var(--line); background:#fff; border-radius:12px; padding:12px; box-shadow:var(--shadow)}
+    /* --- Listing modal styles (match residential look) --- */
+    .lm-grid{display:grid; grid-template-columns:minmax(0,1fr) 420px;gap:16px;padding:16px}
+    @media (max-width:900px){.lm-grid{grid-template-columns:1fr}}
+    .lm-bubble{background:#fff;border:1px solid #e8edf3;border-radius:12px;padding:16px;box-shadow:0 10px 30px rgba(16,24,40,.08)}
+    .lm-price{font-size:34px;font-weight:800;letter-spacing:-.01em;margin:0 0 10px;color:#0f1720}
+    .chip-row{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+    .chip{display:inline-flex;align-items:center;gap:8px;background:#f1f7fc;border:1px solid #e2edf7;color:#0f3a52;padding:6px 10px;border-radius:999px;font-weight:700}
+    .chip:before{content:"";width:8px;height:8px;border-radius:50%;background:#77c4ef;display:inline-block}
+    .lm-main{width:100%;height:420px;border-radius:12px;object-fit:cover}
+    .lm-thumbs{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+    .lm-thumbs img{width:88px;height:66px;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid transparent}
+    /* Mobile thumbnail strip arrow indicator (fixed, non-interactive) */
+    .lm-thumbs-wrap{ position:relative; }
+    .lm-thumbs-more{
+      position:absolute; right:-6px; top:50%; transform:translateY(-50%);
+      width:22px; height:22px; border-radius:999px;
+      display:none; align-items:center; justify-content:center;
+      background:rgba(15,23,42,.55); color:#fff; font-weight:900;
+      line-height:1; pointer-events:none; user-select:none;
+      box-shadow:0 4px 12px rgba(0,0,0,.25), 0 0 0 1px rgba(255,255,255,.3) inset;
+    }
+    @media (min-width:901px){ .lm-thumbs-more{ display:none !important; } }
+    /* Mobile polish for listing modal: square main, scrollable thumbs, equal-width buttons */
+    @media (max-width: 900px){
+      /* Make the main photo a neat square on small screens */
+      .lm-main{ width:100%; height:auto; aspect-ratio:1 / 1; }
+      /* Turn thumbs into a horizontal strip that scrolls */
+      .lm-thumbs{ flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:6px; }
+      .lm-thumbs{ scrollbar-width: none; }
+      .lm-thumbs::-webkit-scrollbar{ display:none; }
+      .lm-thumbs img{ width:92px; height:92px; flex:0 0 auto; }
+      /* Put the action buttons side-by-side and same width */
+      .lm-actions{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; align-items:center; }
+      .lm-actions .cta,
+      .lm-actions .btn-outline{ display:inline-flex; align-items:center; justify-content:center; text-align:center; }
+    }
+    .lm-thumbs img.active{border-color:#4FA3D1}
+    .btn-outline{all:unset;display:inline-block;padding:10px 16px;border-radius:999px;border:2px solid #4FA3D1;color:#4FA3D1;cursor:pointer;font-weight:600;background:#fff}
+    /* Listing modal: better long-description handling (Commercial) */
+    .lm-right{display:flex; flex-direction:column; max-height:calc(88vh - 140px); overflow:auto; min-height:0}
+    .lm-panel{flex:1 1 auto; overflow:auto; max-height:none}
+    .lm-panel p{line-height:1.7; margin:8px 0 0; hyphens:auto}
+    /* Keep action buttons visible without scrolling the whole modal */
+    .lm-actions{position:sticky; bottom:0; padding:12px 0 4px; background:linear-gradient(180deg, rgba(255,255,255,0) 0%, #fff 32%)}
+    @media(max-width:900px){ .lm-right{max-height:none; overflow:visible} }
+    /* ===== Mobile polish for Commercial ===== */
+    @media (max-width: 960px){
+      .hero-inner{grid-template-columns:1fr; gap:22px; padding:44px 0}
+      .hero-inner > div:first-child{ text-align:center; }
+      .badge{ margin:0 auto 10px; }
+      .actions{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+      .card{ max-width:560px; margin:0 auto; }
+      .actions .cta, .actions .badge{ flex:1 1 0; text-align:center; }
+      .actions .cta, .actions .badge{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        height:52px;
+        padding:0 16px;
+        border-radius:999px;
+      }
+      /* Make the outline button look intentional on dark hero */
+      .actions .badge{
+        background:transparent;
+        border-width:2px;
+        box-shadow:none;
+      }
+      /* Ensure all listing cards use full available width on mobile */
+      #com-listings .card{ max-width:100% !important; width:100% !important; margin:0 !important; }
+    }
+    @media (max-width: 720px){
+      /* Quick Brief form compaction */
+      .card-body{ padding:14px; }
+      .form{ grid-template-columns:1fr; padding:14px; }
+      .form .col-6, .form .col-8, .form .col-4{ grid-column:span 12 !important; }
+      .btn-primary{ width:100%; text-align:center; }
+
+      /* Tools: calculator + quiz */
+      .tools-grid{ grid-template-columns:1fr !important; }
+      .cost-grid{ grid-template-columns:1fr !important; }
+      .calc-actions{ justify-content:center; }
+      .calc-actions span{ display:none; } /* hide helper note on small screens */
+      .map-embed{ height:300px; }
+      .card > img{height:200px}
+    }
+    @media (max-width: 420px){
+      .card{ max-width:100%; }
+      .section-h{ font-size:26px; }
+      .lm-thumbs img{ width:74px; height:56px; }
+    }
+
+    /* Center headings on mobile */
+    @media (max-width: 768px){
+      h1, h2, h3 { text-align: center; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"Commercial | Omaha Property Group",
+    "url":"https://omahapropertygroup.com/commercial",
+    "about":"Commercial real estate in Omaha"
+  }
+  </script>
+</head>
+<body>
+  <!-- Shared header include -->
+  <div id="site-header"></div>
+  <script>
+    fetch('./header.html')
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById('site-header').innerHTML = html;
+        const btn = document.querySelector('.menu-btn');
+        const drawer = document.querySelector('.drawer');
+        if (btn && drawer) {
+          btn.addEventListener('click', () => drawer.classList.toggle('open'));
+          drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => drawer.classList.remove('open')));
+        }
+      });
+  </script>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <span class="badge">Commercial — Omaha, Nebraska</span>
+        <h1>Office, Retail, Industrial, Multifamily</h1>
+        <p>Search available space, filter by size and type, and get a shortlist with floor plans and comps.</p>
+        <div class="actions">
+          <a href="./index.html#contact" class="cta">Request a Shortlist</a>
+          <a href="#com-listings" class="badge" style="border-color:#86d0f7; color:#e9f7ff">Search & Filter</a>
+        </div>
+      </div>
+      <div class="card"><div class="card-body">
+        <div class="pill">Quick Brief</div>
+        <form id="brief-form" class="form" style="margin-top:10px" method="POST" action="https://formspree.io/f/movnqpdy" novalidate>
+          <label class="col-6">Asset Type<select name="type" autocomplete="off"><option>Office</option><option>Retail</option><option>Industrial</option><option>Multifamily</option></select></label>
+          <label class="col-6">Size (SF)<input name="size" placeholder="e.g., 5,000 – 20,000" autocomplete="off" /></label>
+          <label class="col-8">Email<input name="email" type="email" placeholder="you@example.com" required autocomplete="email" /></label>
+          <div class="col-4" style="display:flex; align-items:end"><button class="btn-primary" type="submit">Send Brief</button></div>
+        <input type="hidden" name="_subject" value="OPG Commercial Quick Brief">
+        <input type="hidden" name="page" value="Commercial">
+        <div id="brief-ok" class="ok-note" style="display:none;white-space:nowrap;margin-top:8px;color:#0f6a3d">Thanks — we’ll be with you shortly.</div>
+        </form>
+      </div></div>
+    </div>
+  </section>
+
+  <main>
+    <!-- Commercial Listings (auto from Google Sheet) -->
+    <section class="section" id="com-listings">
+      <div class="wrap">
+        <h2 class="section-h">Commercial Listings</h2>
+        <p class="section-sub">Office, retail, industrial, and multifamily across Omaha.</p>
+        <div id="com-grid" class="grid"></div>
+      </div>
+    </section>
+
+    <!-- Interactive Tools: Lease Picker + Cost Simulator -->
+    <section id="tools" class="section" style="background:radial-gradient(1200px 600px at 50% -10%, #eef7ff 0%, #f7fbff 60%, #f7fbff 100%); border-top:1px solid #e8edf3; border-bottom:1px solid #e8edf3">
+      <div class="wrap">
+        <h2 class="section-h" style="text-align:center; margin-bottom:8px">Tools & Resources</h2>
+        <p class="section-sub" style="text-align:center; margin-bottom:28px">Pick a lease type that fits your needs, then estimate your true monthly cost. Colorful, quick, and built for Omaha.</p>
+
+        <div class="tools-grid">
+          <!-- Find Your Investment Strategy (Scoring Quiz) -->
+          <article class="card tool-card theme-purple" id="lease-quiz-card">
+            <div class="card-body">
+              <div class="tool-icon">📊</div>
+              <div class="pill">Investment Quiz</div>
+              <h3 style="margin:10px 0 8px">Find Your Investment Strategy</h3>
+              <p class="meta" style="margin-top:0">Answer a few quick questions to see which commercial investment fits your goals.</p>
+
+              <div id="quiz-box" class="quiz-box">
+                <!-- dynamic question / answers will render here -->
+              </div>
+
+              <div class="quiz-footer">
+                <div id="quiz-progress" class="quiz-progress"></div>
+                <button id="quiz-restart" class="btn-outline" type="button" style="display:none">Start Over</button>
+              </div>
+
+              <div class="result" id="lease-result" style="display:none">
+                <div class="res-type" id="quiz-res-title">Full Service</div>
+                <ul class="meta res-points" id="quiz-res-points"></ul>
+                <a class="cta" href="#contact">Review Sample Clauses</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Total Occupancy Cost Simulator -->
+          <article class="card tool-card theme-teal">
+            <div class="card-body">
+              <div class="tool-icon">🧮</div>
+              <div class="pill">Calculator</div>
+              <h3 style="margin:10px 0 8px">Total Occupancy Cost</h3>
+              <form id="cost-form" class="cost-grid" autocomplete="off">
+                <label>Size (SF)
+                  <input type="number" id="c-sf" placeholder="e.g., 12,000" min="0" step="100" value="12000">
+                </label>
+                <label>$ / SF (annual)
+                  <input type="number" id="c-rate" placeholder="e.g., 18" min="0" step="0.25" value="18">
+                </label>
+                <label>Lease Type
+                  <select id="c-type">
+                    <option value="NNN">NNN</option>
+                    <option value="MG">Modified Gross</option>
+                    <option value="FS">Full Service</option>
+                  </select>
+                </label>
+                <label>NNN ($ / SF)
+                  <input type="number" id="c-nnn" placeholder="e.g., 6.5" min="0" step="0.25" value="6.5">
+                </label>
+                <label>Utilities ($ / mo)
+                  <input type="number" id="c-utils" placeholder="e.g., 600" min="0" step="50" value="600">
+                </label>
+                <label>Parking ($ / mo)
+                  <input type="number" id="c-park" placeholder="e.g., 200" min="0" step="25" value="200">
+                </label>
+                <div class="calc-actions" style="grid-column:1 / -1; display:flex; gap:10px; align-items:center; margin-top:2px">
+                  <button id="calc-btn" class="btn-primary" type="button">Calculate</button>
+                  <span class="meta" style="font-size:13px">Edits update when you click Calculate.</span>
+                </div>
+              </form>
+              <div class="cost-out">
+                <div class="out-big"><span id="c-month">$0</span> / mo</div>
+                <div class="bars">
+                  <div class="bar"><span>Base Rent</span><div class="fill" id="b-rent"></div><div class="val" id="v-rent">$0</div></div>
+                  <div class="bar"><span>NNN</span><div class="fill" id="b-nnn"></div><div class="val" id="v-nnn">$0</div></div>
+                  <div class="bar"><span>Utilities</span><div class="fill" id="b-utils"></div><div class="val" id="v-utils">$0</div></div>
+                  <div class="bar"><span>Parking</span><div class="fill" id="b-park"></div><div class="val" id="v-park">$0</div></div>
+                </div>
+                <div class="meta" id="c-note">Numbers update as you type. FS ignores NNN; MG may include some expenses.</div>
+                <form id="cost-send" action="https://formspree.io/f/movnqpdy" method="POST" style="margin-top:8px">
+                  <input type="hidden" name="_subject" value="OPG Cost Simulator" />
+                  <input type="hidden" name="page" value="Commercial" />
+                  <input type="email" name="email" placeholder="Email me this breakdown" required style="border:1px solid #d8dee8; border-radius:10px; padding:10px 12px; width:60%">
+                  <button class="btn-primary" type="submit">Send</button>
+                </form>
+                <div class="ok-note" id="cost-ok" style="display:none;color:#0f6a3d;margin-top:6px">Sent—check your inbox.</div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <style>
+        .tools-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:22px}
+        .tool-card{grid-column:span 6;position:relative;overflow:hidden;border-radius:16px;border:1px solid #e8edf3;background:#fff}
+        @media (max-width:960px){.tool-card{grid-column:span 12}}
+        .theme-purple{--g1:#efe8ff;--g2:#faf7ff;--accent:#6b5bd2}
+        .theme-teal{--g1:#e6fbf6;--g2:#f4fffd;--accent:#0f9d8a}
+        .tool-card{background:linear-gradient(180deg,var(--g1),var(--g2))}
+        .tool-icon{position:absolute;top:14px;right:14px;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;color:var(--accent);box-shadow:0 8px 18px rgba(16,24,40,.12);font-size:22px}
+        /* Quiz */
+        #lease-quiz .q{display:block;margin:10px 0 8px;font-weight:700;color:#0f1720}
+        .q-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+        .chip{all:unset;display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:999px;background:#fff;border:2px solid #d3e6f2;color:#0d4e6f;font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
+        .chip.sel,.chip.active{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 8px 24px rgba(16,24,40,.16)}
+        .result{margin-top:10px;border-top:1px solid #e8edf3;padding-top:10px}
+        .res-type{font-size:18px;font-weight:800;color:#0f1720}
+        /* Cost */
+        .cost-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:6px 0 10px}
+        .cost-grid label{grid-column:span 3}
+        .cost-grid input, .cost-grid select{width:100%;border:1px solid #d8dee8;border-radius:10px;padding:10px 12px}
+        @media (max-width:800px){.cost-grid{grid-template-columns:repeat(2,1fr)} .cost-grid label{grid-column:span 1}}
+        .cost-out{background:#fff;border:1px solid #e8edf3;border-radius:12px;padding:12px;box-shadow:var(--shadow)}
+        .out-big{font-size:26px;font-weight:800;margin:0 0 8px}
+        .bars{display:grid;gap:8px}
+        /* Typography polish */
+        .tool-card h3{font-weight:800; letter-spacing:-.01em}
+        .tool-card .meta{font-size:14.5px}
+        label{font-weight:700}
+
+        /* Branching quiz */
+        .quiz-box{
+          border:1px solid #e8edf3;
+          background:#fff;
+          border-radius:12px;
+          padding:16px;
+          margin-top:8px;
+          box-shadow:var(--shadow);
+          min-height:0;
+          display:flex;
+          flex-direction:column;
+          justify-content:center;
+        }
+        .q-title{font-weight:800;margin:0 0 8px;font-size:18px;color:#0f1720}
+        .q-options{display:grid;gap:12px;grid-auto-rows:minmax(64px,1fr);align-content:stretch}
+        @media (max-width:600px){.q-options{grid-auto-rows:minmax(56px,1fr)}}
+        .opt{
+          all:unset;
+          cursor:pointer;
+          position:relative;
+          display:flex;
+          align-items:center;
+          justify-content:flex-start;
+          width:100%;
+          padding:16px 48px 16px 18px;
+          border-radius:12px;
+          background:#fff;
+          border:2px solid #d3e6f2;
+          color:#0d4e6f;
+          font-weight:800;
+          box-shadow:var(--shadow);
+          font-size:18px;
+          box-sizing:border-box;
+        }
+        .opt:hover{border-color:var(--accent)}
+        .opt::after{
+          content:"→";
+          font-weight:900;
+          opacity:.6;
+          position:absolute;
+          right:16px;
+          top:50%;
+          transform:translateY(-50%);
+          pointer-events:none;
+        }
+        .opt.sel,.opt.active{
+          background:var(--accent);
+          border-color:var(--accent);
+          color:#fff;
+          box-shadow:0 8px 24px rgba(16,24,40,.16)
+        }
+        .quiz-footer{
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          margin-top:10px;
+          margin-top:auto;
+        }
+        .quiz-progress{height:8px;background:#eef4fa;border-radius:999px;position:relative;flex:1;margin-right:10px}
+        .quiz-progress::after{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,var(--accent),#9da5ff);border-radius:999px;transition:width .25s ease}
+        .quiz-progress[data-pct]::after{width:attr(data-pct percentage)}
+        /* Fallback for Safari without attr() support */
+        .quiz-progress.fill-0::after{width:0%}
+        .quiz-progress.fill-25::after{width:25%}
+        .quiz-progress.fill-50::after{width:50%}
+        .quiz-progress.fill-75::after{width:75%}
+        .quiz-progress.fill-100::after{width:100%}
+        .bar{position:relative;height:12px;background:#eef4fa;border-radius:8px}
+        .bar span{position:absolute;left:8px;top:-22px;font-size:12px;color:#485a66}
+        .bar .fill{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,var(--accent),#21c1a8);border-radius:8px;transition:width .2s}
+        .bar .val{position:absolute;right:8px;top:-22px;font-size:12px;color:#0f1720;font-weight:700}
+
+        /* Center calculator texts and layout */
+        .calc-actions{justify-content:center}
+        .calc-actions span{ text-align:center }
+        .cost-out{text-align:center}
+        .out-big{text-align:center}
+        .cost-out .bars{max-width:560px;margin:8px auto;text-align:left}
+        #c-note{text-align:center}
+        #cost-send{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+        #cost-send input{width:min(360px,100%) !important}
+        #cost-send button{white-space:nowrap}
+      </style>
+
+      <script>
+        // Investment Strategy Quiz (scoring-based)
+        (function(){
+          try {
+            const box = document.getElementById('quiz-box');
+            if(!box) return; // quiz was removed; don't block other tools
+
+            // Outcomes (professional tone)
+            const OUT = {
+              NNN_ST: {
+                title: 'Single‑Tenant NNN',
+                points: [
+                  'Long leases and predictable cash flow from a single creditworthy tenant.',
+                  'Landlord responsibilities are limited; expenses are largely tenant paid.',
+                  'Well‑suited for hands‑off investors and 1031 exchange buyers.'
+                ]
+              },
+              IND_SB: {
+                title: 'Small‑Bay Industrial',
+                points: [
+                  'Strong demand in Omaha with limited modern supply in many submarkets.',
+                  'Balanced risk profile with sticky tenants and practical build‑outs.',
+                  'Attractive for light involvement and value‑add opportunities.'
+                ]
+              },
+              RET_NEIGH: {
+                title: 'Neighborhood Retail',
+                points: [
+                  'Multiple suites diversify income across service‑oriented tenants.',
+                  'Works well in established trade areas with daily‑needs traffic.',
+                  'Good fit for moderate involvement and balanced risk.'
+                ]
+              },
+              MED_OFF: {
+                title: 'Medical / Office Condo',
+                points: [
+                  'Professional, service‑oriented tenants with longer occupancy.',
+                  'Stable income profile; lower cap‑ex compared to older offices.',
+                  'Often aligns with hands‑off preferences.'
+                ]
+              },
+              MF_SMALL: {
+                title: 'Small Multifamily (2–12 units)',
+                points: [
+                  'Greater control over operations and value‑add improvements.',
+                  'More active involvement but potential for stronger total returns.',
+                  'Resilient demand across Omaha’s core neighborhoods.'
+                ]
+              },
+              FLEX: {
+                title: 'Flex / Industrial Condo',
+                points: [
+                  'Lower entry ticket with functional space for small businesses.',
+                  'Simple tenant improvements and straightforward operations.',
+                  'Good onramp for first‑time commercial investors.'
+                ]
+              }
+            };
+
+            // Scoring quiz: 4 concise questions
+            const QUESTIONS = [
+              {
+                id: 'q1',
+                title: 'Target Budget',
+                options: [
+                  { label: '< $750k', add: { FLEX:2, MF_SMALL:2 } },
+                  { label: '$750k – $2M', add: { MF_SMALL:2, IND_SB:2, RET_NEIGH:1 } },
+                  { label: '$2M – $5M', add: { IND_SB:2, RET_NEIGH:2, NNN_ST:1, MED_OFF:1 } },
+                  { label: '$5M+', add: { NNN_ST:3, MED_OFF:2, RET_NEIGH:1 } }
+                ]
+              },
+              {
+                id: 'q2',
+                title: 'Priority',
+                options: [
+                  { label: 'Income stability first', add: { NNN_ST:3, MED_OFF:2, RET_NEIGH:1 } },
+                  { label: 'Balanced income & growth', add: { IND_SB:2, RET_NEIGH:2, FLEX:1, MED_OFF:1 } },
+                  { label: 'Growth‑focused', add: { MF_SMALL:3, IND_SB:2, FLEX:2 } }
+                ]
+              },
+              {
+                id: 'q3',
+                title: 'Involvement',
+                options: [
+                  { label: 'Hands‑off', add: { NNN_ST:3, MED_OFF:2 } },
+                  { label: 'Light involvement', add: { RET_NEIGH:2, IND_SB:2 } },
+                  { label: 'Active / operate', add: { MF_SMALL:3, FLEX:2 } }
+                ]
+              },
+              {
+                id: 'q4',
+                title: 'Lease / Tenant Profile',
+                options: [
+                  { label: 'Long‑term single tenant', add: { NNN_ST:3, MED_OFF:2 } },
+                  { label: 'Mix of smaller suites', add: { RET_NEIGH:2, IND_SB:2, FLEX:1 } },
+                  { label: 'Residential tenants', add: { MF_SMALL:3 } }
+                ]
+              }
+            ];
+
+            const progress = document.getElementById('quiz-progress');
+            const restart = document.getElementById('quiz-restart');
+            const resWrap = document.getElementById('lease-result');
+            const resTitle = document.getElementById('quiz-res-title');
+            const resPts = document.getElementById('quiz-res-points');
+
+            let idx = 0;
+            const scores = { NNN_ST:0, IND_SB:0, RET_NEIGH:0, MED_OFF:0, MF_SMALL:0, FLEX:0 };
+
+            function setProgress(){
+              if(!progress) return;
+              const pct = Math.round(((idx)/QUESTIONS.length)*100);
+              progress.className = 'quiz-progress ' + (pct>=100?'fill-100':pct>=75?'fill-75':pct>=50?'fill-50':pct>=25?'fill-25':'fill-0');
+            }
+
+            function render(){
+              if(resWrap) resWrap.style.display='none';
+              const q = QUESTIONS[idx];
+              box.innerHTML = '';
+              const h = document.createElement('div'); h.className='q-title'; h.textContent = q.title; box.appendChild(h);
+              const row = document.createElement('div'); row.className='q-options'; box.appendChild(row);
+              row.style.gridTemplateRows = `repeat(${q.options.length}, 1fr)`;
+              q.options.forEach(opt => {
+                const b = document.createElement('button');
+                b.type='button'; b.className='opt'; b.textContent = opt.label; row.appendChild(b);
+                b.addEventListener('click', ()=>{
+                  Object.entries(opt.add||{}).forEach(([k,v])=>{ scores[k]=(scores[k]||0)+v; });
+                  idx++;
+                  setProgress();
+                  if(idx >= QUESTIONS.length){
+                    const keys = Object.keys(scores).sort((a,b)=> (scores[b]||0) - (scores[a]||0));
+                    const top = keys[0];
+                    const o = OUT[top] || OUT.NNN_ST;
+                    if(resTitle) resTitle.textContent = o.title;
+                    if(resPts) resPts.innerHTML = o.points.map(p=>`<li>${p}</li>`).join('');
+                    if(resWrap) resWrap.style.display='block';
+                    if(restart) restart.style.display='inline-block';
+                  }else{
+                    render();
+                  }
+                });
+              });
+            }
+
+            if(restart){
+              restart.addEventListener('click', ()=>{
+                idx = 0; Object.keys(scores).forEach(k=> scores[k]=0);
+                setProgress();
+                if(resWrap) resWrap.style.display='none';
+                render();
+              });
+            }
+
+            setProgress();
+            render();
+          } catch(e){
+            console.warn('[OPG quiz] disabled due to error:', e);
+          }
+        })();
+
+        // Cost calculator
+        (function(){
+          try{
+            const $ = id=>document.getElementById(id);
+            // helpers that safely read element values; return null/0 if missing
+            const byId = $; // alias for clarity
+            const elOrNull = (id)=> byId(id) || null;
+            const numVal = (id)=>{
+              const el = byId(id);
+              if(!el) return 0; // safe default
+              const v = parseFloat(el.value);
+              return isNaN(v) ? 0 : v;
+            };
+            const fields = ['c-sf','c-rate','c-type','c-nnn','c-utils','c-park'].map($);
+            const calcBtn = document.getElementById('calc-btn');
+            if(calcBtn){ calcBtn.addEventListener('click', calc); }
+            function calc(){
+              // If the calculator isn’t on this page, exit quietly
+              const sfEl = elOrNull('c-sf');
+              const rateEl = elOrNull('c-rate');
+              const typeEl = elOrNull('c-type');
+              if(!sfEl || !rateEl || !typeEl){
+                // Nothing to do; prevents "reading 'value' of null" errors
+                return;
+              }
+
+              const sf    = numVal('c-sf');              // square feet
+              const rate  = numVal('c-rate');            // $/SF annual
+              const type  = typeEl.value;                // NNN / MG / FS
+              const nnn   = (type === 'FS') ? 0 : numVal('c-nnn');
+              const utils = numVal('c-utils');
+              const park  = numVal('c-park');
+
+              const baseMonthly = (sf * rate) / 12;      // annual to monthly
+              const nnnMonthly  = (sf * nnn) / 12;
+              const total       = Math.round(baseMonthly + nnnMonthly + utils + park);
+
+              const fm = n=> n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});
+              byId('c-month').textContent = fm(total);
+              byId('v-rent').textContent  = fm(baseMonthly);
+              byId('v-nnn').textContent   = fm(nnnMonthly);
+              byId('v-utils').textContent = fm(utils);
+              byId('v-park').textContent  = fm(park);
+
+              const max = Math.max(total,1);
+              const pct = v=> Math.min(100, Math.round((v/max)*100));
+              byId('b-rent').style.width  = pct(baseMonthly)+'%';
+              byId('b-nnn').style.width   = pct(nnnMonthly)+'%';
+              byId('b-utils').style.width = pct(utils)+'%';
+              byId('b-park').style.width  = pct(park)+'%';
+            }
+            fields.forEach(el=> el && el.addEventListener('input', calc));
+            const typeSel = $('#c-type');
+            if(typeSel){
+              typeSel.addEventListener('change', ()=>{
+                const disabled = typeSel.value==='FS';
+                const nnnEl = $('#c-nnn');
+                if(nnnEl){ nnnEl.disabled = disabled; if(disabled) nnnEl.value = 0; }
+                calc();
+              });
+            }
+            calc();
+
+            // email breakdown via Formspree
+            const send = document.getElementById('cost-send');
+            const ok = document.getElementById('cost-ok');
+            if(send){
+              send.addEventListener('submit', function(e){
+                e.preventDefault();
+                const data = new FormData(send);
+                data.append('sf', byId('c-sf') ? byId('c-sf').value : '');
+                data.append('rate', byId('c-rate') ? byId('c-rate').value : '');
+                data.append('type', byId('c-type') ? byId('c-type').value : '');
+                data.append('nnn', byId('c-nnn') ? byId('c-nnn').value : '');
+                data.append('utilities', byId('c-utils') ? byId('c-utils').value : '');
+                data.append('parking', byId('c-park') ? byId('c-park').value : '');
+                data.append('monthly_total', byId('c-month') ? byId('c-month').textContent : '');
+                fetch(send.action, {method:'POST', body:data, headers:{'Accept':'application/json'}})
+                  .then(()=>{ ok.style.display='block'; send.reset(); })
+                  .catch(()=>{ ok.textContent='Could not send right now.'; ok.style.display='block'; });
+              });
+            }
+          }catch(e){
+            console.warn('[OPG calc] disabled due to error:', e);
+          }
+        })();
+      </script>
+    </section>
+
+    <!-- Map -->
+    <section class="section">
+      <div class="wrap">
+        <h2 class="section-h">Explore on the Map</h2>
+        <p class="section-sub">Omaha submarkets: Downtown, Aksarben, West Dodge, Elkhorn, Sarpy.</p>
+        <iframe class="map-embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d307838.0792455451!2d-96.484214!3d41.256537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87938dbe938f5a13%3A0x6b0ed2a8c2f0187b!2sOmaha%2C%20NE!5e0!3m2!1sen!2sus!4v1700000000000">
+        </iframe>
+      </div>
+    </section>
+
+    <!-- Commercial Guides & FAQs (SEO + helpful content) -->
+    <section id="guides" class="section" style="background:radial-gradient(1200px 600px at 10% -10%, #f0f7ff 0%, #fbfdff 60%, #fbfdff 100%); border-top:1px solid #e8edf3; border-bottom:1px solid #e8edf3">
+      <div class="wrap">
+        <h2 class="section-h">Commercial Leasing Guides & FAQs</h2>
+        <p class="section-sub">Clear, practical explanations for Omaha tenants and investors. Learn the basics, compare lease types, and estimate your total occupancy cost.</p>
+
+        <!-- Guides Grid -->
+        <div class="grid" style="align-items:stretch">
+          <!-- Lease Types -->
+          <article class="col-6 card guide-card theme-blue"><div class="card-body">
+            <div class="guide-icon">📄</div>
+            <div class="pill">Guide</div>
+            <h3 id="guide-lease-types">Lease Types Explained: NNN, Modified Gross, Full Service</h3>
+            <p class="meta">Understand what is included in each lease type and how it impacts your true monthly spend.</p>
+            <ul class="meta" style="margin:0 0 14px 18px">
+              <li>NNN: tenant pays base rent, plus taxes, insurance, and common area maintenance.</li>
+              <li>Modified Gross: some operating costs are included, others are billed separately.</li>
+              <li>Full Service: most building expenses are included in the rent.</li>
+            </ul>
+            <a class="cta" href="#faq-compare">Compare Costs</a>
+          </div></article>
+
+          <!-- Total Cost -->
+          <article class="col-6 card guide-card theme-teal"><div class="card-body">
+            <div class="guide-icon">🧮</div>
+            <div class="pill">Guide</div>
+            <h3 id="guide-total-cost">How to Estimate Total Occupancy Cost</h3>
+            <p class="meta">Convert a quoted $/SF rate into a monthly budget that includes NNN charges and utilities.</p>
+            <ul class="meta" style="margin:0 0 14px 18px">
+              <li>Annual vs monthly math for $/SF.</li>
+              <li>Adding NNN: taxes, insurance, and maintenance.</li>
+              <li>Utilities, janitorial, and parking considerations.</li>
+            </ul>
+            <a class="cta" href="#contact">Get a Cost Walk‑through</a>
+          </div></article>
+
+          <!-- Timeline -->
+          <article class="col-6 card guide-card theme-purple"><div class="card-body">
+            <div class="guide-icon">⏱️</div>
+            <div class="pill">Checklist</div>
+            <h3 id="guide-timeline">Typical Timeline: Search to Signed Lease</h3>
+            <p class="meta">A realistic sequence from discovery and tours to LOI, negotiation, and move‑in.</p>
+            <ol class="meta" style="margin:0 0 14px 18px">
+              <li>Brief, criteria, and shortlist (1–2 weeks).</li>
+              <li>Tours and selection (1–3 weeks).</li>
+              <li>LOI and lease negotiation (2–4 weeks).</li>
+              <li>Build‑out and move‑in (varies by scope).</li>
+            </ol>
+            <a class="cta" href="#contact">Start with a Shortlist</a>
+          </div></article>
+
+          <!-- Off‑Market -->
+          <article class="col-6 card guide-card theme-amber"><div class="card-body">
+            <div class="guide-icon">🔒</div>
+            <div class="pill">Insight</div>
+            <h3 id="guide-offmarket">Off‑Market Strategy in Omaha</h3>
+            <p class="meta">Many quality spaces never hit the web. We work a private network of owners and developers to surface options that fit.</p>
+            <ul class="meta" style="margin:0 0 14px 18px">
+              <li>Direct outreach to landlords by submarket and asset type.</li>
+              <li>Upcoming deliveries and shadow space opportunities.</li>
+              <li>Confidential requirements handled end‑to‑end.</li>
+            </ul>
+            <a class="cta" href="#contact">Request Private Options</a>
+          </div></article>
+        </div>
+
+        <!-- FAQs using native details/summary for accessibility -->
+        <div class="card" style="margin-top:24px"><div class="card-body">
+          <h3 id="faq" style="margin:0 0 12px">Frequently Asked Questions</h3>
+
+          <details id="faq-compare" class="faq"><summary>How do I compare spaces when one lists $/SF and another lists monthly rent?</summary>
+            <div class="meta" style="margin-top:10px">Convert everything to the same basis. For $/SF quoted annually, multiply by square feet to get annual rent, then divide by 12 for monthly. If NNN charges are listed as $/SF, apply the same math and add to the base rent to estimate the total monthly payment.</div>
+          </details>
+
+          <details class="faq"><summary>What does NNN cover in Omaha?</summary>
+            <div class="meta" style="margin-top:10px">NNN usually covers real estate taxes, building insurance, and common area maintenance (CAM). These amounts vary by property and are reconciled annually. We will provide the current estimate and historical ranges for each property you consider.</div>
+          </details>
+
+          <details class="faq"><summary>How much time should I plan for a move?</summary>
+            <div class="meta" style="margin-top:10px">For existing, move‑in‑ready space, plan four to eight weeks from first tour to keys. If construction is required, build‑out can add four to twelve weeks depending on scope, permits, and materials.</div>
+          </details>
+
+          <details class="faq"><summary>What are typical tenant improvement (TI) allowances?</summary>
+            <div class="meta" style="margin-top:10px">TI varies by asset type and term. Office deals might include $10–$40 per SF, industrial less, and retail depends heavily on use. We’ll benchmark TI and free rent for your submarket and lease length.</div>
+          </details>
+        </div></div>
+      </div>
+
+      <!-- Local styles for guides/faq -->
+      <style>
+        .guide-card{position:relative;overflow:hidden;border-radius:16px}
+        .guide-card .card-body{position:relative}
+        .guide-card h3{margin:10px 0 8px}
+        .guide-icon{position:absolute;top:14px;right:14px;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 8px 18px rgba(16,24,40,.12)}
+        /* Theme variables */
+        .theme-blue{--g1:#e9f4ff;--g2:#f6fbff;--accent:#2d7dd2;}
+        .theme-teal{--g1:#e6fbf6;--g2:#f4fffd;--accent:#0f9d8a;}
+        .theme-purple{--g1:#efe8ff;--g2:#faf7ff;--accent:#6b5bd2;}
+        .theme-amber{--g1:#fff3e0;--g2:#fffaf2;--accent:#d97706;}
+        .guide-card{background:linear-gradient(180deg,var(--g1),var(--g2));border:1px solid #e8edf3}
+        .guide-card .guide-icon{background:#fff;color:var(--accent)}
+        .guide-card .pill{border-color:rgba(0,0,0,.05);background:rgba(255,255,255,.8);color:var(--accent)}
+        .guide-card h3{color:#0f1720}
+        .guide-card .meta{color:#485a66}
+        .guide-card:hover{box-shadow:0 16px 44px rgba(16,24,40,.14);transform:translateY(-2px);transition:.2s ease}
+        /* FAQ */
+        .faq summary{cursor:pointer;font-weight:700;color:#0f1720}
+        .faq summary::-webkit-details-marker{display:none}
+        .faq{border-top:1px solid #e8edf3;padding:10px 0}
+        .faq:first-of-type{border-top:0}
+        #guides .section-h{position:relative}
+        #guides .section-h:after{content:"";position:absolute;left:0;bottom:-8px;width:64px;height:4px;border-radius:4px;background:linear-gradient(90deg,#4FA3D1,#1f6a91)}
+      </style>
+
+      <!-- FAQPage schema for SEO -->
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I compare spaces when one lists $/SF and another lists monthly rent?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Convert $/SF annual quotes to monthly by multiplying by square feet to get annual rent, then divide by 12. Add NNN charges quoted as $/SF using the same math to estimate total monthly payment."}
+          },
+          {
+            "@type": "Question",
+            "name": "What does NNN cover in Omaha?",
+            "acceptedAnswer": {"@type": "Answer", "text": "NNN typically covers real estate taxes, building insurance, and common area maintenance (CAM). Amounts vary and are reconciled annually."}
+          },
+          {
+            "@type": "Question",
+            "name": "How much time should I plan for a move?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Move‑in‑ready space can take four to eight weeks from first tour to keys. Construction can add four to twelve weeks depending on scope."}
+          },
+          {
+            "@type": "Question",
+            "name": "What are typical tenant improvement (TI) allowances?",
+            "acceptedAnswer": {"@type": "Answer", "text": "TI depends on asset type and term. Office deals often include $10–$40 per SF; industrial is typically lower; retail varies by use."}
+          }
+        ]
+      }
+      </script>
+    </section>
+
+    <!-- Lead Form -->
+    <section id="contact" class="section" style="background:#f5f7fb; border-top:1px solid #e8edf3; border-bottom:1px solid #e8edf3">
+      <div class="wrap">
+        <h2 class="section-h">Start Your Search</h2>
+        <p class="section-sub">Tell us timing, size, and must-haves. We’ll reply the same day.</p>
+        <form id="lead-form" class="form" method="POST" action="https://formspree.io/f/movnqpdy" novalidate>
+          <label class="col-6">Name<input name="name" placeholder="Your name" required /></label>
+          <label class="col-6">Email<input name="email" type="email" placeholder="you@example.com" required /></label>
+          <label class="col-6">Phone<input name="phone" placeholder="(402) 555-0123" /></label>
+          <label class="col-6">Asset Type<select name="type"><option>Office</option><option>Retail</option><option>Industrial</option><option>Multifamily</option></select></label>
+          <label class="col-8">Message<textarea name="msg" placeholder="Size, location, budget, timing" rows="4"></textarea></label>
+          <div class="col-4" style="display:flex; align-items:end"><button class="btn-primary" type="submit">Schedule a Consultation</button></div>
+        <input type="hidden" name="_subject" value="OPG Commercial Lead">
+        <input type="hidden" name="page" value="Commercial">
+        <div id="lead-ok" class="ok-note" style="display:none;white-space:nowrap;margin-top:8px;color:#0f6a3d">Thanks — we’ll be with you shortly.</div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- Shared footer include -->
+  <div id="site-footer"></div>
+  <script>
+    fetch('./footer.html')
+      .then(r => r.text())
+      .then(html => {
+        const mount = document.getElementById('site-footer');
+        if (mount) mount.outerHTML = html;
+      })
+      .catch(err => console.warn('[OPG] footer include failed', err));
+  </script>
+
+  <script>
+    // ===================== Commercial Listings from Google Sheet =====================
+    (function(){
+      // Local inline placeholder so thumbs never block on network
+      const OPG_PLACEHOLDER = 'data:image/svg+xml;utf8,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800"><rect width="100%" height="100%" fill="#eef2f7"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#9aa6b2" font-family="Inter,system-ui,Arial" font-size="28">Loading…</text></svg>`);
+      // In‑memory gallery cache + tiny image preloader
+      const OPG_IMG_CACHE = new Map();
+      function opgPreload(url){
+        if(!url) return;
+        const img = new Image();
+        img.decoding = 'async';
+        img.loading  = 'eager';
+        img.src = url;
+      }
+      const OPG_DRIVE_API = "https://script.google.com/macros/s/AKfycbzNLigGtYuKJG3NraoCZeaORbGKmF5C2PQe_WmBTu00XdTJgIdikpH60izcaj1clG3Zhg/exec";
+      const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSKbZH8PCNmsSP2W2yvSDCuVS7jXDI7mo-SVHMq6XmiuOWvoNXeWCsGo_kGBQjTAg_Ffx_rMUfyz_ts/pub?gid=1969884902&single=true&output=csv";
+      const OPG_DRIVE_ROOT = "1MOdvuCVRUyp6q-OmsPf5LIsd-mX6_Vgb"; // Omaha Property Group root
+
+      // --- Shared Drive helpers (map + direct URL normalizer) ---
+      let OPG_DRIVE_MAP = null;
+
+      // Normalize any Drive-style URL to a single, fast lh3 form
+      function opgSetSize(url, size='s1600'){
+  if(!url) return '';
+  return String(url).replace(/=s\d+[^/]*$/, `=${size}`);
+}
+      function opgToDirect(u){
+        if(!u) return '';
+        const s = String(u).trim();
+        // Already an lh3 direct URL? normalize: drop query & ensure single =s1600
+        if(/lh3\.googleusercontent\.com\/d\//i.test(s)){
+          return s.replace(/\?.*$/, '').replace(/=s\d+[^/]*$/, '=s1600');
+        }
+        // Extract file id from uc?id=... OR /d/{id}/
+        let id = null;
+        let m = s.match(/[?&]id=([^&]+)/); if(m) id = m[1];
+        if(!id){ m = s.match(/\/d\/([^\/?#=]+)/); if(m) id = m[1]; }
+        return id ? `https://lh3.googleusercontent.com/d/${id}=s1600` : s.replace(/\?.*$/, '');
+      }
+
+      // Extract a Drive folder/file id from any common URL shape
+      function extractDriveId(input){
+        if(!input) return '';
+        const s = String(input).trim();
+        // ?id=XXXXX
+        let m = s.match(/[?&]id=([^&]+)/);
+        if(m) return m[1];
+        // /folders/XXXXX
+        m = s.match(/\/folders\/([^\/?#]+)/);
+        if(m) return m[1];
+        // /d/XXXXX
+        m = s.match(/\/d\/([^\/?#]+)/);
+        if(m) return m[1];
+        // If it already looks like an id, pass it through
+        if (/^[a-zA-Z0-9_-]{20,}$/.test(s)) return s;
+        return s;
+      }
+
+      async function fetchDriveMap(){
+        if(OPG_DRIVE_MAP) return OPG_DRIVE_MAP;
+        if(!OPG_DRIVE_ROOT) return (OPG_DRIVE_MAP = {});
+        const url = `${OPG_DRIVE_API}?mode=map&rootId=${encodeURIComponent(OPG_DRIVE_ROOT)}`;
+        try{
+          const r = await fetch(url, { cache:'no-cache' });
+          const j = await r.json();
+          OPG_DRIVE_MAP = (j && j.ok && j.map) ? j.map : {};
+        }catch(e){
+          console.warn('[OPG] Drive map fetch failed', e);
+          OPG_DRIVE_MAP = {};
+        }
+        return OPG_DRIVE_MAP;
+      }
+
+      function imagesFromMapEntry(entry){
+        if(!entry) return [];
+        const base = Array.isArray(entry) ? entry : (entry.images || []);
+        const items = base.map(x => {
+          if(typeof x === 'string') return { url:x, name:'' };
+          const url = x.url ? x.url : (x.id ? `https://drive.google.com/uc?id=${x.id}&export=view` : '');
+          return { url, name:(x.name||'') };
+        }).filter(e => e.url);
+        // Sort by explicit file order (file1..file4), then others; generic 'thumb' last
+        items.sort((a,b)=> {
+          const pa = opgFilePriority((a.name||a.url||''));
+          const pb = opgFilePriority((b.name||b.url||''));
+          if(pa !== pb) return pa - pb;
+          return String(a.name||a.url||'').localeCompare(String(b.name||b.url||''));
+        });
+        return items.map(e => opgToDirect(e.url)).filter(Boolean);
+      }
+
+      // Helper: assign priority for file sorting by filename
+      function opgFilePriority(n){
+        const s = String(n||'').toLowerCase();
+        const m = s.match(/file\s*([0-9]+)/i);
+        if(m){ const k = parseInt(m[1],10); if(k>=1 && k<=4) return k-1; }
+        if(/thumb/.test(s)) return 98; // push generic thumbs toward the end
+        return 50; // neutral
+      }
+
+      // header mapping (case/space-insensitive)
+      const MAP = {
+        id:'id', type:'type', subtype:'subtype', status:'status',
+        title:'title', address:'address', city:'city', folder:'folder',
+        price:'price', leaserate:'leaseRate', rate:'leaseRate', nnn:'nnn',
+        beds:'beds', bedrooms:'beds', baths:'baths', bathrooms:'baths',
+        sqft:'sqft', squarefeet:'sqft', size:'size',
+        images:'images', photos:'images', published:'published',
+        zillow:'extUrl', url:'extUrl', link:'extUrl',
+        drivefolderid:'driveFolderId', driveid:'driveFolderId', drivefolder:'driveFolderId', thumburl:'thumbUrl',
+      };
+      const key = h => MAP[String(h||'').toLowerCase().replace(/\s+/g,'')] || String(h||'').trim();
+      // Robust CSV parser: handles commas and NEWLINES inside quotes
+      function parseCSV(t){
+        const rows = [];
+        let row = []; let cell = '';
+        let i = 0, q = false; // in-quote flag
+        while(i < t.length){
+          const ch = t[i];
+          if(ch === '"'){
+            if(q && t[i+1] === '"'){ cell += '"'; i += 2; continue; } // escaped quote
+            q = !q; i++; continue;
+          }
+          if(!q && ch === ','){ row.push(cell); cell = ''; i++; continue; }
+          if(!q && (ch === '\n' || ch === '\r')){
+            // push row on first newline; skip \r in \r\n
+            if(ch === '\r' && t[i+1] === '\n'){ i++; }
+            row.push(cell); rows.push(row); row = []; cell = ''; i++; continue;
+          }
+          cell += ch; i++;
+        }
+        // last cell/row
+        row.push(cell); rows.push(row);
+        return rows;
+      }
+      function toRow(headers,row){
+        const o={};
+        headers.forEach((k,i)=>{
+          const v = row[i] ?? '';
+          const vv = (typeof v === 'string') ? v.replace(/\u00A0/g,' ').trim() : (v==null ? '' : v);
+          o[k] = vv;
+        });
+        if(o.price!=='') o.price = Number(String(o.price).replace(/[^0-9.]/g,''));
+        if(o.sqft!=='')  o.sqft  = Number(String(o.sqft).replace(/[^0-9.]/g,''));
+        if(o.beds!=='')  o.beds  = Number(String(o.beds).replace(/[^0-9.]/g,''));
+        if(o.baths!=='') o.baths = Number(String(o.baths).replace(/[^0-9.]/g,''));
+        if(o.images){
+          o.images = String(o.images)
+            .split(',')
+            .map(s=>s.trim())
+            .filter(Boolean);
+        }
+        if(o.type && typeof o.type === 'string') o.type = o.type.trim();
+        if(o.folder && typeof o.folder === 'string') o.folder = o.folder.trim();
+        if(!o.title){ o.title = o.address || '(Untitled)'; }
+        return o;
+      }
+      const fmtUSD = n => { try{ return Number(n).toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}); }catch{ return n; } };
+
+      // ----- Drive image helpers -----
+
+      // Fetch images by Drive path: ROOT / Active Listings / {type} / {address} / {photosFolder}
+      async function fetchDriveImagesByAddress(address, type='Commercial', photosFolder='Photos'){
+        if (!address || !OPG_DRIVE_ROOT) return [];
+        try{
+          const map = await fetchDriveMap();
+          const key = `${String(type||'Commercial').trim()}/${String(address||'').trim()}`;
+          if (map[key]){
+            const urls = imagesFromMapEntry(map[key]);
+            if (urls.length){
+              return urls;
+            }
+          }
+          const url = `${OPG_DRIVE_API}?rootId=${encodeURIComponent(OPG_DRIVE_ROOT)}&type=${encodeURIComponent(type||'')}&address=${encodeURIComponent(address||'')}&photos=${encodeURIComponent(photosFolder)}`;
+          const res = await fetch(url, { cache:'no-cache' });
+          const json = await res.json();
+          if (json && json.ok && Array.isArray(json.images)){
+            const toEntry = (x)=>{
+              if (!x) return null;
+              if (typeof x === 'string') return { url:x, name:'' };
+              const url = x.url ? x.url : (x.id ? `https://drive.google.com/uc?id=${x.id}&export=view` : '');
+              return { url, name:(x.name||'') };
+            };
+            const ordered = json.images
+              .map(toEntry)
+              .filter(Boolean)
+              .sort((a,b)=> {
+                const pa = opgFilePriority((a.name||a.url||''));
+                const pb = opgFilePriority((b.name||b.url||''));
+                if(pa !== pb) return pa - pb;
+                return String(a.name||a.url||'').localeCompare(String(b.name||b.url||''));
+              });
+            const urls = ordered.map(e => opgToDirect(e.url)).filter(Boolean);
+            return urls;
+          }
+        }catch(err){
+          console.warn('[OPG] Drive fetch by address failed', err);
+        }
+        return [];
+      }
+
+      // Fetch images by explicit Drive folderId (legacy / override)
+      async function fetchDriveImages(folderId){
+        if (!folderId) return [];
+        const id = extractDriveId(folderId);
+        try{
+          const url = `${OPG_DRIVE_API}?folderId=${encodeURIComponent(id)}`;
+          const res = await fetch(url, { cache: 'no-cache' });
+
+          const json = await res.json();
+
+          // Accept plain array, or {images: [...]}, or {files: [...]}
+          const rawArr = Array.isArray(json)
+            ? json
+            : (json && Array.isArray(json.images)
+                ? json.images
+                : (json && Array.isArray(json.files)
+                    ? json.files
+                    : []));
+
+          const toEntry = (x) => {
+            if (!x) return null;
+            if (typeof x === 'string') return { url:x, name:'' };
+            const url = x.url ? x.url : (x.id ? `https://drive.google.com/uc?id=${x.id}&export=view` : '');
+            return { url, name: (x.name||'') };
+          };
+
+          const entries = rawArr.map(toEntry).filter(Boolean);
+          // Sort by explicit file order (file1..file4), then others; generic 'thumb' last
+          const ordered = entries.sort((a,b)=> {
+            const pa = opgFilePriority((a.name||a.url||''));
+            const pb = opgFilePriority((b.name||b.url||''));
+            if(pa !== pb) return pa - pb;
+            return String(a.name||a.url||'').localeCompare(String(b.name||b.url||''));
+          });
+          const urls = ordered.map(e => opgToDirect(e.url)).filter(Boolean);
+          return urls;
+        } catch(err){
+          console.warn('[OPG] Drive fetch failed', err);
+        }
+        return [];
+      }
+
+      async function getListingImages(L, limit=24){
+        // 0) Try Drive path: Active Listings / {type} / {address} / Photos
+        if (OPG_DRIVE_ROOT && L && L.address){
+          const byAddr = await fetchDriveImagesByAddress(L.address, L.type || 'Commercial', 'Photos');
+          if (byAddr && byAddr.length){
+            return byAddr.slice(0, limit);
+          }
+        }
+        // 1) explicit images from sheet (may be urls or filenames)
+        if(Array.isArray(L.images) && L.images.length){
+          return L.images.slice(0, limit).map(p=>{
+            if(/^https?:\/\//i.test(p) || p.startsWith('/')) return p;
+            if(L.folder) return `/assets/listings/commercial/${L.folder}/${p}`;
+            return p;
+          });
+        }
+        // 2) Drive folder id
+        if(L.driveFolderId){
+          const arr = await fetchDriveImages(L.driveFolderId);
+          if(arr.length) return arr.slice(0, limit);
+        }
+        // 3) local numbered files fallback
+        if(L.folder){
+          const names = ['thumb.jpg','thumbnail.jpg','cover.jpg','hero.jpg','front.jpg','exterior.jpg'];
+          for (let i=1; i<=24; i++) names.push(`file${i}.jpg`);
+          return names.slice(0, limit).map(n => `/assets/listings/commercial/${L.folder}/${n}`);
+        }
+        return [];
+      }
+
+      async function firstImage(L){if (L.thumbUrl) {
+  return opgSetSize(opgToDirect(L.thumbUrl), 's480'); // fast card image
+}
+const arr = await getListingImages(L, 1);
+return arr[0] || OPG_PLACEHOLDER;
+      }
+      function cardCom(L){
+        const el = document.createElement('article');
+        el.className = 'col-4 card';
+        el.style.minHeight = 'unset';
+        // Build facts line: city · 2,400 SF · 1 AC (show both if present)
+        const facts = [];
+        if (L.city) facts.push(String(L.city));
+        if (L.sqft) {
+          facts.push(`${Number(L.sqft).toLocaleString()} SF`);
+        }
+        if (L.size) {
+          const s = String(L.size).trim();
+          const sizeText = /ac|acre|sf|sq\s*ft/i.test(s) ? s : `${s} AC`;
+          facts.push(sizeText);
+        }
+        const factsText = facts.filter(Boolean).join(' · ');
+        const priceText = (()=>{
+          if (L.price) return fmtUSD(L.price);
+          if (L.leaseRate){
+            const rate = `$${L.leaseRate}/SF`;
+            return L.nnn ? `${rate} · ${L.nnn}` : rate;
+          }
+          return '';
+        })();
+        el.innerHTML = `
+          <img src="${OPG_PLACEHOLDER}" alt="" loading="lazy" style="width:100%;height:220px;object-fit:cover">
+          <div class="card-body">
+            <div class="pill">Commercial</div>
+            <h3 style="margin:8px 0 6px">${(L.title||L.address||'(Untitled)')}</h3>
+            <div class="meta">${factsText}</div>
+            <div class="meta" style="margin-top:6px">${priceText}</div>
+            <div style="margin-top:12px"><a class="cta opg-more" href="#" data-id="${L.id}">More Info</a></div>
+          </div>`;
+        // swap real thumbnail when ready
+        firstImage(L).then(src=>{
+          const img = el.querySelector('img');
+          if(img){ img.onerror = ()=> img.src = OPG_PLACEHOLDER; img.src = src; }
+        });
+        return el;
+      }
+
+      const grid = document.getElementById('com-grid');
+      let OPG_LIST = [];
+      if(!grid) return;
+
+      // Show lightweight skeletons while fetching the sheet
+      grid.innerHTML = Array.from({length:6}).map(()=>
+        `<article class="col-4 card"><div style="width:100%;height:200px;background:#eef2f7;border-bottom:1px solid #e8edf3"></div><div class="card-body"><div class="pill">Commercial</div><div class="meta" style="height:18px;background:#f3f6fa;border-radius:6px;margin:10px 0;width:60%"></div><div class="meta" style="height:14px;background:#f6f9fc;border-radius:6px;width:80%"></div></div></article>`
+      ).join('');
+
+      fetch(CSV_URL,{cache:'no-cache'})
+        .then(r=>r.text())
+        .then(csv=>{
+          const rows = parseCSV(csv);
+          const hdrIdx = rows.findIndex(r => r.some(c => /title|address|city/i.test(c)));
+          if(hdrIdx < 0) throw new Error('Header row not found');
+          const headers = rows[hdrIdx].map(key);
+          const data = rows.slice(hdrIdx+1).map(r=> toRow(headers,r));
+
+          const list = data.filter(L => {
+            const pub = String(L.published || 'yes').toLowerCase().trim();
+            // Look across both type and subtype to catch variations
+            const str = `${L.type || ''} ${L.subtype || ''}`.toLowerCase();
+            // Accept common commercial categories
+            const isCommercial = /commercial|office|retail|industrial|multifamily/.test(str);
+            return pub !== 'no' && isCommercial;
+          });
+          OPG_LIST = list;
+
+          grid.innerHTML = '';
+          if(list.length === 0){
+            grid.innerHTML = '<div class="meta">No commercial listings available right now.</div>';
+            return;
+          }
+          list.forEach(L => grid.appendChild(cardCom(L)));
+          // Proactive gallery cache: fetch + cache image lists for ALL commercial listings at idle
+          (function warmGalleries(){
+            const listings = (OPG_LIST || []).slice(0);
+            const MAX_CONCURRENCY = 3;
+            let inFlight = 0;
+
+            async function buildCache(L){
+              const key = L.id || L.folder || JSON.stringify(L);
+              if (OPG_IMG_CACHE.has(key)) return;
+
+              const tasks = [];
+              const sheetList = (Array.isArray(L.images) && L.images.length) ? L.images : [];
+              if (sheetList.length) tasks.push(Promise.resolve(sheetList));
+              if (L.driveFolderId) tasks.push(fetchDriveImages(L.driveFolderId).catch(()=>[]));
+              tasks.push((async()=>{ try{ return await getListingImages(L, 24); }catch{ return []; } })());
+
+              const results = await Promise.all(tasks);
+              const merged = new Map();
+              results.flat().forEach(u=>{
+                const s = opgToDirect(String(u||'').trim());
+                if(!s) return; const k = s.toLowerCase();
+                if(!merged.has(k)) merged.set(k, s);
+              });
+              let imgs = Array.from(merged.values());
+              if (!imgs.length) return;
+
+              const preview = L.thumbUrl ? opgSetSize(opgToDirect(L.thumbUrl), 's1600') : '';
+              if (preview && !imgs.some(x=>x.toLowerCase()===preview.toLowerCase())){
+                imgs.unshift(preview);
+              }
+
+              OPG_IMG_CACHE.set(key, imgs);
+              imgs.slice(0,6).forEach(u=> opgPreload(opgSetSize(u,'s1200')));
+            }
+
+            function next(){
+              if (!listings.length) return;
+              while (inFlight < MAX_CONCURRENCY && listings.length){
+                const L = listings.shift(); inFlight++;
+                (window.requestIdleCallback || setTimeout)(()=>{
+                  buildCache(L).finally(()=>{ inFlight--; next(); });
+                }, { timeout: 1500 });
+              }
+            }
+            next();
+          })();
+        })
+        .catch(err => {
+          console.warn('[OPG] Commercial listings load failed', err);
+          grid.innerHTML = '<div class="meta">Unable to load commercial listings right now. <a href="#" id="retry-com">Retry</a></div>';
+          const rc = document.getElementById('retry-com');
+          if(rc){ rc.addEventListener('click', (e)=>{ e.preventDefault(); location.reload(); }); }
+        });
+      // --- gallery token + unified renderer (main + thumbs) ---
+      let OPG_LM_TOKEN = 0; // prevents stale async gallery renders
+      function renderGallery(urls, token){
+        if(token !== OPG_LM_TOKEN) return; // stale render
+        const list = (urls && urls.length) ? urls : [OPG_PLACEHOLDER];
+        const main = document.getElementById('lm-main');
+        const thumbs = document.getElementById('lm-thumbs');
+        if(!main || !thumbs) return;
+
+        // Normalize sizes (bigger for main, medium for rest)
+        const sized = list.map((u,i)=> i===0 ? opgSetSize(u,'s1600') : opgSetSize(u,'s1200'));
+
+        // Persist images and index on the main element for swipe/tap navigation
+        main._imgs = sized.slice();
+        main._idx  = 0;
+
+        // main image
+        const first = sized[0] || OPG_PLACEHOLDER;
+        main.onerror = null;
+        main.removeAttribute('srcset');
+        main.src = encodeURI(first);
+        main.onerror = ()=>{ main.src = OPG_PLACEHOLDER; };
+
+        // thumbs
+        thumbs.innerHTML = '';
+        sized.forEach((src, i)=>{
+          const t = document.createElement('img');
+          t.src = encodeURI(opgSetSize(src,'s400'));
+          t.alt = '';
+          t.loading = 'lazy';
+          if(i===0) t.classList.add('active');
+          t.onerror = ()=>{ t.style.display = 'none'; };
+          t.addEventListener('click', ()=>{
+            if(token !== OPG_LM_TOKEN) return; // still-current guard
+            main._idx = i;
+            main.src = encodeURI(src);
+            thumbs.querySelectorAll('img').forEach((x,j)=> x.classList.toggle('active', j===i));
+          });
+          thumbs.appendChild(t);
+        });
+
+        // Arrow indicator for overflow on mobile: show only if more content exists to the right
+        const moreEl = document.getElementById('lm-thumbs-more');
+        function updateMore(){
+          if(!moreEl || !thumbs) return;
+          const overflow = thumbs.scrollWidth > thumbs.clientWidth + 1;
+          const atEnd = (thumbs.scrollLeft + thumbs.clientWidth >= thumbs.scrollWidth - 4);
+          moreEl.style.display = (overflow && !atEnd) ? 'flex' : 'none';
+        }
+        if (thumbs){
+          thumbs.addEventListener('scroll', updateMore, { passive:true });
+          window.addEventListener('resize', updateMore);
+          setTimeout(updateMore, 0); // after images size in
+        }
+
+        // Swipe + tap support on main image (mobile-friendly)
+        (function bindSwipe(){
+          if (main._swipeBound) return; // prevent duplicate listeners
+          let startX = 0;
+          const toIndex = (nextIdx)=>{
+            const imgs = Array.isArray(main._imgs) ? main._imgs : [];
+            if (!imgs.length) return;
+            let idx = nextIdx;
+            if (idx < 0) idx = imgs.length - 1;
+            if (idx >= imgs.length) idx = 0;
+            main._idx = idx;
+            main.src = encodeURI(imgs[idx]);
+            const thumbEls = thumbs.querySelectorAll('img');
+            thumbEls.forEach((x,j)=> x.classList.toggle('active', j===idx));
+          };
+          const onStart = (e)=>{ startX = (e.touches && e.touches[0] ? e.touches[0].clientX : e.clientX); };
+          const onEnd   = (e)=>{
+            const endX = (e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientX : e.clientX);
+            const dx = endX - startX;
+            if (Math.abs(dx) < 40) return; // ignore tiny drags
+            const dir = dx < 0 ? 1 : -1;   // left swipe -> next
+            toIndex((main._idx || 0) + dir);
+          };
+          main.addEventListener('touchstart', onStart, { passive:true });
+          main.addEventListener('touchend',   onEnd,   { passive:true });
+          // Tap/click to advance
+          main.addEventListener('click', ()=> toIndex((main._idx || 0) + 1));
+          main._swipeBound = true;
+        })();
+      }
+
+      // --- modal helpers ---
+      function openListing(id){
+        const L = (OPG_LIST||[]).find(x => String(x.id) === String(id));
+        if(!L) return;
+
+        // bump token for this open
+        const myToken = ++OPG_LM_TOKEN;
+        const lmPreview = L.thumbUrl ? opgSetSize(opgToDirect(L.thumbUrl), 's1600') : '';
+
+        // --- Reset the modal immediately so we don't see the previous listing ---
+        const mainEl = document.getElementById('lm-main');
+        const thumbsEl = document.getElementById('lm-thumbs');
+        if (mainEl){
+          mainEl.onerror = null;             // clear previous handlers
+          mainEl.removeAttribute('srcset');  // clear any lingering srcset
+          mainEl.src = lmPreview || OPG_PLACEHOLDER; // show sheet thumb or placeholder instantly
+        }
+        if (thumbsEl){ thumbsEl.innerHTML = ''; }
+
+        // Title
+        document.getElementById('lm-title').textContent = L.title || '(Untitled)';
+
+        // Price headline
+        document.getElementById('lm-price').textContent = L.price ? fmtUSD(L.price) : (L.leaseRate ? `$${L.leaseRate}/SF ${L.nnn||''}` : '');
+
+        // Chips: city, sqft, lot size, beds, baths (show both sqft and size, format size to AC if no unit)
+        const chips = [];
+        if (L.city) chips.push(`<span class="chip">${L.city}</span>`);
+        if (L.sqft) chips.push(`<span class="chip">${Number(L.sqft).toLocaleString()} SF</span>`);
+        if (L.size) {
+          const s = String(L.size).trim();
+          const sizeChip = /ac|acre|sf|sq\s*ft/i.test(s) ? s : `${s} AC`;
+          chips.push(`<span class="chip">${sizeChip}</span>`);
+        }
+        if (L.beds) chips.push(`<span class="chip">${L.beds} bed</span>`);
+        if (L.baths) chips.push(`<span class="chip">${L.baths} bath</span>`);
+        document.getElementById('lm-facts').innerHTML = chips.join('');
+
+        // Description
+        document.getElementById('lm-desc').textContent = L.description || '';
+
+        // External link
+        const ext = document.getElementById('lm-ext');
+        if (L.extUrl && /^https?:\/\//i.test(L.extUrl)) {
+          ext.style.display='inline-flex';
+          ext.textContent = 'View Listing';
+          ext.href = L.extUrl;
+        } else {
+          ext.style.display='none';
+          ext.removeAttribute('href');
+        }
+
+        // Render gallery (cache-first, race-safe)
+        (function(){
+          const cacheKey = L.id || L.folder || JSON.stringify(L);
+          const cached = OPG_IMG_CACHE.get(cacheKey);
+          if (Array.isArray(cached) && cached.length){
+            const base = cached.slice(0,12);
+            const merged = lmPreview
+              ? [lmPreview, ...base.filter(u => String(u).toLowerCase() !== String(lmPreview).toLowerCase())]
+              : base;
+            renderGallery(merged, myToken);
+            return; // instant render from cache
+          }
+
+          getListingImages(L, 12)
+            .then(urls => {
+              const list = Array.isArray(urls) ? urls.slice(0,12) : [];
+              // Cache for future opens
+              if (list.length) OPG_IMG_CACHE.set(cacheKey, list.slice());
+              const merged = lmPreview
+                ? [lmPreview, ...list.filter(u => String(u).toLowerCase() !== String(lmPreview).toLowerCase())]
+                : list;
+              renderGallery(merged, myToken);
+            })
+            .catch(() => renderGallery(lmPreview ? [lmPreview] : [OPG_PLACEHOLDER], myToken));
+        })();
+
+        // Show modal
+        document.getElementById('lm').style.display='flex';
+      }
+      function closeListing(){ document.getElementById('lm').style.display='none'; }
+
+      document.addEventListener('click', (e)=>{
+        const a = e.target.closest('a.opg-more');
+        if(a){ e.preventDefault(); const id = a.getAttribute('data-id'); openListing(id); }
+        if(e.target.id==='lm' || e.target.id==='lm-close'){ closeListing(); }
+      });
+      document.addEventListener('keydown', (e)=>{
+        if(e.key === 'Escape'){
+          const lm = document.getElementById('lm');
+          if(lm && lm.style.display === 'flex'){ 
+            e.preventDefault();
+            closeListing();
+          }
+        }
+      });
+    })();
+
+    // ===================== Formspree submit (Commercial) =====================
+    function submitFormspree(form, okEl, extras){
+      const data = new FormData(form);
+      if (extras && typeof extras === 'object'){
+        Object.entries(extras).forEach(([k,v])=> data.append(k, v));
+      }
+      const btn = form.querySelector('button[type="submit"]');
+      if(btn){ btn.disabled = true; }
+      fetch(form.action, { method:'POST', body:data, headers:{ 'Accept':'application/json' } })
+        .then(res => {
+          if(!res.ok) throw new Error('Formspree error');
+          form.reset();
+          if (okEl){ okEl.style.display = 'inline-block'; }
+        })
+        .catch(() => {
+          // Optional: surface a gentle error; keep silent to avoid UX noise
+        })
+        .finally(() => { if(btn){ btn.disabled = false; } });
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const brief = document.getElementById('brief-form');
+      const briefOk = document.getElementById('brief-ok');
+      if (brief){
+        brief.addEventListener('submit', (e)=>{
+          e.preventDefault();
+          submitFormspree(brief, briefOk, { _subject:'OPG Commercial Quick Brief', page:'Commercial' });
+        });
+      }
+      const lead = document.getElementById('lead-form');
+      const leadOk = document.getElementById('lead-ok');
+      if (lead){
+        lead.addEventListener('submit', (e)=>{
+          e.preventDefault();
+          submitFormspree(lead, leadOk, { _subject:'OPG Commercial Lead', page:'Commercial' });
+        });
+      }
+    });
+  </script>
+
+  <!-- Listing Modal -->
+  <div id="lm" style="position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,.45); z-index:1000">
+    <div style="background:#fff; width:min(920px, 94vw); max-height:90vh; overflow:auto; border-radius:16px; box-shadow:0 20px 60px rgba(0,0,0,.25);">
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px solid #e8edf3">
+        <strong id="lm-title" style="font-size:18px"></strong>
+        <button id="lm-close" aria-label="Close" style="all:unset; cursor:pointer; padding:6px 10px">✕</button>
+      </div>
+      <div class="lm-grid">
+        <div>
+          <img id="lm-main" class="lm-main" src="" alt="">
+          <div class="lm-thumbs-wrap">
+            <div id="lm-thumbs" class="lm-thumbs"></div>
+            <div id="lm-thumbs-more" class="lm-thumbs-more">›</div>
+          </div>
+        </div>
+        <aside class="lm-bubble lm-right">
+          <div id="lm-price" class="lm-price"></div>
+          <div id="lm-facts" class="chip-row"></div>
+          <p id="lm-desc" style="margin:0 0 14px;color:#344054"></p>
+          <div class="lm-actions">
+            <a class="cta" style="font-weight:600" href="#contact">Inquire</a>
+            <a id="lm-ext" class="btn-outline" style="display:none" target="_blank" rel="noopener">View Listing</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

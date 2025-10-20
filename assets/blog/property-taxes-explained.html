@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Omaha Property Taxes Explained | Omaha Property Group</title>
+  <meta name="description" content="A clear guide to Omaha property taxes: how assessments and mill levies work, what affects your bill, and practical steps for buyers and homeowners." />
+  <link rel="preload" as="image" href="./property-taxes-explained.jpg">
+  <style>
+    :root{--bg:#0c1116;--ink:#0f1720;--muted:#667085;--line:#e8edf3;--wrap:1100px;--brand:#4FA3D1}
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;background:#fff;color:var(--ink);-webkit-font-smoothing:antialiased;font:16px/1.7 Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    /* Reserve space for the sticky site header when it mounts */
+    body.header-ready{padding-top:72px}
+    @media(max-width:960px){body.header-ready{padding-top:64px}}
+    /* Be sure the shared header sits above the hero */
+    .site-header{position:sticky;top:0;z-index:1000}
+    a{color:var(--brand);text-decoration:none} a:hover{opacity:.9}
+    .wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
+
+    /* Hero uses the local image so it always shows even without the header image below */
+    .post-hero{
+      color: var(--ink);
+      background: none !important;
+      background-color: transparent !important;
+    }
+    .post-hero .hero-inner{padding:24px 0 12px}
+    .post-hero h1{margin:0 0 8px;font-weight:800;font-size:40px;line-height:1.08}
+    .post-hero p{margin:0;color:#0f1720}
+
+    main{background:#fff;border-top-left-radius:28px;border-top-right-radius:28px}
+    article{padding:28px 0}
+    .meta{color:var(--muted);font-size:14px}
+    .post-img{width:100%;height:420px;object-fit:cover;border-radius:16px;border:1px solid var(--line);margin:16px 0}
+    h2{margin:28px 0 12px}
+    ul{padding-left:18px}
+    blockquote{margin:18px 0;padding:14px 16px;border-left:4px solid var(--brand);background:#f5f7fb;border-radius:8px;color:#0f2535}
+
+    footer{background:#0f1720;color:#b7c6d2;margin-top:28px}
+    .foot{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px;padding:36px 0}
+    .foot a{color:#cfe8f6}
+    @media(max-width:960px){
+      .hero h1{font-size:32px}
+      .post-img{height:300px}
+      .foot{grid-template-columns:1fr}
+    }
+
+    /* Visual math card */
+    .math-card{
+      background: linear-gradient(180deg,#f8fbff, #f3f6fc);
+      border: 1px solid #cbd8ee;
+      border-radius: 14px;
+      padding: 16px;
+      margin: 12px 0 20px;
+      box-shadow: 0 6px 18px rgba(20,40,80,.06);
+    }
+    .math-card .row{
+      display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    }
+    .math-card .step,.math-card .result{
+      background:#fff;
+      border:1px solid #e5ecf7;
+      border-radius:12px;
+      padding:12px 14px;
+      min-width:160px;
+      box-shadow: 0 1px 0 rgba(16,24,40,.04);
+    }
+    .math-card .label{
+      font-size:12px;
+      color:#3b4a66;
+      letter-spacing:.02em;
+      text-transform:uppercase;
+      font-weight:700;
+      margin-bottom:4px;
+    }
+    .math-card .value{
+      font-size:20px;
+      font-weight:800;
+      color:#0f1720;
+    }
+    .math-card .sub{
+      font-size:12px;color:#5b6b85;margin-top:2px
+    }
+    .math-card .op{
+      width:36px;height:36px;border-radius:50%;
+      display:grid;place-items:center;
+      background:#e6effa;border:1px solid #cfe0f8;
+      color:#23406a;font-weight:800;
+    }
+    .math-card .result{
+      border:1px solid #b8d6ef;
+      background:linear-gradient(180deg,#e8f4ff,#dff0ff);
+    }
+    .math-card .result .value{
+      font-size:22px;color:#0b2d52
+    }
+    @media(max-width:720px){
+      .math-card .row{gap:10px}
+      .math-card .step,.math-card .result{min-width:130px}
+    }
+  </style>
+</head>
+<body>
+  <!-- Shared site header -->
+  <div id="opg-header-placeholder"></div>
+  <script>
+    (function(){
+      const mount = document.getElementById('opg-header-placeholder');
+      fetch('../../header.html', { cache: 'no-cache' })
+        .then(r => r.text())
+        .then(html => {
+          mount.outerHTML = html;
+          // After header is mounted, reserve its height so content does not slide under it
+          requestAnimationFrame(() => {
+            const h = document.querySelector('header.site-header, .site-header');
+            if (h) {
+              document.body.classList.add('header-ready');
+              document.body.style.paddingTop = h.offsetHeight + 'px';
+            }
+          });
+        })
+        .catch(err => console.warn('[OPG] header include failed', err));
+    })();
+  </script>
+
+  <section class="post-hero">
+    <div class="wrap hero-inner">
+      <h1>Omaha Property Taxes Explained</h1>
+      <p class="meta">A guide to how assessments and mill levies work, what affects your bill, and steps to plan with confidence.</p>
+    </div>
+  </section>
+
+  <main>
+    <article class="wrap">
+      <img class="post-img" src="./property-taxes-explained.jpg" alt="Understanding Omaha property taxes" loading="eager" decoding="async" />
+      <p class="meta">Published 09/01/2025 • 6 min read</p>
+
+      <h2>How property taxes are calculated in Omaha</h2>
+      <p>In Omaha, property taxes start with the county’s assessed value of your home. That assessed value is meant to reflect market value as of a specific valuation date. Your total tax is the assessed value multiplied by the combined levy set by multiple taxing authorities, such as the city, county, and your school district. Levies are quoted in mills, which represent dollars charged per thousand of assessed value. For example, if a home is assessed at two hundred thousand and the total levy is one hundred fifty mills, the formula is two hundred thousand divided by one thousand, multiplied by one hundred fifty.</p>
+      <div class="math-card" aria-label="Property tax math example">
+        <div class="row">
+          <div class="step">
+            <div class="label">Assessed value</div>
+            <div class="value">$200,000</div>
+          </div>
+
+          <div class="op">÷</div>
+
+          <div class="step">
+            <div class="label">Per 1,000</div>
+            <div class="value">1,000</div>
+            <div class="sub">= 200</div>
+          </div>
+
+          <div class="op">×</div>
+
+          <div class="step">
+            <div class="label">Mill levy</div>
+            <div class="value">150</div>
+            <div class="sub">mills</div>
+          </div>
+
+          <div class="op">=</div>
+
+          <div class="result">
+            <div class="label">Estimated tax bill</div>
+            <div class="value">$30,000</div>
+          </div>
+        </div>
+      </div>
+      <p>That yields a bill of thirty thousand, which is obviously too high for typical Omaha rates, which is why actual combined levies are much lower than that simple example suggests. The takeaway is that both the assessed value and the levy determine what you pay.</p>
+
+      <h2>Key factors that impact your property tax bill</h2>
+      <ul>
+        <li><strong>Assessment accuracy:</strong> A fair assessment matters. County models update based on sales, condition notes, and neighborhood trends.</li>
+        <li><strong>Mill levies:</strong> Each entity sets a levy that funds services. Your total levy is the sum of those individual parts.</li>
+        <li><strong>Exemptions:</strong> Nebraska homestead exemptions can reduce taxable value for qualifying owners. Review eligibility each year.</li>
+        <li><strong>Improvements:</strong> Renovations can raise assessed value. Document permits and completion dates so the record is accurate.</li>
+      </ul>
+
+      <h2>How Omaha compares to nearby areas</h2>
+      <p>Compared with nearby counties and with metro areas of similar size in the region, Omaha’s effective property tax rates are competitive. Differences come from how each county assesses value and from the mix of levies that fund schools, public safety, and infrastructure. When comparing homes across county lines, look at the effective tax as a percentage of value rather than just the levy posted on a website.</p>
+
+      <h2>Tips for buyers: what to watch in the assessment</h2>
+      <ul>
+        <li>Ask for the latest tax statement and confirm whether any exemptions transferred with the property.</li>
+        <li>Check if a recent remodel appears in county records. If not, the assessment could rise after closing.</li>
+        <li>Model your payment at both the current bill and a higher estimate in case the assessment adjusts.</li>
+        <li>Compare taxes across target neighborhoods when deciding where to focus your search.</li>
+      </ul>
+
+      <h2>Strategies for homeowners to manage property taxes</h2>
+      <ul>
+        <li><strong>File exemptions early:</strong> If you qualify for a homestead exemption, submit before the deadline so it applies to the next cycle.</li>
+        <li><strong>Appeal when warranted:</strong> If the assessment is out of line with recent comparable sales, prepare a calm, evidence based appeal.</li>
+        <li><strong>Track improvements:</strong> Keep receipts and permit records to show accurate scope and timelines.</li>
+        <li><strong>Budget with your lender:</strong> If your mortgage services an escrow, review the annual escrow analysis and set aside a cushion for levy changes.</li>
+      </ul>
+
+      <blockquote>
+        Have questions about how property taxes affect your move?
+        <a href="/index.html#contact">Talk with an agent today</a> and we will send a clear next step the same day.
+      </blockquote>
+
+      <p>The Omaha Property Group team helps clients across West Omaha, Midtown, Benson, Dundee, and Aksarben plan for taxes as part of a full decision process. If you want a quick review of your specific block or subdivision, we will prepare a short brief with recent sales, effective tax rates, and suggestions tailored to your timing.</p>
+    </article>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <div class="brand" style="margin-bottom:10px">
+          <div class="logo" style="width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg, var(--brand), #9dd9ff)"></div>
+          <strong>Omaha Property Group</strong>
+        </div>
+        <div class="meta">10404 Essex Court Suite 201, Omaha NE 68114<br>(402) 889-6958 • jordan.estee@bhhsamb.com</div>
+      </div>
+      <div>
+        <strong>Explore</strong>
+        <div class="meta">
+          <a href="../../index.html#listings">Listings</a><br>
+          <a href="../../residential.html">Residential</a><br>
+          <a href="../../commercial.html">Commercial</a><br>
+          <a href="../../blog.html">Blog</a>
+        </div>
+      </div>
+      <div>
+        <strong>Have questions?</strong>
+        <div class="meta">Send a short note and we will reply the same day.</div>
+        <p><a href="/index.html#contact" class="cta" style="display:inline-block;background:#4FA3D1;color:#fff;border-radius:999px;padding:10px 16px;font-weight:700">Talk to an agent</a></p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,42 @@
+{
+  "listings": [
+    {
+      "id": "R-2501",
+      "type": "Residential",
+      "subtype": "Single Family",
+      "status": "For Sale",
+      "title": "Ashland Home",
+      "address": "123 Main St",
+      "city": "Ashland, NE",
+      "price": 550000,
+      "beds": 4,
+      "baths": 3,
+      "sqft": 2800,
+      "images": [
+        "/assets/listings/ashland/back.jpg",
+        "/assets/listings/ashland/kitchen.jpg",
+        "/assets/listings/ashland/living-room.jpg",
+        "/assets/listings/ashland/theatre.jpg"
+      ],
+      "flyerUrl": "/assets/flyers/Ashland.pdf",
+      "description": "Beautiful home with theater, large kitchen, and backyard."
+    },
+    {
+      "id": "C-101",
+      "type": "Commercial",
+      "subtype": "Retail",
+      "status": "For Lease",
+      "title": "Downtown Retail Space",
+      "address": "1500 Farnam St",
+      "city": "Omaha, NE",
+      "size": "2400 SF",
+      "leaseRate": 28,
+      "nnn": "NNN",
+      "images": [
+        "/assets/listings/downtown-retail/hero.jpg"
+      ],
+      "flyerUrl": "/assets/flyers/C-101.pdf",
+      "description": "Prime downtown location; high foot traffic."
+    }
+  ]
+}

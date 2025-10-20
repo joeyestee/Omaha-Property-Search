@@ -1,0 +1,143 @@
+<!-- OPG Shared Header (fragment) -->
+<style>
+  :root{
+    --opg-bg: #0b1117; --opg-border: rgba(255,255,255,.08);
+    --opg-fg: #d5e3f0; --opg-fg-dim:#9fb0be; --opg-accent:#4aa3df; --wrap:1200px;
+  }
+  header{ position:sticky; top:0; z-index:9999; background:var(--opg-bg); pointer-events:auto; }
+  header .wrap{ background:var(--opg-bg); max-width:none; margin:0; }
+  header .topbar{ display:flex; align-items:center; justify-content:flex-start; padding:14px 20px; border-bottom:1px solid var(--opg-border); }
+  header .topbar .inner-wrap{ max-width:none; margin:0; display:flex; align-items:center; justify-content:space-between; gap:16px; width:100%; }
+  header .brand{ display:flex; align-items:center; gap:1px; color:var(--opg-fg); text-decoration:none; font-weight:700; letter-spacing:.2px; }
+  /* Logos scale by height so they match and don't clip on mobile */
+  header .brand > .logo,
+  header .brand .parent {
+    width: auto;
+    height: 38px;        /* desktop/tablet */
+    object-fit: contain;
+    display: block;
+    max-width: none;
+    border-radius: 0;
+    background: none;
+    opacity: 1;
+    filter: none;
+    position: static;
+    margin-left: 0;
+    flex: 0 0 auto;
+  }
+  header .brand .divider{
+    width: 1px;
+    height: 38px; /* match logo height */
+    background: var(--opg-border);
+    margin: 0 12px; display: inline-block;
+  }
+
+  @media (max-width: 900px){
+    header .brand > .logo,
+    header .brand .parent { height: 34px; }
+    header .brand .divider { height: 34px; }
+  }
+  header nav{ display:flex; align-items:center; gap:22px; }
+  header nav a{ color:var(--opg-fg); text-decoration:none; font-weight:600; opacity:.9; transition:opacity .2s ease, transform .2s ease; }
+  header nav a:hover{ opacity:1; transform:translateY(-1px); }
+  header nav a.active{ opacity:1; text-decoration:underline; text-underline-offset:6px; }
+  header .drawer a.active{ background:rgba(255,255,255,.06); }
+  header nav a.cta{ padding:10px 16px; border-radius:28px; background:var(--opg-accent); color:#fff !important; box-shadow:0 6px 22px rgba(74,163,223,.35); }
+  header .menu-btn{ display:none; background:none; border:0; color:var(--opg-fg); font-size:22px; line-height:1; padding:4px 8px; border-radius:6px; }
+  header .drawer{ display:none; background:var(--opg-bg); border-bottom:1px solid var(--opg-border); position:relative; z-index:10000; }
+  header .drawer a{ display:block; padding:10px 16px; color:var(--opg-fg); text-decoration:none; border-top:1px solid var(--opg-border); }
+  header .drawer a.cta{ margin:8px 12px; display:inline-block; }
+  header .drawer.open{ display:block; }
+  @media (max-width: 900px){
+    header nav{ display:none; }
+    header .menu-btn{ display:inline-flex; }
+    header .topbar{ padding:12px 16px; }
+    header nav a.cta { display: none; }
+    header .drawer a.cta { display: none !important; }
+  }
+</style>
+<header>
+  <div class="wrap topbar" role="navigation" aria-label="Main">
+    <div class="inner-wrap">
+      <a class="brand" href="/index.html">
+        <img src="/assets/images/logo/logo.png" alt="Omaha Property Group Logo" class="logo" width="80" height="80">
+        <span class="divider" aria-hidden="true"></span>
+        <img class="parent" src="/assets/images/logo/bhhs-logo.png"
+             alt="Berkshire Hathaway HomeServices · Ambassador Real Estate" width="80" height="80">
+      </a>
+      <button class="menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-drawer">☰</button>
+      <nav>
+        <a href="/index.html">Home</a>
+        <a href="/index.html#listings">Listings</a>
+        <a href="/residential.html">Residential</a>
+        <a href="/commercial.html">Commercial</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/about.html">About</a>
+        <a href="/index.html#contact" class="cta">Schedule a Consult</a>
+      </nav>
+    </div>
+  </div>
+  <div id="site-drawer" class="drawer wrap">
+    <a href="/index.html">Home</a>
+    <a href="/index.html#listings">Listings</a>
+    <a href="/residential.html">Residential</a>
+    <a href="/commercial.html">Commercial</a>
+    <a href="/blog.html">Blog</a>
+    <a href="/about.html">About</a>
+    <a href="/index.html#contact" class="cta" style="display:inline-block; margin:8px 12px;">Schedule a Consult</a>
+  </div>
+</header>
+<script>
+(function(){
+  // Ensure only one header is mounted
+  if (window.__OPG_HEADER_MOUNTED) {
+    const hs = document.querySelectorAll('header');
+    hs.forEach((h,i)=>{ if(i>0 && h.parentNode) h.parentNode.removeChild(h); });
+    return;
+  }
+  window.__OPG_HEADER_MOUNTED = true;
+
+  let headerEl = document.currentScript && document.currentScript.previousElementSibling;
+  if (!headerEl || headerEl.tagName !== 'HEADER') {
+    headerEl = document.querySelector('header'); // fallback for injected headers
+  }
+  const btn = (headerEl && headerEl.querySelector('.menu-btn')) || document.querySelector('.menu-btn');
+  const drawer = document.getElementById('site-drawer') || (headerEl && headerEl.querySelector('#site-drawer')) || document.querySelector('#site-drawer');
+  if(btn && drawer){
+    btn.addEventListener('click', ()=>{
+      const open = drawer.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click', (e)=>{
+      const href = a.getAttribute('href') || '';
+      // Close drawer first
+      drawer.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+      // On some mobile browsers, immediate DOM changes can cancel navigation.
+      // Force navigation after a tiny delay for internal links.
+      if (href && href.startsWith('/')) {
+        e.preventDefault();
+        setTimeout(()=>{ location.href = href; }, 10);
+      }
+    }));
+  }
+
+  // Highlight active link (desktop + drawer) using root-relative hrefs
+  const path = location.pathname.replace(/\/index\.html$/, '/')
+                                 .replace(/\/+$/, '/');
+  const markActive = (root) => root && root.querySelectorAll('a[href]')
+    .forEach(a => {
+      try {
+        const href = a.getAttribute('href');
+        if (!href) return;
+        const url = new URL(href, location.origin);
+        let target = url.pathname;
+        target = target.replace(/\/index\.html$/, '/').replace(/\/+$/, '/');
+        if (target === path) a.classList.add('active');
+      } catch(e) {}
+    });
+
+  markActive(headerEl.querySelector('nav'));
+  markActive(document.getElementById('site-drawer'));
+})();
+</script>

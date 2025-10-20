@@ -1,0 +1,100 @@
+<footer class="site-footer" role="contentinfo" style="background:#0f1720;color:#b7c6d2;border-top:1px solid rgba(255,255,255,.06)">
+  <style>
+    /* Scoped to .site-footer so styles don't leak */
+    .site-footer *{box-sizing:border-box}
+    .site-footer .wrap{max-width:none;margin:0;padding:0 20px}
+    .site-footer .foot{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px;padding:36px 0}
+    .site-footer .brand{display:flex;align-items:center;gap:1px;margin-bottom:10px}
+    .site-footer .brand .divider{
+      width:1px;
+      height:65px;
+      background:rgba(255,255,255,.2);
+      margin:0 12px;
+      display:inline-block;
+    }
+    .site-footer .brand .logo{
+      width:130px;
+      height:130px;
+      object-fit:contain;
+      display:block;
+      border-radius:0 !important;
+      background:none !important;
+      box-shadow:none !important;
+      filter:none !important;
+      margin-left:0;
+    }
+    .site-footer .brand .parent{
+      width:130px;
+      height:130px;
+      object-fit:contain;
+      display:block;
+      opacity:1;
+      filter:none;
+      margin-left:0;
+      position:relative;
+    }
+    .site-footer .brand strong{color:#e9f6ff;font-size:20px}
+    .site-footer a{color:#cfe8f6;text-decoration:none}
+    .site-footer a:hover{opacity:.9}
+    .site-footer .col h4{margin:0 0 10px;color:#e9f6ff}
+    .site-footer .meta{color:#9fb3c1;font-size:14px;line-height:1.7}
+    .site-footer .subscribe{display:flex;gap:10px;align-items:center}
+    .site-footer .subscribe input{
+      flex:1;min-width:220px;border:1px solid #274558;background:#0c1720;
+      color:#e8f6ff;border-radius:12px;padding:12px 14px;outline:none
+    }
+    .site-footer .subscribe input::placeholder{color:#7ea0b2}
+    .site-footer .cta{
+      display:inline-block;background:#4FA3D1;color:#fff;border-radius:999px;
+      padding:10px 16px;font-weight:700;box-shadow:0 6px 14px rgba(79,163,209,.28)
+    }
+    .site-footer .cta:hover{background:#1f6a91}
+    @media (max-width:960px){ .site-footer .foot{grid-template-columns:1fr;gap:16px} }
+  </style>
+
+  <div class="wrap foot">
+    <div class="col">
+      <div class="brand">
+        <!-- same icon size/feel as header -->
+        <img class="logo" src="./assets/images/logo/logo.png" alt="Omaha Property Group logo" width="64" height="64">
+        <span class="divider"></span>
+        <img class="parent" src="./assets/images/logo/bhhs-logo.png" alt="Berkshire Hathaway HomeServices">
+      </div>
+      <div class="meta">
+        10404 Essex Court Suite 201, Omaha NE 68114<br>
+        (402) 889-6958 · jordan.estee@bhhsamb.com<br>(402) 237-9994 · joey.estee@bhhsamb.com
+      </div>
+    </div>
+
+    <div class="col">
+      <h4>Explore</h4>
+      <div class="meta">
+        <a href="./index.html#listings">Listings</a><br>
+        <a href="./residential.html">Residential</a><br>
+        <a href="./commercial.html">Commercial</a>
+      </div>
+    </div>
+
+    <div class="col">
+      <h4>Get Updates</h4>
+      <form id="sub-form" class="subscribe" method="POST" action="https://formspree.io/f/movnqpdy" novalidate>
+        <input type="email" name="email" placeholder="Email address" autocomplete="email" required>
+        <button class="cta" type="submit">Subscribe</button>
+      </form>
+      <div id="sub-ok" style="display:none;color:#4CAF50;font-size:14px;margin-top:10px">Thanks — you’re subscribed.</div>
+      <script>
+        document.getElementById('sub-form').addEventListener('submit', async function(e) {
+          e.preventDefault();
+          const form = e.target;
+          const data = new FormData(form);
+          await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+          form.reset();
+          document.getElementById('sub-ok').style.display = 'block';
+        });
+      </script>
+    </div>
+  </div>
+  <div class="legal" style="text-align:center;font-size:13px;color:#9fb3c1;padding:16px 20px;border-top:1px solid rgba(255,255,255,.1);line-height:1.6;">
+    ©2025 BHH Affiliates, LLC. An independently owned and operated franchisee of BHH Affiliates, LLC. Berkshire Hathaway HomeServices and the Berkshire Hathaway HomeServices symbol are registered service marks of Columbia Insurance Company, a Berkshire Hathaway affiliate. Equal Housing Opportunity.
+  </div>
+</footer>

@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Residential | Omaha Property Group</title>
+  <meta name="description" content="Residential real estate in Omaha: buying, selling, valuations, and guidance with a built-in mortgage calculator." />
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+  <style>
+    :root{
+      --bg:#0c1116; --surface:#ffffff; --ink:#0f1720; --muted:#667085; --line:#e8edf3; --soft:#f5f7fb;
+      --brand:#4FA3D1; --brand-2:#1f6a91; --ring:rgba(79,163,209,.28); --wrap:1200px; --radius:14px;
+      --shadow:0 10px 30px rgba(16, 24, 40, .08); --shadow-hover:0 16px 44px rgba(16, 24, 40, .14);
+    }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0; background:#fff; color:var(--ink); font:16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif}
+    /* Reserve space for sticky shared header once mounted */
+    body.header-ready{padding-top:72px}
+    @media(max-width:960px){body.header-ready{padding-top:64px}}
+    img{max-width:100%; display:block}
+    a{color:var(--brand); text-decoration:none} a:hover{color:var(--brand-2)}
+    .wrap{max-width:var(--wrap); margin:0 auto; padding:0 20px}
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(6px); background:linear-gradient(180deg, rgba(12,17,22,.85), rgba(12,17,22,.65)); border-bottom:1px solid rgba(255,255,255,.06); color:#e9f6ff}
+    .topbar{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:10px; color:#fff}
+    
+    nav{display:flex; gap:22px; align-items:center}
+    nav a{color:#cfe8f6; font-weight:600}
+    .cta{display:inline-block; background:var(--brand); color:#fff; border-radius:999px; padding:10px 16px; font-weight:700; box-shadow:0 6px 14px var(--ring)}
+    .cta:hover{background:var(--brand-2)}
+    .hero{color:#fff; background:
+      linear-gradient(180deg, rgba(12,17,22,.66), rgba(12,17,22,.88)),
+      url('./assets/images/guides/residential-cover.jpg') center/cover no-repeat;}
+    .hero-inner{display:grid; grid-template-columns:1.2fr .8fr; gap:38px; align-items:center; padding:68px 0}
+    .hero .actions{ display:flex; gap:12px; flex-wrap:wrap; }
+    .badge{display:inline-flex; gap:8px; align-items:center; border:1px solid rgba(255,255,255,.28); color:#e8f6ff; padding:8px 12px; border-radius:12px; background:rgba(255,255,255,.08)}
+    .section{padding:64px 0}
+    .section-h{font-size:32px; margin:0 0 8px}
+    .section-sub{color:var(--muted); margin:0 0 24px}
+    .grid{display:grid; grid-template-columns:repeat(12, minmax(0,1fr)); gap:22px}
+    .col-4{grid-column:span 4} .col-6{grid-column:span 6} .col-8{grid-column:span 8} .col-12{grid-column:span 12}
+    @media (max-width:960px){ .hero-inner{grid-template-columns:1fr} .col-6,.col-4,.col-8{grid-column:span 12} }
+    .card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow)}
+    .card-body{padding:16px}
+    .pill{display:inline-block; background:var(--soft); color:#0d4e6f; border:1px solid #d3e6f2; padding:4px 10px; border-radius:999px; font-size:12px; font-weight:700}
+    .meta{color:var(--muted); font-size:14px}
+    .form{display:grid; grid-template-columns:repeat(12, minmax(0,1fr)); gap:16px; background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    label{display:flex; flex-direction:column; gap:6px; color:#344054; font-weight:600}
+    input, textarea, select{border:1px solid #d8dee8; border-radius:10px; padding:12px 14px; font:inherit; outline:0}
+    textarea{min-height:120px}
+    .btn-primary{all:unset; display:inline-block; background:var(--brand); color:#fff; padding:12px 18px; border-radius:999px; cursor:pointer; font-weight:800; box-shadow:0 10px 20px var(--ring)}
+    footer{background:#0f1720; color:#b7c6d2} .foot{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:24px; padding:36px 0}
+
+    /* ==== Plan Your Move: visual checklist ==== */
+    .steps{display:grid; grid-template-columns:repeat(12, minmax(0,1fr)); gap:18px; align-items:stretch}
+    .step-card{
+      grid-column:span 3; background:var(--surface); border:1px solid var(--line); border-radius:12px;
+      padding:16px; box-shadow:var(--shadow); position:relative; overflow:hidden
+    }
+    .step-num{
+      position:absolute;
+      top:10px;
+      left:10px;
+      font-weight:900;
+      font-size:40px;
+      line-height:1;
+      color:#4FA3D1;
+      pointer-events:none;
+      background:#eaf6fb;
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 2px 6px rgba(0,0,0,.1);
+    }
+    .step-photo{width:100%; height:150px; object-fit:cover; border-radius:10px; border:1px solid var(--line); margin-bottom:10px; background:#f6f9fc}
+    .step-title{
+      margin:6px 0 6px;
+      font-weight:800;
+      font-size:18px;
+      color:#0f1720;
+      text-align:center;
+    }
+    .step-desc{
+      margin:0;
+      color:#475467;
+      font-size:14px;
+      text-align:center;
+    }
+    .steps-note{margin-top:14px; color:#667085}
+    @media (max-width: 1100px){ .step-card{grid-column:span 6} }
+    @media (max-width: 780px){ .step-card{grid-column:span 12} }
+
+    /* === Listing Modal polish (Residential) === */
+    .lm-hero{width:100%; aspect-ratio: 4/3; background:#f3f6fa; border:1px solid var(--line); border-radius:12px; overflow:hidden}
+    .lm-hero img{width:100%; height:100%; object-fit:cover; display:block}
+    .lm-thumbs{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
+    .lm-thumbs img{width:76px; height:60px; object-fit:cover; border-radius:8px; border:2px solid transparent; cursor:pointer; background:#f6f9fc}
+
+    /* Mobile thumbnail strip arrow indicator (fixed, non-interactive) */
+    .lm-thumbs-wrap{ position:relative; display:flex; align-items:center; }
+    .lm-thumbs-more{
+      position:absolute; 
+      right:2px; 
+      top:50%; 
+      transform:translateY(-50%);
+      width:26px; 
+      height:26px; 
+      border-radius:50%;
+      display:none; 
+      align-items:center; 
+      justify-content:center;
+      background:rgba(15,23,42,0.7); 
+      color:#fff; 
+      font-size:16px; 
+      font-weight:700;
+      pointer-events:none; 
+      user-select:none;
+      box-shadow:0 2px 6px rgba(0,0,0,.35);
+    }
+    @media (min-width:901px){ .lm-thumbs-more{ display:none !important; } }
+
+    .lm-thumbs img.active{border-color:#86d0f7}
+
+    /* Modal layout fill right side */
+    .lm-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:18px; padding:16px; align-items:start}
+    .lm-side{height:100%}
+    .lm-panel{
+      position:sticky; top:8px;
+      padding:18px;
+      display:flex; flex-direction:column; gap:14px; justify-content:space-between;
+      min-height:420px;
+      background:linear-gradient(180deg,#fbfdff,#f6f8fc);
+      border:1px solid var(--line);
+      border-radius:12px;
+      box-shadow:var(--shadow);
+    }
+    .lm-info{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:14px;
+      box-shadow:var(--shadow);
+    }
+    .lm-head{display:flex; flex-direction:column; gap:10px}
+    .lm-price{font-weight:800; font-size:22px; color:#0f1720}
+    .lm-chips{display:flex; gap:8px; flex-wrap:wrap}
+    .chip{display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600; color:#0d4e6f; background:#e9f5fc; border:1px solid #cfe6f7; padding:6px 10px; border-radius:999px}
+    .chip .dot{width:6px; height:6px; border-radius:50%; background:#86d0f7}
+    .lm-actions{
+      margin-top:16px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:center;
+      align-items:center;
+    }
+    .btn-outline{display:inline-block; border:2px solid var(--brand); color:var(--brand); background:#fff; border-radius:999px; padding:10px 14px; font-weight:500}
+    .btn-outline:hover{background:#f0f8ff}
+    .lm-actions .cta,
+    .lm-actions .btn-outline{
+      font-weight:500;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .lm-hero{box-shadow:var(--shadow)}
+
+    /* Listing modal: better long-description handling (Residential) */
+    .lm-right{display:flex; flex-direction:column; max-height:calc(88vh - 140px); overflow:auto; min-height:0}
+    .lm-panel{flex:1 1 auto; overflow:auto; max-height:none}
+    .lm-panel p{line-height:1.7; margin:8px 0 0; hyphens:auto}
+    /* Keep action buttons visible without scrolling the whole modal */
+    .lm-actions{position:sticky; bottom:0; padding:12px 0 4px; background:linear-gradient(180deg, rgba(255,255,255,0) 0%, #fff 32%)}
+    @media(max-width:900px){ .lm-right{max-height:none; overflow:visible} }
+
+
+    /* === Calculator Tabs === */
+    .tabs{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:12px}
+    .tab{all:unset; cursor:pointer; background:#e8f4fb; border:1px solid #cfe6f7; color:#0d4e6f; padding:8px 12px; border-radius:999px; font-weight:700}
+    .tab.active{background:var(--brand); color:#fff; border-color:transparent}
+    .calc-panel{display:none}
+    .calc-panel.active{display:block}
+
+    /* === Mortgage calc: compact summary (refactored for number fit and lighter styling) === */
+    .calc-summary{margin-top:10px}
+    .calc-total{display:flex; align-items:baseline; gap:10px; margin:4px 0 10px}
+    .calc-total .label{display:inline-flex; align-items:center; gap:8px; background:#eaf6fb; color:#0d4e6f; border:1px solid #cfe6f7; padding:6px 10px; border-radius:999px; font-size:12px; font-weight:600}
+    .calc-total .value{font-size:22px; font-weight:600; letter-spacing:.2px}
+
+    .sum-row{display:flex; gap:10px; flex-wrap:wrap}
+    .sum-chip{flex:1 1 220px; min-width:220px; display:flex; align-items:center; justify-content:space-between; gap:10px; background:linear-gradient(180deg,#fbfdff,#f6f9fc); border:1px solid #e8edf3; border-radius:10px; padding:10px 12px; box-shadow:0 4px 10px rgba(16,24,40,.06)}
+    .sum-chip span{color:#475467; font-weight:500}
+    .sum-chip strong{font-weight:600; font-size:16px; white-space:normal; overflow:visible; text-overflow:clip; word-break:break-word}
+
+    /* Show note on desktop, hide it on small screens */
+    .price-helper{display:inline;}
+    @media (max-width:720px){
+      .price-helper{display:none;}
+    }
+
+    /* ===== Mobile polish for Residential ===== */
+    @media (max-width: 960px){
+      .hero-inner{grid-template-columns:1fr; gap:22px; padding:44px 0}
+      .hero-inner > div:first-child{ text-align:center; }
+      .hero .badge{ margin:0 auto 10px; }
+      .hero .actions{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+      .hero .actions .cta,
+      .hero .actions .badge{ margin:0; }
+      .hero .card{ max-width:560px; margin:0 auto; }
+    }
+    @media (max-width: 720px){
+      /* Quick Brief form compaction */
+      .card-body{ padding:14px; }
+      .form{ grid-template-columns:1fr; padding:14px; }
+      .form .col-6, .form .col-8, .form .col-4, .col-6, .col-8, .col-4{ grid-column:span 12 !important; }
+      .btn-primary{ width:100%; text-align:center; }
+      .hero .card{ max-width:460px; margin:0 auto; box-shadow:0 8px 22px rgba(16,24,40,.12); }
+      .section{ padding:46px 0; }
+      .step-photo{ height:140px; }
+      .step-card{ padding:14px; }
+    }
+    @media (max-width: 420px){
+      .hero .card{ max-width:100%; }
+      .section-h{ font-size:26px; }
+      .step-num{ font-size:32px; width:38px; height:38px; }
+      .step-title{ font-size:17px; }
+      .step-desc{ font-size:13.5px; }
+    }
+
+    @media (max-width: 768px){
+      h1, h2, h3 { text-align: center; }
+    }
+
+    /* ==== Listing Modal: mobile polish ==== */
+    @media (max-width: 780px){
+      .lm-grid{
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 12px;
+        align-items: start;
+      }
+      .lm-hero{
+        aspect-ratio: 1 / 1;
+        border-radius: 12px;
+        background:#f3f6fa;
+      }
+      .lm-thumbs{
+        display: flex;
+        gap: 8px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .lm-thumbs{ scrollbar-width: none; }
+      .lm-thumbs::-webkit-scrollbar{ display: none; }
+      .lm-thumbs img{
+        width: 86px;
+        height: 64px;
+        flex: 0 0 auto;
+        border-radius: 8px;
+      }
+      .lm-side{ height: auto; }
+      .lm-panel{
+        position: static;   /* remove sticky on small screens */
+        min-height: unset;
+        padding: 14px;
+        gap: 12px;
+      }
+      .lm-price{ font-size: 20px; }
+      .lm-actions{
+        justify-content: stretch;
+        gap: 10px;
+      }
+      .lm-actions .cta,
+      .lm-actions .btn-outline{
+        flex: 1 1 auto;
+        text-align: center;
+        padding: 12px 16px;
+        border-radius: 999px;
+      }
+    }
+
+    /* === Mobile alignment: make both hero buttons same height/width and aligned === */
+    @media (max-width: 960px){
+      .hero-inner{ grid-template-columns: 1fr; gap: 22px; padding: 44px 0; }
+      .hero-inner > div:first-child{ text-align: center; }
+
+      /* Lay out the two buttons side-by-side evenly */
+      .hero .actions{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        justify-items: stretch;
+        align-items: stretch;
+      }
+      /* Make both anchors fill their grid cell and center the label */
+      .hero .actions a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 52px;
+        padding: 14px 18px;
+        border-radius: 999px;
+        white-space: nowrap;
+      }
+    }
+    @media (max-width: 420px){
+      /* Stack on very small phones, still equal sizing */
+      .hero .actions{ grid-template-columns: 1fr; }
+      .hero .actions a{ min-height: 50px; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"Residential | Omaha Property Group",
+    "url":"https://omahapropertygroup.com/residential",
+    "about":"Residential real estate in Omaha"
+  }
+  </script>
+</head>
+<body>
+  <!-- ===== Header (shared include) ===== -->
+  <div id="opg-header-placeholder"></div>
+  <script>
+    (function(){
+      const mount = document.getElementById('opg-header-placeholder');
+      fetch('./header.html', { cache:'no-cache' })
+        .then(r => r.text())
+        .then(html => {
+          // Mount the shared header
+          mount.outerHTML = html;
+          // After mount, reserve space so content doesn't slide under the sticky header
+          requestAnimationFrame(() => {
+            const h = document.querySelector('header.site-header, .site-header');
+            if (h) {
+              document.body.classList.add('header-ready');
+              document.body.style.paddingTop = h.offsetHeight + 'px';
+            }
+            // Wire up mobile drawer if present
+            const btn = document.querySelector('.menu-btn');
+            const drawer = document.querySelector('.drawer');
+            if (btn && drawer) {
+              btn.addEventListener('click', () => drawer.classList.toggle('open'));
+              drawer.querySelectorAll('a').forEach(a =>
+                a.addEventListener('click', () => drawer.classList.remove('open'))
+              );
+            }
+          });
+        })
+        .catch(err => console.warn('[OPG] header include failed', err));
+    })();
+  </script>
+
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <span class="badge">Residential — Omaha, Nebraska</span>
+        <h1>Buy, sell, and invest with confidence</h1>
+        <p>Local insight, pricing guidance, and marketing that brings offers. Start with a free valuation or a quick brief.</p>
+        <div class="actions">
+          <a href="./index.html#contact" class="cta">Free Home Valuation</a>
+          <a href="#calculator" class="badge" style="border-color:#86d0f7; color:#e9f7ff">Mortgage Calculator</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="pill">Quick Brief</div>
+          <form id="brief-form" class="form" style="margin-top:10px" method="POST" action="https://formspree.io/f/movnqpdy">
+            <input type="hidden" name="_subject" value="OPG Residential Quick Brief">
+            <input type="hidden" name="page" value="Residential">
+            <label class="col-6">Property Type<select name="type"><option>Single Family</option><option>Condo</option><option>Townhome</option></select></label>
+            <label class="col-6">Beds / SQFT<input name="size" placeholder="4 beds or 2,200 SF" autocomplete="off" /></label>
+            <label class="col-8">Email<input name="email" type="email" placeholder="you@example.com" required autocomplete="email" /></label>
+            <div class="col-4" style="display:flex; align-items:end"><button class="btn-primary" type="submit">Send Brief</button></div>
+          </form>
+          <div id="brief-ok" class="meta" style="display:none; white-space:nowrap; margin-top:6px">Thanks — we’ll be with you shortly.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section class="section" id="res-listings">
+      <div class="wrap">
+        <h2 class="section-h">Residential Listings</h2>
+        <p class="section-sub">Active homes and condos across Omaha.</p>
+        <div id="res-grid" class="grid"></div>
+      </div>
+    </section>
+    <section class="section" id="res-actions">
+    <!-- ===== Guides & Insights Section (Colorful 2x2 grid) ===== -->
+    <section class="section" id="res-guides">
+      <div class="wrap">
+        <h2 class="section-h">Guides & Insights</h2>
+        <p class="section-sub">Quick lessons and resources for Omaha homeowners and buyers.</p>
+        <div class="res-guides-grid">
+          <!-- Guide: Home Valuation Basics -->
+          <article class="guide-card" style="--card-bg:#eaf4fb">
+            <span class="guide-pill" style="background:#d3eafc; color:#1666a6; border-color:#b1d4ef;">Guide</span>
+            <h3 class="guide-title">Home Valuation Basics</h3>
+            <p class="guide-desc">Understand what drives your home’s value: location, recent updates, and comparable sales in your area. Learn how market timing and curb appeal can impact your bottom line. These fundamentals help you understand where your property stands in the market.</p>
+          </article>
+          <!-- Checklist: Pre‑Listing Prep -->
+          <article class="guide-card" style="--card-bg:#e9f8ee">
+            <span class="guide-pill" style="background:#c2f3d6; color:#217a47; border-color:#a1e3be;">Checklist</span>
+            <h3 class="guide-title">Pre‑Listing Prep</h3>
+            <p class="guide-desc">A quick checklist to get your home market-ready: declutter, handle minor repairs, and boost curb appeal. Small touches make a big difference in first impressions and offers. Following these steps makes your home more attractive to buyers right from the start.</p>
+          </article>
+          <!-- Tip: First‑Time Buyer Advice -->
+          <article class="guide-card" style="--card-bg:#f3ecfa">
+            <span class="guide-pill" style="background:#e2d7f7; color:#6c3fa7; border-color:#c6b2e4;">Tip</span>
+            <h3 class="guide-title">First‑Time Buyer Advice</h3>
+            <p class="guide-desc">Start smart: set a realistic budget, get pre-approved, and prioritize a thorough inspection. Understanding financing options can help you land the right home with confidence. These practices help you shop with clarity and avoid surprises.</p>
+          </article>
+          <!-- Insight: Omaha Market Snapshot -->
+          <article class="guide-card" style="--card-bg:#fff5ee">
+            <span class="guide-pill" style="background:#ffe0cc; color:#b05e27; border-color:#ffd2b3;">Insight</span>
+            <h3 class="guide-title">Omaha Market Snapshot</h3>
+            <p class="guide-desc">Median home prices, average days on market, and recent appreciation trends—all updated for Omaha. See how your neighborhood compares and what to expect this season. This gives you a clear picture of Omaha’s housing climate.</p>
+          </article>
+        </div>
+      </div>
+      <style>
+        .res-guides-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 28px;
+          margin: 36px 0 0 0;
+        }
+        @media (max-width: 900px) {
+          .res-guides-grid { grid-template-columns: 1fr; }
+        }
+        .guide-card {
+          background: var(--card-bg, #f5f7fb);
+          border-radius: 18px;
+          box-shadow: 0 6px 28px rgba(79,163,209,0.07);
+          border: 1.5px solid #e8edf3;
+          padding: 30px 26px 26px 26px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          min-height: 230px;
+          position: relative;
+        }
+        .guide-pill {
+          display: inline-block;
+          font-size: 13px;
+          font-weight: 700;
+          padding: 5px 16px;
+          border-radius: 999px;
+          border: 1.5px solid #cfe6f7;
+          margin-bottom: 16px;
+          letter-spacing: .03em;
+        }
+        .guide-title {
+          font-size: 20px;
+          font-weight: 800;
+          margin: 0 0 10px 0;
+          color: #0f1720;
+        }
+        .guide-desc {
+          color: #475467;
+          font-size: 15px;
+          margin: 0 0 22px 0;
+          flex: 1 1 auto;
+        }
+        .guide-cta {
+          display: inline-block;
+          background: #fff;
+          color: var(--brand-2);
+          border: 2px solid var(--brand-2);
+          border-radius: 999px;
+          font-weight: 700;
+          padding: 9px 20px;
+          font-size: 15px;
+          box-shadow: 0 3px 12px rgba(79,163,209,0.06);
+          transition: background 0.13s, color 0.13s, border 0.13s;
+          text-align: center;
+        }
+        .guide-cta:hover, .guide-cta:focus {
+          background: var(--brand-2);
+          color: #fff;
+          border-color: var(--brand-2);
+        }
+      </style>
+    </section>
+      <div class="wrap">
+        <h2 class="section-h">Plan your move: 4 steps that increase your net</h2>
+        <p class="section-sub">A practical, sequence‑driven checklist for Omaha sellers — optimized for higher offers and fewer surprises.</p>
+
+        <div class="steps">
+          <!-- 1. Declutter & condition tune-up -->
+          <article class="step-card">
+            <div class="step-num">1</div>
+            <img class="step-photo" src="./assets/images/guides/step-declutter.jpg" alt="Declutter and light repairs before listing">
+            <div class="step-title">Declutter and condition tune‑up</div>
+            <p class="step-desc">Remove one third of items from closets and surfaces, neutralize scents, replace tired bulbs, touch up scuffs, and service HVAC. Lived‑in homes photograph better when circulation paths are clear and counters are sparse.</p>
+          </article>
+
+          <!-- 2. Get a pricing opinion / appraisal -->
+          <article class="step-card">
+            <div class="step-num">2</div>
+            <img class="step-photo" src="./assets/images/guides/step-appraisal.jpg" alt="Pricing opinion and appraisal planning">
+            <div class="step-title">Get a pricing opinion or appraisal</div>
+            <p class="step-desc">Study closed sales from the last ninety days within your micro‑area. Adjust for school district, lot type, and condition. A pre‑listing appraisal or broker price opinion anchors your strategy and prevents chasing the market.</p>
+          </article>
+
+          <!-- 3. Stage for the camera and for traffic flow -->
+          <article class="step-card">
+            <div class="step-num">3</div>
+            <img class="step-photo" src="./assets/images/guides/step-stage.jpg" alt="Staging for photos and showings">
+            <div class="step-title">Stage for photos and showings</div>
+            <p class="step-desc">Prioritize curb appeal, an inviting entry, balanced living room, and a calm primary suite. Aim for consistent bulb color, simple linens, and one focal point per room. Great staging reduces days on market and increases perceived value.</p>
+          </article>
+
+          <!-- 4. List and launch week plan -->
+          <article class="step-card">
+            <div class="step-num">4</div>
+            <img class="step-photo" src="./assets/images/guides/step-list.jpg" alt="List on MLS with a strong launch plan">
+            <div class="step-title">List with a strong launch plan</div>
+            <p class="step-desc">Use professional photos, a coming‑soon teaser, and a wide weekend showing window. Set an offer deadline to concentrate activity. Provide disclosures and utility averages up front to reduce friction and protect your leverage.</p>
+          </article>
+        </div>
+
+        <p class="steps-note">Questions about your situation? We’ll send a custom checklist for your home and timeline.</p>
+      </div>
+    </section>
+
+
+    <section id="calculator" class="section" style="background:#f5f7fb; border-top:1px solid #e8edf3; border-bottom:1px solid #e8edf3">
+      <div class="wrap">
+        <h2 class="section-h">Homeowner Tools</h2>
+        <p class="section-sub">Switch between calculators. Only one shows at a time.</p>
+        <div class="price-picker" style="display:flex;gap:10px;align-items:center;margin:6px 0 16px">
+          <label for="price-picker" class="meta" style="font-weight:600;color:#475467">Pick a listing:</label>
+          <select id="price-picker" aria-label="Pick a listing price" style="min-width:280px;border:1px solid #cfe6f7;background:#f7fbff;color:#0d4e6f;border-radius:10px;padding:10px 12px">
+            <option value="">— Select a listing to fill Home Price —</option>
+          </select>
+          <span class="meta price-helper" style="color:#667085">Fills “Home Price” in the calculators below.</span>
+        </div>
+        <div class="tabs" role="tablist">
+          <button class="tab active" data-target="calc-mortgage" role="tab">Mortgage</button>
+          <button class="tab" data-target="calc-afford" role="tab">Affordability</button>
+          <button class="tab" data-target="calc-rvb" role="tab">Rent vs Buy</button>
+        </div>
+
+        <!-- Mortgage -->
+        <div id="calc-mortgage" class="calc-panel active">
+          <div class="grid">
+            <div class="col-6 card"><div class="card-body">
+              <form id="mortgage-form" class="form" aria-label="Mortgage calculator">
+                <label class="col-6">Home Price ($)<input id="mc-price" type="number" min="0" step="1000" value="450000" required></label>
+                <label class="col-6">Down Payment (%)<input id="mc-down" type="number" min="0" max="100" step="0.1" value="10" required></label>
+                <label class="col-6">APR (%)<input id="mc-rate" type="number" min="0" step="0.01" value="6.75" required></label>
+                <label class="col-6">Term (years)<input id="mc-years" type="number" min="1" step="1" value="30" required></label>
+                <label class="col-6">Property Tax (%/yr)<input id="mc-tax" type="number" min="0" step="0.01" value="1.8" required></label>
+                <label class="col-6">Insurance ($/yr)<input id="mc-ins" type="number" min="0" step="10" value="1200" required></label>
+                <label class="col-6">HOA ($/mo)<input id="mc-hoa" type="number" min="0" step="5" value="0" required></label>
+                <div class="col-6" style="display:flex; align-items:end"><button type="submit" class="btn-primary">Calculate</button></div>
+              </form>
+            </div></div>
+            <div class="col-6 card"><div class="card-body">
+              <div class="pill">Estimate</div>
+              <div id="mc-breakdown" class="meta" style="margin-top:10px">Enter values and click Calculate.</div>
+              <div style="margin-top:12px"><a class="cta" href="./index.html#contact">Get Pre-Approved</a></div>
+            </div></div>
+          </div>
+        </div>
+
+        <!-- Affordability -->
+        <div id="calc-afford" class="calc-panel">
+          <div class="grid">
+            <div class="col-6 card"><div class="card-body">
+              <form id="afford-form" class="form" aria-label="Affordability calculator">
+                <label class="col-6">Gross Income ($/yr)<input id="af-inc" type="number" min="0" step="1000" value="120000" required></label>
+                <label class="col-6">Monthly Debts ($/mo)<input id="af-debt" type="number" min="0" step="10" value="500" required></label>
+                <label class="col-6">Down Payment (%)<input id="af-down" type="number" min="0" max="100" step="0.1" value="10"></label>
+                <label class="col-6">APR (%)<input id="af-rate" type="number" min="0" step="0.01" value="6.75"></label>
+                <label class="col-6">Term (years)<input id="af-years" type="number" min="1" step="1" value="30"></label>
+                <div class="col-6" style="display:flex; align-items:end"><button type="submit" class="btn-primary">Estimate Budget</button></div>
+              </form>
+            </div></div>
+            <div class="col-6 card"><div class="card-body">
+              <div class="pill">Estimate</div>
+              <div id="af-out" class="meta" style="margin-top:10px">Enter income and debts to see a target price.</div>
+            </div></div>
+          </div>
+          <p class="note">Assumes target **DTI ≤ 36%** and taxes/insurance at typical Omaha ratios. For guidance only.</p>
+        </div>
+
+        <!-- Rent vs Buy -->
+        <div id="calc-rvb" class="calc-panel">
+          <div class="grid">
+            <div class="col-6 card"><div class="card-body">
+              <form id="rvb-form" class="form" aria-label="Rent vs Buy calculator">
+                <label class="col-6">Current Rent ($/mo)<input id="rvb-rent" type="number" min="0" step="10" value="2000" required></label>
+                <label class="col-6">Home Price ($)<input id="rvb-price" type="number" min="0" step="1000" value="400000" required></label>
+                <label class="col-6">Down (%)<input id="rvb-down" type="number" min="0" max="100" step="0.1" value="10"></label>
+                <label class="col-6">APR (%)<input id="rvb-rate" type="number" min="0" step="0.01" value="6.75"></label>
+                <label class="col-6">Horizon (years)<input id="rvb-years" type="number" min="1" step="1" value="5"></label>
+                <label class="col-6">Rent Growth (%/yr)<input id="rvb-rentg" type="number" min="0" step="0.1" value="3"></label>
+                <label class="col-6">Home Appreciates (%/yr)<input id="rvb-app" type="number" min="0" step="0.1" value="3"></label>
+                <div class="col-6" style="display:flex; align-items:end"><button type="submit" class="btn-primary">Compare</button></div>
+              </form>
+            </div></div>
+            <div class="col-6 card"><div class="card-body">
+              <div class="pill">Comparison</div>
+              <div id="rvb-out" class="meta" style="margin-top:10px">Enter values and compare projected monthly cost and equity.</div>
+            </div></div>
+          </div>
+          <p class="note">Simplified comparison; ignores closing costs and maintenance for brevity.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Listing Modal (Residential) -->
+  <div id="lm" style="position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,.45); z-index:1000">
+    <div style="background:#fff; width:min(920px, 94vw); max-height:90vh; overflow:auto; border-radius:16px; box-shadow:0 20px 60px rgba(0,0,0,.25);">
+      <div style="display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px solid #e8edf3">
+        <strong id="lm-title" style="font-size:18px"></strong>
+        <button id="lm-close" aria-label="Close" style="all:unset; cursor:pointer; padding:6px 10px">✕</button>
+      </div>
+      <div class="lm-grid">
+        <div>
+          <div class="lm-hero"><img id="lm-hero" alt="listing image" /></div>
+          <div class="lm-thumbs-wrap">
+            <div id="lm-thumbs" class="lm-thumbs"></div>
+            <div id="lm-thumbs-more" class="lm-thumbs-more">›</div>
+          </div>
+        </div>
+        <div class="lm-side lm-right">
+          <div class="lm-panel">
+            <div class="lm-info">
+              <div class="lm-head">
+                <div id="lm-price" class="lm-price"></div>
+                <div id="lm-chips" class="lm-chips"></div>
+              </div>
+              <p id="lm-desc" style="font-size:15px; line-height:1.6; color:#475467; margin:10px 0 0"></p>
+            </div>
+            <div class="lm-actions">
+              <a class="cta" href="#contact">Inquire</a>
+              <a id="lm-ext" class="btn-outline" style="display:none" target="_blank" rel="noopener">View Listing</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ===== Footer (shared include) ===== -->
+  <div id="site-footer"></div>
+  <script>
+    // ==== Listing price picker (fills Home Price inputs) ====
+    function opgPopulatePricePicker(list){
+      const sel = document.getElementById('price-picker');
+      if(!sel || !Array.isArray(list)) return;
+      // Clear old options except the placeholder
+      sel.querySelectorAll('option:not(:first-child)').forEach(o=>o.remove());
+      // Build options like: "$450,000 — [Title], [City]"
+      const fmtUSD0 = n => { try { return Number(n).toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}); } catch { return n; } };
+      list
+        .filter(x => x && x.price) // residential list already filtered above
+        .sort((a,b)=> (b.price||0)-(a.price||0))
+        .forEach(L => {
+          const opt = document.createElement('option');
+          const labelParts = [fmtUSD0(L.price)];
+          if (L.title) labelParts.push(`— ${L.title}`);
+          if (L.city) labelParts.push(`, ${L.city}`);
+          opt.textContent = labelParts.join(' ');
+          opt.value = String(L.price);
+          sel.appendChild(opt);
+        });
+      // On change, push price into calculators
+      sel.addEventListener('change', () => {
+        const v = sel.value ? parseFloat(sel.value) : NaN;
+        if (!isNaN(v)) {
+          const mc = document.getElementById('mc-price');
+          if (mc) mc.value = String(Math.round(v));
+          const rvb = document.getElementById('rvb-price');
+          if (rvb) rvb.value = String(Math.round(v));
+        }
+      });
+    }
+    (function(){
+      const mount = document.getElementById('site-footer');
+      fetch('./footer.html', { cache: 'no-cache' })
+        .then(r => r.text())
+        .then(html => { mount.outerHTML = html; })
+        .catch(err => console.warn('[OPG] footer include failed', err));
+    })();
+  </script>
+
+  <script>
+
+    // ===== Calculator Tabs =====
+    document.querySelectorAll('.tab').forEach(t=>{
+      t.addEventListener('click', ()=>{
+        document.querySelectorAll('.tab').forEach(b=> b.classList.remove('active'));
+        document.querySelectorAll('.calc-panel').forEach(p=> p.classList.remove('active'));
+        t.classList.add('active');
+        const id = t.getAttribute('data-target');
+        const panel = document.getElementById(id);
+        if(panel){ panel.classList.add('active'); }
+      });
+    });
+
+    function formatUSD(n){ return n.toLocaleString(undefined,{style:'currency', currency:'USD'}); }
+    function calcMortgage(){
+      const price = parseFloat(document.getElementById('mc-price').value||0);
+      const downPct = parseFloat(document.getElementById('mc-down').value||0)/100;
+      const rate = parseFloat(document.getElementById('mc-rate').value||0)/100/12;
+      const years = parseInt(document.getElementById('mc-years').value||30,10);
+      const n = years*12;
+      const taxPctYr = parseFloat(document.getElementById('mc-tax').value||0)/100;
+      const insYr = parseFloat(document.getElementById('mc-ins').value||0);
+      const hoaMo = parseFloat(document.getElementById('mc-hoa').value||0);
+      const principal = Math.max(price - price*downPct, 0);
+      let pAndI = 0;
+      if(rate>0){ const pow = Math.pow(1+rate, n); pAndI = principal * rate * pow / (pow - 1); }
+      else { pAndI = principal / n; }
+      const taxMo = (price * taxPctYr) / 12;
+      const insMo = insYr / 12;
+      const total = pAndI + taxMo + insMo + hoaMo;
+      document.getElementById('mc-breakdown').innerHTML = `
+        <div class="calc-summary">
+          <div class="calc-total">
+            <span class="label">Estimate</span>
+            <div class="value">${formatUSD(total)}</div>
+          </div>
+          <div class="sum-row">
+            <div class="sum-chip"><span>P&I</span><strong>${formatUSD(pAndI)}</strong></div>
+            <div class="sum-chip"><span>Taxes</span><strong>${formatUSD(taxMo)}</strong></div>
+            <div class="sum-chip"><span>Insurance</span><strong>${formatUSD(insMo)}</strong></div>
+            <div class="sum-chip"><span>HOA</span><strong>${formatUSD(hoaMo)}</strong></div>
+          </div>
+        </div>`;
+    }
+    document.getElementById('mortgage-form').addEventListener('submit', e=>{ e.preventDefault(); calcMortgage(); });
+
+    // ===== Affordability =====
+    function calcAfford(){
+      const inc = parseFloat(document.getElementById('af-inc').value||0);
+      const debt = parseFloat(document.getElementById('af-debt').value||0);
+      const rate = parseFloat(document.getElementById('af-rate').value||0)/100/12;
+      const years = parseInt(document.getElementById('af-years').value||30,10);
+      const n = years*12;
+      const dtiTarget = 0.36; // 36%
+      const maxMonthly = Math.max((inc/12)*dtiTarget - debt, 0);
+      // back into principal using standard mortgage payment formula at given rate
+      let principal = 0;
+      if(rate>0){ const pow=Math.pow(1+rate,n); principal = maxMonthly * (pow - 1) / (rate * pow); }
+      else { principal = maxMonthly * n; }
+      const downPct = parseFloat(document.getElementById('af-down').value||0)/100;
+      const price = principal / (1 - downPct);
+      document.getElementById('af-out').innerHTML = `
+        <div class="calc-summary">
+          <div class="calc-total">
+            <span class="label">Target Payment</span>
+            <div class="value">${formatUSD(maxMonthly)} / mo</div>
+          </div>
+          <div class="sum-row">
+            <div class="sum-chip"><span>Estimated Budget</span><strong>${formatUSD(price)}</strong></div>
+            <div class="sum-chip"><span>Assumed DTI</span><strong>36%</strong></div>
+            <div class="sum-chip"><span>Rate</span><strong>${(document.getElementById('af-rate').value||'6.75')}%</strong></div>
+            <div class="sum-chip"><span>Term</span><strong>${years} yrs</strong></div>
+          </div>
+        </div>`;
+    }
+    const afForm = document.getElementById('afford-form');
+    if(afForm){ afForm.addEventListener('submit', e=>{ e.preventDefault(); calcAfford(); }); }
+
+    // ===== Rent vs Buy =====
+    function pAndI(principal, rate, n){
+      if(rate>0){ const pow=Math.pow(1+rate,n); return principal*rate*pow/(pow-1); }
+      return principal/n;
+    }
+    function calcRVB(){
+      const rent = parseFloat(document.getElementById('rvb-rent').value||0);
+      const price = parseFloat(document.getElementById('rvb-price').value||0);
+      const down = (parseFloat(document.getElementById('rvb-down').value||0)/100) * price;
+      const rate = parseFloat(document.getElementById('rvb-rate').value||0)/100/12;
+      const years = parseInt(document.getElementById('rvb-years').value||5,10);
+      const rentg = parseFloat(document.getElementById('rvb-rentg').value||0)/100;
+      const app = parseFloat(document.getElementById('rvb-app').value||0)/100;
+      const n = years*12;
+      const principal = Math.max(price - down, 0);
+      const monthlyPI = pAndI(principal, rate, n);
+      // Rough monthly owner costs (tax+ins 1.8% and 0.3%/yr respectively)
+      const taxIns = (price*(0.018+0.003))/12;
+      const ownerMonthly = monthlyPI + taxIns;
+      // Rent projection simple future value average
+      const futureRent = rent * Math.pow(1+rentg, years);
+      const avgRent = (rent + futureRent)/2; // simple average over period
+      // Equity after years (rough, principal paid + appreciation on price)
+      const equity = down + (price*Math.pow(1+app, years) - (principal));
+      document.getElementById('rvb-out').innerHTML = `
+        <div class="calc-summary">
+          <div class="calc-total">
+            <span class="label">Owner Monthly</span>
+            <div class="value">${formatUSD(ownerMonthly)}</div>
+          </div>
+          <div class="sum-row">
+            <div class="sum-chip"><span>Avg Rent in ${years} yrs</span><strong>${formatUSD(avgRent)}</strong></div>
+            <div class="sum-chip"><span>Estimated Equity</span><strong>${formatUSD(equity)}</strong></div>
+            <div class="sum-chip"><span>Horizon</span><strong>${years} yrs</strong></div>
+          </div>
+        </div>`;
+    }
+    const rvbForm = document.getElementById('rvb-form');
+    if(rvbForm){ rvbForm.addEventListener('submit', e=>{ e.preventDefault(); calcRVB(); }); }
+
+    // ====== OPG Inline Formspree Helpers ======
+    const OPG_FORM_ENDPOINT = 'https://formspree.io/f/movnqpdy';
+    async function submitFormspree(form, okEl){
+      const fd = new FormData(form);
+      try{
+        const r = await fetch(OPG_FORM_ENDPOINT, { method:'POST', body:fd, headers:{'Accept':'application/json'} });
+        if(r.ok){
+          form.reset();
+          if(okEl){ okEl.style.display='block'; okEl.textContent = 'Thanks — we’ll be with you shortly.'; }
+        }else{
+          if(okEl){ okEl.style.display='block'; okEl.textContent = 'Thanks — we’ll be with you shortly.'; }
+        }
+      }catch(e){
+        if(okEl){ okEl.style.display='block'; okEl.textContent = 'Thanks — we’ll be with you shortly.'; }
+      }
+    }
+
+    // Wire up brief-form
+    const briefForm = document.getElementById('brief-form');
+    if(briefForm){
+      briefForm.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const okEl = document.getElementById('brief-ok');
+        submitFormspree(briefForm, okEl);
+      });
+    }
+    // Wire up alert-form
+    const alertForm = document.getElementById('alert-form');
+    if(alertForm){
+      alertForm.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        // Fill the human‑readable details field before sending
+        const fd = new FormData(alertForm);
+        const details = `Alert: $${fd.get('min')||'0'}–$${fd.get('max')||'Any'}, beds: ${fd.get('beds')||'Any'}, email: ${fd.get('email')||''}`;
+        alertForm.querySelector('input[name="details"]').value = details;
+        const okEl = document.getElementById('alert-ok');
+        submitFormspree(alertForm, okEl);
+      });
+    }
+    // Footer subscribe (sub-form) and calculator forms untouched
+    function handleSubmit(e){ e.preventDefault(); alert('Thanks! We received your request.'); e.target.reset(); }
+    const sub = document.getElementById('sub-form'); if(sub){ sub.addEventListener('submit', handleSubmit); }
+
+    // ===================== Residential Listings (from Google Sheet) =====================
+    (function(){
+      const OPG_DRIVE_API = "https://script.google.com/macros/s/AKfycbxNkS7_zSzWGYg8KOm_3QDfvvmb6bhmEGoJTzBrRemJsakVyOZVDPT4_xEKo-hwe8o9Aw/exec";
+      const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSKbZH8PCNmsSP2W2yvSDCuVS7jXDI7mo-SVHMq6XmiuOWvoNXeWCsGo_kGBQjTAg_Ffx_rMUfyz_ts/pub?gid=1969884902&single=true&output=csv";
+      const OPG_DRIVE_ROOT = "1MOdvuCVRUyp6q-OmsPf5LIsd-mX6_Vgb"; // Omaha Property Group root
+let OPG_DRIVE_MAP; // in-memory cache of the Drive JSON map
+      // --- Shared Drive helpers (map + direct URL normalizer) ---
+      // Helper to normalize Drive URLs to direct links
+      function opgToDirect(u){
+        if(!u) return '';
+        // Already a direct lh3 link? normalize to a single =s1600
+        if(/\/\/lh3\.googleusercontent\.com\//i.test(u)){
+          // strip query and duplicate size params, then force one =s1600
+          u = u.split('?')[0];
+          u = u.replace(/=s\d+$/i,'');
+          return u + '=s1600';
+        }
+        // Extract file id from typical Drive links
+        let id = null;
+        let m = u.match(/[?&]id=([^&=]+)/); if(m) id = m[1];
+        if(!id){ m = u.match(/\/d\/([^/?#=]+)/); if(m) id = m[1]; }
+        return id ? `https://lh3.googleusercontent.com/d/${id}=s1600` : u;
+      }
+
+      // Extract a plain Google Drive file/folder ID from varied URL shapes
+      function opgExtractDriveId(input){
+        if(!input) return '';
+        const s = String(input).trim();
+        // Explicit id= query
+        let m = s.match(/[?&]id=([^&#]+)/i); if(m) return m[1];
+        // /folders/<id> or /d/<id>
+        m = s.match(/\/folders\/([^/?#]+)/i); if(m) return m[1];
+        m = s.match(/\/d\/([^/?#]+)/i); if(m) return m[1];
+        // If it already looks like a bare id, return it
+        if(/^[a-zA-Z0-9_-]{20,}$/.test(s)) return s;
+        return '';
+      }
+
+      function opgSetSize(url, size='s1600'){
+        if(!url) return '';
+        // Replace any trailing =s#### (Drive size param) with the size we want
+        return String(url).replace(/=s\d+[^/]*$/, `=${size}`);
+      }
+
+      async function fetchDriveMap(){
+  // Reuse in-memory cache for 60s
+  if (OPG_DRIVE_MAP && OPG_DRIVE_MAP.__ts && (Date.now() - OPG_DRIVE_MAP.__ts) < 60_000){
+    return OPG_DRIVE_MAP;
+  }
+  // If we don't have a root, return an empty map object (still timestamped)
+  if (!OPG_DRIVE_ROOT){
+    OPG_DRIVE_MAP = { __ts: Date.now() };
+    return OPG_DRIVE_MAP;
+  }
+  // Fetch fresh map (cache-busted) from Apps Script
+  const url = `${OPG_DRIVE_API}?mode=map&rootId=${encodeURIComponent(OPG_DRIVE_ROOT)}&v=${Date.now()}`;
+  try{
+    const r = await fetch(url, { cache: 'no-store' });
+    const j = await r.json();
+    OPG_DRIVE_MAP = (j && j.ok && j.map) ? j.map : {};
+    OPG_DRIVE_MAP.__ts = Date.now();
+    // Removed: console.log('[OPG] Loaded Drive map keys', Object.keys(OPG_DRIVE_MAP).length);
+  }catch(e){
+    console.warn('[OPG] Drive map fetch failed', e);
+    OPG_DRIVE_MAP = { __ts: Date.now() };
+  }
+  return OPG_DRIVE_MAP;
+}
+
+      function imagesFromMapEntry(entry){
+        if(!entry) return [];
+        const base = Array.isArray(entry) ? entry : (entry.images || []);
+        const toEntry = (x)=>{
+          if(typeof x === 'string') return { url:x, name:'' };
+          const url = x.url ? x.url : (x.id ? `https://drive.google.com/uc?id=${x.id}&export=view` : '');
+          return { url, name:(x.name||'') };
+        };
+        const items = base.map(toEntry).filter(e=>e.url);
+        const wantOrder = ['file1','file2','file3','file4'];
+        const score = (e)=>{
+          const s = `${e.name||''} ${e.url||''}`.toLowerCase();
+          const m = s.match(/file([1-4])\b/);
+          return m ? parseInt(m[1],10) : 999;
+        };
+        const ordered = items.slice().sort((a,b)=> score(a) - score(b));
+        return ordered.map(e=> opgToDirect(e.url));
+      }
+
+      // header mapping (case/space-insensitive)
+      const MAP = {
+        id:'id', type:'type', subtype:'subtype', status:'status',
+        title:'title', address:'address', city:'city', folder:'folder',
+        price:'price', leaserate:'leaseRate', rate:'leaseRate', nnn:'nnn',
+        beds:'beds', bedrooms:'beds', baths:'baths', bathrooms:'baths',
+        sqft:'sqft', squarefeet:'sqft', size:'size',
+        images:'images', photos:'images', published:'published',
+        zillow:'extUrl', url:'extUrl', link:'extUrl',
+        drivefolderid:'driveFolderId', driveid:'driveFolderId', drivefolder:'driveFolderId',  thumburl:'thumbUrl',
+      };
+      const key = h => MAP[String(h||'').toLowerCase().replace(/\s+/g,'')] || String(h||'').trim();
+      // Robust CSV parser: handles commas, escaped quotes, and NEWLINES inside quoted fields
+      function parseCSV(t){
+        const rows = [];
+        let row = [], cell = '', i = 0, inQ = false;
+        while(i < t.length){
+          const ch = t[i];
+          if(ch === '"'){
+            if(inQ && t[i+1] === '"'){ cell += '"'; i += 2; continue; }
+            inQ = !inQ; i++; continue;
+          }
+          if(!inQ && ch === ','){ row.push(cell); cell = ''; i++; continue; }
+          if(!inQ && (ch === '\n' || ch === '\r')){
+            if(ch === '\r' && t[i+1] === '\n') i++;
+            row.push(cell); rows.push(row); row = []; cell = ''; i++; continue;
+          }
+          cell += ch; i++;
+        }
+        row.push(cell); rows.push(row);
+        return rows;
+      }
+      function toRow(headers,row){
+        const o={};
+        headers.forEach((k,i)=>{
+          const v = row[i] ?? '';
+          const vv = (typeof v === 'string') ? v.replace(/\u00A0/g,' ').trim() : (v==null ? '' : v);
+          o[k] = vv;
+        });
+        if(o.price!=='') o.price = Number(String(o.price).replace(/[^0-9.]/g,''));
+        if(o.sqft!=='')  o.sqft  = Number(String(o.sqft).replace(/[^0-9.]/g,''));
+        if(o.beds!=='')  o.beds  = Number(String(o.beds).replace(/[^0-9.]/g,''));
+        if(o.baths!=='') o.baths = Number(String(o.baths).replace(/[^0-9.]/g,''));
+        if(o.images){
+          o.images = String(o.images)
+            .split(',')
+            .map(s=>s.trim())
+            .filter(Boolean);
+        }
+        if(o.type && typeof o.type === 'string') o.type = o.type.trim();
+        if(o.folder && typeof o.folder === 'string') o.folder = o.folder.trim();
+        // Fallback for missing title: use address or (Untitled)
+        if(!o.title){ o.title = o.address || '(Untitled)'; }
+        return o;
+      }
+      const fmtUSD = n => { try{ return Number(n).toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}); }catch{ return n; } };
+
+      // ----- Drive image helpers -----
+      async function fetchDriveImages(folderId){
+        const id = opgExtractDriveId(folderId);
+        if (!id) return [];
+        // Removed: console.log('[OPG] Fetching Drive images for', id, '(raw:', folderId, ')');
+        try{
+          const url = `${OPG_DRIVE_API}?folderId=${encodeURIComponent(id)}`;
+          // Removed: console.log('[OPG] Drive API fetch url', url);
+          const res = await fetch(url, { cache: 'no-cache' });
+          const json = await res.json();
+          // Removed: console.log('[OPG] Drive API response', json);
+
+          if (json && json.ok && Array.isArray(json.images)) {
+            // Normalize to entries that keep name (if Apps Script provides it)
+            const toEntry = (x) => {
+              if (!x) return null;
+              if (typeof x === 'string') return { url:x, name:'' };
+              const url = x.url ? x.url : (x.id ? `https://drive.google.com/uc?id=${x.id}&export=view` : '');
+              return { url, name: (x.name||'') };
+            };
+            const wantOrder = ['file1','file2','file3','file4'];
+            const score = (e)=>{
+              const s = `${e.name||''} ${e.url||''}`.toLowerCase();
+              const m = s.match(/file([1-4])\b/);
+              return m ? parseInt(m[1],10) : 999;
+            };
+            const entries = json.images.map(toEntry).filter(Boolean);
+            const ordered = entries.slice().sort((a,b)=> score(a)-score(b));
+            const urls = ordered.map(e => opgToDirect(e.url)).filter(Boolean);
+            // Removed: console.log('[OPG] Normalized Drive URLs (file1-4 priority)', urls);
+            return urls;
+          }
+        } catch(err){
+          console.warn('[OPG] Drive fetch failed', err);
+        }
+        return [];
+      }
+
+      // Fetch Google Drive images by address path under root, consulting Drive map first
+      async function fetchDriveImagesByAddress(address, type = 'Residential', photosFolder = 'Photos'){
+        if (!address || !OPG_DRIVE_ROOT) return [];
+        try{
+          const map = await fetchDriveMap();
+          const key = `${String(type||'Residential').trim()}/${String(address||'').trim()}`;
+          if (map && map[key]) {
+            const urls = imagesFromMapEntry(map[key]);
+            if (urls.length) {
+              // Removed: console.log('[OPG] Drive map hit for', key, '→', urls.length, 'images');
+              return urls;
+            }
+          }
+          const url = `${OPG_DRIVE_API}?rootId=${encodeURIComponent(OPG_DRIVE_ROOT)}&type=${encodeURIComponent(type||'')}&address=${encodeURIComponent(address||'')}&photos=${encodeURIComponent(photosFolder)}`;
+          // Removed: console.log('[OPG] Drive API (by address) url', url);
+          const res = await fetch(url, { cache:'no-cache' });
+          const json = await res.json();
+          if (json && json.ok && Array.isArray(json.images)){
+            const toEntry = (x)=>{
+              if (!x) return null;
+              if (typeof x === 'string') return { url:x, name:'' };
+              const url = x.url ? x.url : (x.id ? `https://drive.google.com/uc?id=${x.id}&export=view` : '');
+              return { url, name:(x.name||'') };
+            };
+            const wantOrder = ['file1','file2','file3','file4'];
+            const score = (e)=>{
+              const s = `${e.name||''} ${e.url||''}`.toLowerCase();
+              const m = s.match(/file([1-4])\b/);
+              return m ? parseInt(m[1],10) : 999;
+            };
+            const ordered = json.images.map(toEntry).filter(Boolean).sort((a,b)=> score(a)-score(b));
+            const urls = ordered.map(e=> opgToDirect(e.url)).filter(Boolean);
+            // Removed: console.log('[OPG] Normalized Drive URLs (by address, file1-4 priority)', urls);
+            return urls;
+          }
+        }catch(err){
+          console.warn('[OPG] Drive fetch by address failed', err);
+        }
+        return [];
+      }
+
+      async function getListingImages(L, limit = 24){
+        try {
+          // Removed: console.log('[OPG] getListingImages for', L && L.id, L);
+          // 1) If a Drive folder id/link is present, prefer it
+          if (L && L.driveFolderId) {
+            const arr = await fetchDriveImages(L.driveFolderId);
+            if (arr && arr.length) return arr.slice(0, limit);
+          }
+          // 2) Fallback: Drive path by address under root (Active Listings / {type} / {address} / Photos)
+          if (OPG_DRIVE_ROOT && L && L.address){
+            const byAddr = await fetchDriveImagesByAddress(L.address, L.type || 'Residential', 'Photos');
+            if (byAddr && byAddr.length) return byAddr.slice(0, limit);
+          }
+          // 3) Explicit image list from the sheet (comma separated)
+          if (Array.isArray(L && L.images) && L.images.length) {
+            // Removed: console.log('[OPG] using explicit images for', L.id, L.images);
+            return L.images.slice(0, limit).map(p => {
+              if (/^https?:\/\//i.test(p) || p.startsWith('/')) return p;
+              if (L.folder) return `./assets/listings/residential/${L.folder}/${p}`;
+              return p;
+            });
+          }
+          // 4) Local numbered files by folder name
+          if (L && L.folder) {
+            // Removed: console.log('[OPG] falling back to local folder for', L.id, L.folder);
+            const names = ['thumb.jpg','thumbnail.jpg','cover.jpg','hero.jpg','front.jpg','exterior.jpg'];
+            for (let i=1;i<=24;i++) names.push(`file${i}.jpg`);
+            return names.slice(0, limit).map(n => `./assets/listings/residential/${L.folder}/${n}`);
+          }
+        } catch (e) {
+          console.warn('[OPG] getListingImages error', e);
+        }
+        return [];
+      }
+
+      // Local placeholder (inline SVG) so thumbs never block on network
+      const OPG_PLACEHOLDER = 'data:image/svg+xml;utf8,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800"><rect width="100%" height="100%" fill="#eef2f7"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#9aa6b2" font-family="Inter,system-ui,Arial" font-size="28">Loading…</text></svg>`);
+      const OPG_IMG_CACHE = new Map();
+      function opgPreload(url){
+        if(!url) return;
+        const img = new Image();
+        img.decoding = 'async';
+        img.loading  = 'eager';
+        img.src = url;
+      }
+
+      async function firstImage(L){
+  if (L.thumbUrl) {
+    return opgSetSize(opgToDirect(L.thumbUrl), 's480');
+  }
+  const arr = await getListingImages(L, 1);
+  return arr[0] || OPG_PLACEHOLDER;
+}
+
+      function cardRes(L, i){
+        const el = document.createElement('article');
+        el.className = 'col-4 card';
+
+        // Build facts line safely
+        const facts = [];
+        if (L.city) facts.push(String(L.city));
+        if (L.sqft) facts.push(`${Number(L.sqft).toLocaleString()} SF`);
+        if (L.size) {
+          const sizeStr = String(L.size).match(/ac|acre/i) ? L.size : `${L.size} AC`;
+          facts.push(sizeStr);
+        }
+        if (L.beds)  facts.push(`${L.beds} bed${Number(L.beds)===1?'':'s'}`);
+        if (L.baths) facts.push(`${L.baths} bath${Number(L.baths)===1?'':'s'}`);
+        const factsText = facts.filter(Boolean).join(' · ');
+        const priceText = L.price ? fmtUSD(L.price) : '';
+
+        el.innerHTML = `
+          <img src="${OPG_PLACEHOLDER}" alt="" loading="lazy" style="width:100%;height:200px;object-fit:cover">
+          <div class="card-body">
+            <div class="pill">Residential</div>
+            <h3 style="margin:8px 0 6px">${(L.title || L.address || '(Untitled)')}</h3>
+            <div class="meta">${factsText}</div>
+            <div class="meta" style="margin-top:6px">${priceText}</div>
+            <div style="margin-top:12px"><a class="cta opg-more" href="#" data-id="${(L.id ?? '')}" data-idx="${i}">More Info</a></div>
+          </div>`;
+
+        // swap in thumbnail once ready
+        firstImage(L).then(src=>{
+          const img = el.querySelector('img');
+          if(img){ img.onerror = ()=> img.src = OPG_PLACEHOLDER; img.src = src; }
+        });
+        return el;
+      }
+
+      const grid = document.getElementById('res-grid');
+      if(!grid) return;
+
+      // Preload with lightweight skeletons so page doesn't look empty on slow networks
+      grid.innerHTML = Array.from({length:6}).map(()=>
+        `<article class="col-4 card"><div style="width:100%;height:200px;background:#eef2f7;border-bottom:1px solid #e8edf3"></div><div class="card-body"><div class="pill">Residential</div><div class="meta" style="height:18px;background:#f3f6fa;border-radius:6px;margin:10px 0;width:60%"></div><div class="meta" style="height:14px;background:#f6f9fc;border-radius:6px;width:80%"></div></div></article>`
+      ).join('');
+
+      // ----------- CSV Fallbacks -----------
+      const CSV_SOURCES = [
+        // Primary: your published sheet (specific gid)
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vSKbZH8PCNmsSP2W2yvSDCuVS7jXDI7mo-SVHMq6XmiuOWvoNXeWCsGo_kGBQjTAg_Ffx_rMUfyz_ts/pub?gid=1969884902&single=true&output=csv",
+        // Same sheet without gid (Sheet default)
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vSKbZH8PCNmsSP2W2yvSDCuVS7jXDI7mo-SVHMq6XmiuOWvoNXeWCsGo_kGBQjTAg_Ffx_rMUfyz_ts/pub?output=csv",
+        // Local fallback (place a copy in /data if needed)
+        "./data/listings.csv"
+      ];
+
+      async function fetchFirstCSV(urls){
+        for (const u of urls){
+          try{
+            const r = await fetch(u, { cache:'no-cache' });
+            const t = await r.text();
+            // Quick sanity check: expect a header row containing at least one of these tokens
+            if (/(^|,)(title|address|city)(,|$)/im.test(t) || t.includes('id,') ){
+              // Removed: console.log('[OPG] Loaded CSV from', u);
+              return t;
+            } else {
+              console.warn('[OPG] CSV sanity check failed for', u);
+            }
+          }catch(err){
+            console.warn('[OPG] CSV fetch failed for', u, err);
+          }
+        }
+        throw new Error('All CSV sources failed');
+      }
+
+      let OPG_LIST = [];
+      fetchFirstCSV(CSV_SOURCES)
+        .then(csv => {
+          const rows = parseCSV(csv);
+          const hdrIdx = rows.findIndex(r => r.some(c => /title|address|city/i.test(c)));
+          if(hdrIdx < 0) throw new Error('Header row not found');
+          const headers = rows[hdrIdx].map(key);
+          // Removed: console.log('[OPG] CSV headers', headers);
+          const data = rows.slice(hdrIdx+1).map(r=> toRow(headers,r));
+          // Removed: console.log('[OPG] First 2 rows parsed', data.slice(0,2));
+          const list = data.filter(L => {
+            const t = String(L.type||'').toLowerCase().trim();
+            const pub = String(L.published||'yes').toLowerCase().trim();
+            return pub !== 'no' && (
+              t === 'residential' || t === 'singlefamily' || t === 'single family' || t === 'condo' || t === 'townhome' || t === 'townhouse'
+            );
+          });
+          // Removed: console.log('[OPG] Residential rows', list.map(x=>({id:x.id, title:x.title, driveFolderId:x.driveFolderId, images:x.images})));
+          OPG_LIST = list;
+          grid.innerHTML = '';
+          if(list.length === 0){
+            // Removed: console.log('[OPG] CSV loaded but returned 0 residential rows.');
+            grid.innerHTML = '<div class="meta">No residential listings available right now (CSV loaded but returned 0 residential rows).</div>';
+            return;
+          }
+          list.forEach((L,i) => grid.appendChild(cardRes(L, i)));
+          // === Call price picker helper after listings load ===
+          opgPopulatePricePicker(list);
+          // Proactive gallery cache: fetch + cache image lists for ALL residential listings at idle
+          (function warmGalleries(){
+            const listings = (OPG_LIST || []).slice(0);
+            const MAX_CONCURRENCY = 3;
+            let inFlight = 0;
+
+            async function buildCache(L){
+              const key = L.id || L.folder || JSON.stringify(L);
+              if (OPG_IMG_CACHE.has(key)) return;
+
+              const tasks = [];
+              const sheetList = (Array.isArray(L.images) && L.images.length) ? L.images : [];
+              if (sheetList.length) tasks.push(Promise.resolve(sheetList));
+              if (L.driveFolderId) tasks.push(fetchDriveImages(L.driveFolderId).catch(()=>[]));
+              tasks.push((async()=>{ try{ return await getListingImages(L, 24); }catch{ return []; } })());
+
+              const results = await Promise.all(tasks);
+              const merged = new Map();
+              results.flat().forEach(u=>{
+                const s = opgToDirect(String(u||'').trim());
+                if(!s) return; const k = s.toLowerCase();
+                if(!merged.has(k)) merged.set(k, s);
+              });
+              let imgs = Array.from(merged.values());
+              if (!imgs.length) return;
+
+              const preview = L.thumbUrl ? opgSetSize(opgToDirect(L.thumbUrl), 's1600') : '';
+              if (preview && !imgs.some(x=>x.toLowerCase()===preview.toLowerCase())){
+                imgs.unshift(preview);
+              }
+
+              OPG_IMG_CACHE.set(key, imgs);
+              imgs.slice(0,6).forEach(u=> opgPreload(opgSetSize(u,'s1200')));
+            }
+
+            function next(){
+              if (!listings.length) return;
+              while (inFlight < MAX_CONCURRENCY && listings.length){
+                const L = listings.shift(); inFlight++;
+                (window.requestIdleCallback || setTimeout)(()=>{
+                  buildCache(L).finally(()=>{ inFlight--; next(); });
+                }, { timeout: 1500 });
+              }
+            }
+            next();
+          })();
+        })
+        .catch(err => {
+          console.warn('[OPG] Residential listings load failed', err);
+          grid.innerHTML = '<div class="meta">Unable to load residential listings. Please check your Google Sheet publish settings or place a CSV at <code>/data/listings.csv</code>. <a href="#" id="retry-res">Retry</a></div>';
+          const r = document.getElementById('retry-res');
+          if(r){ r.addEventListener('click', (e)=>{ e.preventDefault(); location.reload(); }); }
+        });
+      // --- Modal helpers (Residential) ---
+      let OPG_LM_TOKEN = 0;
+
+      async function buildGallery(L, token){
+        // If a newer listing has been opened, abort this render
+        if (token !== OPG_LM_TOKEN) return;
+
+        const lmPreview = L.thumbUrl ? opgSetSize(opgToDirect(L.thumbUrl), 's1600') : '';
+        const hero = document.getElementById('lm-hero');
+        const thumbs = document.getElementById('lm-thumbs');
+        if (!hero || !thumbs) return;
+
+        // Clear thumbs (openListing also clears pre-emptively; this is defensive)
+        thumbs.innerHTML = '';
+
+        // If gallery is already cached, render it immediately without fetching
+        const cacheKey = L.id || L.folder || JSON.stringify(L);
+        let listFromCache = OPG_IMG_CACHE.get(cacheKey);
+        if (Array.isArray(listFromCache) && listFromCache.length){
+          let list = listFromCache.slice(0,24);
+          if (lmPreview && !list.includes(lmPreview)) list.unshift(lmPreview);
+          if (!list.length) list = [OPG_PLACEHOLDER];
+
+          const setHero = (src) => {
+            if (token !== OPG_LM_TOKEN) return;
+            hero.onerror = () => { hero.src = OPG_PLACEHOLDER; };
+            hero.src = src || OPG_PLACEHOLDER;
+          };
+
+          setHero(list[0]);
+          hero._imgs = list.slice();
+          hero._idx = 0;
+
+          list.forEach((src, i) => {
+            const im = document.createElement('img');
+            im.loading = 'lazy';
+            im.src = src;
+            im.onerror = () => { im.style.display = 'none'; };
+            if(i===0) im.classList.add('active');
+            im.addEventListener('click', () => {
+              if (token !== OPG_LM_TOKEN) return;
+              document.querySelectorAll('.lm-thumbs img').forEach(t => t.classList.remove('active'));
+              im.classList.add('active');
+              hero._idx = i;
+              setHero(src);
+            });
+            thumbs.appendChild(im);
+          });
+
+          // Arrow indicator logic (mobile overflow)
+          (function setupThumbsArrow(){
+            const wrap = document.querySelector('.lm-thumbs-wrap');
+            const arrow = document.getElementById('lm-thumbs-more');
+            if (!wrap || !arrow || !thumbs) return;
+            if (getComputedStyle(wrap).position === 'static') wrap.style.position = 'relative';
+            const updateMore = () => {
+              const overflow = thumbs.scrollWidth > thumbs.clientWidth + 1;
+              const atEnd = (thumbs.scrollLeft + thumbs.clientWidth >= thumbs.scrollWidth - 4);
+              arrow.style.display = (overflow && !atEnd) ? 'flex' : 'none';
+            };
+            thumbs.addEventListener('scroll', updateMore, { passive:true });
+            window.addEventListener('resize', updateMore);
+            setTimeout(updateMore, 0);
+          })();
+
+          return; // done rendering from cache
+        }
+
+        let list;
+        {
+          const imgs = await getListingImages(L, 24);
+          // If a newer listing has been opened while we awaited, abort
+          if (token !== OPG_LM_TOKEN) return;
+          list = Array.isArray(imgs) ? imgs.slice(0,24) : [];
+          // Cache the result for instant future opens
+          const cacheKey = L.id || L.folder || JSON.stringify(L);
+          if (list.length) OPG_IMG_CACHE.set(cacheKey, list.slice());
+        }
+        if (lmPreview) {
+          // Prepend the sheet thumbnail if it’s not already first
+          if (!list.includes(lmPreview)) list = [lmPreview, ...list];
+        }
+        if (!list.length) list = [OPG_PLACEHOLDER];
+
+        const setHero = (src) => {
+          if (token !== OPG_LM_TOKEN) return; // stale
+          hero.onerror = () => { hero.src = OPG_PLACEHOLDER; };
+          hero.src = src || OPG_PLACEHOLDER;
+        };
+
+        setHero(list[0]);
+
+        // Persist list and current index on the hero image for navigation
+        hero._imgs = Array.isArray(list) ? list.slice() : [];
+        hero._idx = 0;
+
+        list.forEach((src, i) => {
+          const im = document.createElement('img');
+          im.loading = 'lazy';
+          im.src = src;
+          im.onerror = () => { im.style.display = 'none'; };
+          if(i===0) im.classList.add('active');
+          im.addEventListener('click', () => {
+            if (token !== OPG_LM_TOKEN) return;
+            document.querySelectorAll('.lm-thumbs img').forEach(t => t.classList.remove('active'));
+            im.classList.add('active');
+            hero._idx = i;            // keep state in sync
+            setHero(src);
+          });
+          thumbs.appendChild(im);
+        });
+
+        // --- Arrow indicator for overflow on mobile (fixed, non-interactive)
+        (function setupThumbsArrow(){
+          const wrap = document.querySelector('.lm-thumbs-wrap');
+          const arrow = document.getElementById('lm-thumbs-more');
+          if (!wrap || !arrow || !thumbs) return;
+          if (getComputedStyle(wrap).position === 'static') wrap.style.position = 'relative';
+
+          const updateMore = () => {
+            const overflow = thumbs.scrollWidth > thumbs.clientWidth + 1;
+            const atEnd = (thumbs.scrollLeft + thumbs.clientWidth >= thumbs.scrollWidth - 4);
+            arrow.style.display = (overflow && !atEnd) ? 'flex' : 'none';
+          };
+
+          thumbs.addEventListener('scroll', updateMore, { passive:true });
+          window.addEventListener('resize', updateMore);
+          setTimeout(updateMore, 0);
+        })();
+
+        // Swipe + tap navigation on the main hero image (mobile friendly)
+        (function bindSwipe(){
+          if (hero._swipeBound) return; // prevent duplicate listeners
+          let startX = 0;
+          const toIndex = (nextIdx) => {
+            const imgs = Array.isArray(hero._imgs) ? hero._imgs : [];
+            if (!imgs.length) return;
+            let idx = nextIdx;
+            if (idx < 0) idx = imgs.length - 1;
+            if (idx >= imgs.length) idx = 0;
+            hero._idx = idx;
+            setHero(imgs[idx]);
+            const thumbEls = document.querySelectorAll('.lm-thumbs img');
+            thumbEls.forEach((t,j)=> t.classList.toggle('active', j === idx));
+          };
+          const onStart = (e)=>{ startX = (e.touches && e.touches[0] ? e.touches[0].clientX : e.clientX); };
+          const onEnd   = (e)=>{
+            const endX = (e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientX : e.clientX);
+            const dx = endX - startX;
+            if (Math.abs(dx) < 40) return; // ignore small drags
+            const dir = dx < 0 ? 1 : -1;   // left swipe -> next
+            toIndex((hero._idx || 0) + dir);
+          };
+          hero.addEventListener('touchstart', onStart, { passive:true });
+          hero.addEventListener('touchend',   onEnd,   { passive:true });
+          // Tap/click to advance
+          hero.addEventListener('click', ()=> toIndex((hero._idx || 0) + 1));
+          hero._swipeBound = true;
+        })();
+      }
+
+      function openListing(id, idx){
+        let L = null;
+        // Prefer explicit id match when provided and not the string "undefined"
+        if (id != null && id !== '' && id !== 'undefined') {
+          L = (OPG_LIST||[]).find(x => String(x.id) === String(id));
+        }
+        // Fallback: use provided index from the rendered grid
+        if (!L && idx != null && !isNaN(Number(idx))) {
+          L = (OPG_LIST||[])[Number(idx)] || null;
+        }
+        // Extra fallback: if id looks like a number, treat it as index
+        if (!L && id != null && /^\d+$/.test(String(id))) {
+          L = (OPG_LIST||[])[Number(id)] || null;
+        }
+        if(!L) return;
+        // Removed: console.log('[OPG] Open listing', id, L);
+        // Token for this open call; used to cancel stale async renders
+        const myToken = ++OPG_LM_TOKEN;
+
+        // Reset hero/thumbs immediately so previous listing doesn't linger
+        const heroEl = document.getElementById('lm-hero');
+        const thumbsEl = document.getElementById('lm-thumbs');
+        const lmPreview = L.thumbUrl ? opgSetSize(opgToDirect(L.thumbUrl), 's1600') : '';
+        if (thumbsEl) thumbsEl.innerHTML = '';
+        if (heroEl){
+          heroEl.onerror = null;
+          heroEl.removeAttribute('srcset');
+          heroEl.src = lmPreview || OPG_PLACEHOLDER;
+        }
+
+        document.getElementById('lm-title').textContent = L.title || '(Untitled)';
+        // Price
+        const priceEl = document.getElementById('lm-price');
+        priceEl.textContent = L.price ? fmtUSD(L.price) : '';
+        // Chips (city, sqft, lot size, beds, baths)
+        const chips = [];
+        if (L.city) chips.push({ t: String(L.city) });
+        if (L.sqft) chips.push({ t: `${Number(L.sqft).toLocaleString()} SF` });
+        if (L.size) {
+          const s = String(L.size).trim();
+          const sizeText = /ac|acre|sf|sq\s*ft/i.test(s) ? s : `${s} AC`;
+          chips.push({ t: sizeText });
+        }
+        if (L.beds)  chips.push({ t: `${L.beds} bed` });
+        if (L.baths) chips.push({ t: `${L.baths} bath` });
+        const chipsWrap = document.getElementById('lm-chips');
+        chipsWrap.innerHTML = '';
+        chips.forEach(c=>{
+          const span = document.createElement('span');
+          span.className = 'chip'; span.innerHTML = `<span class="dot"></span>${c.t}`;
+          chipsWrap.appendChild(span);
+        });
+        document.getElementById('lm-desc').textContent = L.description || '';
+        buildGallery(L, myToken);
+        const ext = document.getElementById('lm-ext');
+        if (L.extUrl && /^https?:\/\//i.test(L.extUrl)) {
+          ext.style.display='inline-flex';
+          ext.textContent = 'View Listing';
+          ext.href = L.extUrl;
+        } else {
+          ext.style.display='none';
+          ext.removeAttribute('href');
+        }
+        document.getElementById('lm').style.display='flex';
+      }
+      function closeListing(){ document.getElementById('lm').style.display='none'; }
+
+      document.addEventListener('click', (e)=>{
+        const a = e.target.closest('a.opg-more');
+        if(a){
+          e.preventDefault();
+          const id = a.getAttribute('data-id');
+          const idx = a.getAttribute('data-idx');
+          openListing(id, idx);
+        }
+        if(e.target.id==='lm' || e.target.id==='lm-close'){ closeListing(); }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Omaha Property Group | Omaha Residential & Commercial</title>
+  <meta name="description" content="Buy, sell, or lease in Omaha with Omaha Property Group. Residential and commercial advisors with off-market access, data-driven pricing, and fast timelines." />
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+  <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin>
+
+  <style>
+    /* ===== Design Tokens ===== */
+    :root{
+      --bg:#0c1116;              /* page background behind sections */
+      --surface:#ffffff;         /* card surfaces */
+      --ink:#0f1720;             /* primary text */
+      --muted:#667085;           /* secondary text */
+      --line:#e8edf3;            /* subtle borders */
+      --soft:#f5f7fb;            /* soft section bg */
+      --brand:#4FA3D1;           /* primary accent */
+      --brand-2:#1f6a91;         /* darker accent */
+      --ring:rgba(79,163,209,.28);
+      --wrap:1200px;
+      --radius:14px;
+      --shadow:0 10px 30px rgba(16, 24, 40, .08);
+      --shadow-hover:0 16px 44px rgba(16, 24, 40, .14);
+    }
+
+    /* ===== Base ===== */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      -webkit-font-smoothing:antialiased;
+      font:16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    }
+    img{max-width:100%; height:auto; display:block}
+    a{color:var(--brand); text-decoration:none}
+    a:hover{color:var(--brand-2)}
+    .wrap{max-width:var(--wrap); margin:0 auto; padding:0 20px}
+
+    /* ===== Header ===== */
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(140%) blur(6px);
+      background:linear-gradient(180deg, rgba(12,17,22,.85), rgba(12,17,22,.65));
+      border-bottom:1px solid rgba(255,255,255,.06);
+      color:#e9f6ff;
+    }
+    .topbar{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:10px; color:#fff; letter-spacing:.2px}
+    .brand strong{white-space:nowrap}
+    .logo{width:32px; height:32px; border-radius:10px; background:linear-gradient(135deg, var(--brand), #9dd9ff)}
+    .logo-fallback{width:36px; height:36px; border-radius:8px;}
+    nav{display:flex; gap:22px; align-items:center}
+    nav a{color:#cfe8f6; font-weight:600}
+    .cta{
+      display:inline-block; background:var(--brand); color:#fff; border-radius:999px;
+      padding:10px 16px; font-weight:700; box-shadow:0 6px 14px var(--ring);
+      transition:.25s ease transform, .25s ease box-shadow, .25s ease background;
+    }
+    .cta:hover{background:var(--brand-2); transform:translateY(-1px); box-shadow:0 12px 24px var(--ring)}
+    .menu-btn{display:none; appearance:none; background:transparent; border:0; color:#e9f6ff; font-size:28px}
+    /* keep mobile drawer hidden by default */
+    .drawer{display:none}
+
+    @media (max-width: 960px){
+      nav{display:none}
+      .menu-btn{display:block}
+      .drawer{display:none; position:fixed; left:0; right:0; top:60px; background:#0f1720; border-top:1px solid rgba(255,255,255,.08); padding:10px}
+      .drawer a{display:block; padding:12px; color:#cfe8f6}
+      .drawer.open{display:block}
+    }
+
+    /* ===== Hero ===== */
+    .hero{
+      color:#fff;
+      background:
+        linear-gradient(180deg, rgba(12,17,22,.66), rgba(12,17,22,.88)),
+        url('./assets/images/guides/index-cover.jpg') center/cover no-repeat;
+    }
+    .hero-inner{display:grid; grid-template-columns:1.2fr .8fr; gap:38px; align-items:center; padding:68px 0}
+    .badge{display:inline-flex; gap:8px; align-items:center; border:1px solid rgba(255,255,255,.28); color:#e8f6ff; padding:8px 12px; border-radius:12px; background:rgba(255,255,255,.08)}
+    .hero h1{font-weight:800; font-size:44px; line-height:1.08; margin:12px 0 8px}
+    .hero p{color:#cfe8f6; margin:0 0 18px}
+    .hero .actions{display:flex; gap:12px; flex-wrap:wrap}
+
+    /* Make the two hero pills exactly the same size */
+    .hero .actions .cta,
+    .hero .actions .badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      height:52px;                 /* fixed height for equal pills */
+      padding:0 20px;              /* horizontal padding only */
+      min-width:0;                 /* allow natural width */
+      border-radius:999px;
+      font-weight:800;
+      line-height:1;               /* prevent extra vertical space */
+      text-align:center;
+      box-sizing:border-box;       /* include borders in the height */
+    }
+    .hero .actions .cta{ border:2px solid transparent; }   /* match outline thickness */
+    .hero .actions .badge{ border-width:2px; }             /* same border thickness */
+    .hero .actions .badge{ border-color: rgba(134,208,247,.9); color:#e9f7ff; }
+
+    @media (max-width: 420px){
+      .hero .actions .cta,
+      .hero .actions .badge{
+        height:50px;
+        padding:0 18px;
+      }
+    }
+    .panel{
+      position:relative;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:16px;
+      padding:18px;
+      overflow:hidden; /* clip child glow/shadows on mobile */
+      /* Hard clip to rounded corners to prevent any child bleed in iOS */
+      -webkit-mask-image:-webkit-radial-gradient(white, black);
+    }
+
+    @supports (clip-path: inset(0 round 16px)){
+      .panel{ clip-path: inset(0 round 16px); }
+    }
+    .panel small{color:#cfe8f6}
+    .stack{display:flex; flex-direction:column; gap:10px}
+    .panel input, .panel select{
+      width:100%; padding:12px 14px; background:rgba(255,255,255,.1); color:#fff; border:1px solid rgba(255,255,255,.2); border-radius:10px;
+      outline:0; transition:.2s ease border;
+    }
+    .panel input::placeholder{color:#dbeaf2}
+    .panel input:focus, .panel select:focus{border-color:#c9e6fb}
+
+    @media (max-width: 960px){
+      .hero-inner{grid-template-columns:1fr}
+      .hero h1{font-size:36px}
+    }
+
+    /* ===== Section base ===== */
+    main{background:#fff; border-top-left-radius:28px; border-top-right-radius:28px}
+    section{padding:64px 0}
+    .section-h{font-size:32px; margin:0 0 8px; letter-spacing:.2px}
+    .section-sub{color:var(--muted); margin:0 0 26px}
+    .grid{display:grid; grid-template-columns:repeat(12, minmax(0,1fr)); gap:22px}
+    .col-3{grid-column:span 3} .col-4{grid-column:span 4} .col-6{grid-column:span 6} .col-8{grid-column:span 8}
+    @media (max-width: 960px){ .col-3,.col-4{grid-column:span 6} .col-6,.col-8{grid-column:span 12} }
+    @media (max-width: 640px){ .col-3,.col-4{grid-column:span 12} }
+
+    /* ===== Feature Row ===== */
+    .features{background:var(--soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+    .feature{display:flex; gap:12px; align-items:flex-start; background:var(--surface); border:1px solid var(--line);
+      border-radius:12px; padding:16px; box-shadow:var(--shadow); transition:.3s ease transform, .3s ease box-shadow}
+    .feature:hover{transform:translateY(-2px); box-shadow:var(--shadow-hover)}
+    .icon{width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg, #81c8ee, var(--brand))}
+    .meta{color:var(--muted); font-size:14px}
+    /* Feature stats row */
+    .stats{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin:8px 0 18px}
+    .stat{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:14px; text-align:center; box-shadow:var(--shadow)}
+    .stat strong{font-size:20px; letter-spacing:.2px; color:var(--ink)}
+    .stat span{color:var(--muted); font-size:14px}
+    @media(max-width:960px){ .stats{grid-template-columns:1fr 1fr} }
+    @media(max-width:640px){ .stats{grid-template-columns:1fr} }
+
+    /* ===== Why Work With Us (hero-follow) ===== */
+    #why{position:relative; overflow:hidden; background:radial-gradient(1200px 600px at 10% -10%, rgba(79,163,209,.18), transparent 60%), radial-gradient(1000px 500px at 90% 0%, rgba(104,179,107,.12), transparent 60%), var(--soft);}
+    #why .wrap{position:relative}
+    #why .accent{display:inline-block; height:6px; width:64px; border-radius:6px; background:linear-gradient(90deg, var(--brand), #86d0f7); box-shadow:0 6px 16px rgba(79,163,209,.35); margin-bottom:12px}
+
+    /* stat row */
+    .why-stats{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin:10px 0 28px}
+    .why-stat{position:relative; background:#fff; border-radius:16px; padding:18px; text-align:center; box-shadow:var(--shadow); border:1px solid var(--line)}
+    .why-stat::before{content:""; position:absolute; inset:-2px; border-radius:18px; background:linear-gradient(135deg, rgba(79,163,209,.35), rgba(104,179,107,.35)); z-index:-1; filter:blur(8px); opacity:.6}
+    .why-stat strong{display:block; font-size:28px; letter-spacing:.2px}
+    .why-stat span{display:block; color:var(--muted)}
+
+    /* feature tiles */
+    .why-grid{display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:18px}
+    .why-card{grid-column:span 4; background:#fff; border:1px solid var(--line); border-radius:16px; padding:18px; display:flex; gap:14px; align-items:flex-start; box-shadow:var(--shadow); transition:.28s ease transform,.28s ease box-shadow}
+    .why-card:hover{transform:translateY(-3px); box-shadow:var(--shadow-hover)}
+    .why-icon{flex:none; width:44px; height:44px; border-radius:12px; background:linear-gradient(135deg, #9dd9ff, var(--brand)); box-shadow:0 6px 14px var(--ring)}
+    .why-card h3{margin:2px 0 6px; font-size:18px}
+    .why-card p{margin:0; color:var(--muted)}
+    @media (max-width:960px){ .why-grid .why-card{grid-column:span 12} .why-stats{grid-template-columns:1fr 1fr} }
+    @media (max-width:640px){ .why-stats{grid-template-columns:1fr} }
+
+    /* ===== Cards / Listings ===== */
+    .card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);
+      transition:.28s ease transform, .28s ease box-shadow}
+    .card:hover{transform:translateY(-3px); box-shadow:var(--shadow-hover)}
+    .card-body{padding:16px}
+    .pill{display:inline-block; background:var(--soft); color:#0d4e6f; border:1px solid #d3e6f2; padding:4px 10px; border-radius:999px; font-size:12px; font-weight:700}
+
+    /* Keep listing card images constrained and uniform (reserve aspect ratio to stop layout shift) */
+    .card > img{
+      width:100%;
+      height:auto;                 /* let width/height attributes (800x450) reserve space */
+      aspect-ratio: 16 / 9;        /* extra safety for browsers ignoring attrs */
+      object-fit:cover;
+      display:block;
+    }
+
+    /* Featured listings: subtle intro fade on first paint only */
+    #listings .grid.init-fade{ opacity:.04; transition:opacity .28s ease; }
+
+    /* ===== Res/Com section polish (index:#res) ===== */
+    #res .intro{max-width:900px}
+    #res .res-card{border-top:4px solid #4FA3D1; background:linear-gradient(180deg, rgba(79,163,209,.06), #fff)}
+    #res .com-card{border-top:4px solid #68b36b; background:linear-gradient(180deg, rgba(104,179,107,.08), #fff)}
+    #res .pill{background:#ecf6fd; border-color:#cfe7f7; color:#0d4e6f}
+    #res .card-body h3{font-size:20px}
+
+    /* Checklist (no default bullets; uses check icon) */
+    #res .checklist{list-style:none; margin:14px 0 10px 0; padding:0}
+    #res .checklist li{position:relative; padding-left:28px; margin:10px 0; color:var(--muted); font-size:15px}
+    #res .checklist li::before{
+      content:'✓';
+      position:absolute; left:0; top:2px;
+      width:18px; height:18px; line-height:18px; text-align:center; font-weight:800; font-size:12px;
+      background:#e6f4fb; color:#1f6a91; border:1px solid #cde6f6; border-radius:50%;
+    }
+    /* Two-column checklist on wider screens */
+    @media (min-width: 980px){
+      #res .checklist{columns:2; column-gap:24px}
+      #res .checklist li{break-inside:avoid}
+    }
+
+    /* ===== SEO Content / Guides & FAQ ===== */
+    .seo-note{color:var(--muted); font-size:14px}
+    .guides .guide{display:flex; flex-direction:column; gap:12px; border:1px solid var(--line); background:#fff; border-radius:12px; padding:14px; box-shadow:var(--shadow); transition:.25s ease transform,.25s ease box-shadow; align-items:stretch;}
+    .guides .guide:hover{transform:translateY(-2px); box-shadow:var(--shadow-hover)}
+    .guides .guide .badge{background:var(--soft); color:#0d4e6f; border-color:#d3e6f2}
+    /* Guides: vertical card image on top */
+    .guides .guide img{
+      width:100%;
+      height:180px;
+      object-fit:cover;
+      border-radius:10px;
+      flex:none;
+    }
+    .accordion .faq{background:#fff; border:1px solid var(--line); border-radius:12px; padding:16px}
+    .accordion .faq + .faq{margin-top:10px}
+    .faq-q{display:flex; align-items:center; justify-content:space-between; gap:10px; cursor:pointer; font-weight:700}
+    .faq-a{display:none; color:#475569; margin-top:8px}
+    .faq.open .faq-a{display:block}
+    .faq .chev{transition:transform .2s ease}
+    .faq.open .chev{transform:rotate(180deg)}
+
+    /* ===== Testimonials / Blog ===== */
+    .quote{background:#fff; border:1px solid var(--line); border-radius:12px; padding:18px; font-style:italic; box-shadow:var(--shadow)}
+    .author{margin-top:10px; color:#364152; font-style:normal}
+
+    .teaser{display:flex; gap:14px; border:1px solid var(--line); background:#fff; border-radius:12px; padding:12px; box-shadow:var(--shadow)}
+    .teaser:hover{transform:translateY(-2px); box-shadow:var(--shadow-hover)}
+
+    /* ===== Listing Modal ===== */
+    .modal{position:fixed; inset:0; background:rgba(0,0,0,.6); display:none; align-items:center; justify-content:center; z-index:9999}
+    .modal.open{display:flex}
+    .modal-card{background:#fff; border-radius:16px; max-width:1000px; width:min(1000px, 94vw); max-height:88vh; overflow:auto; box-shadow:var(--shadow-hover)}
+    .modal-head{display:flex; align-items:center; justify-content:space-between; padding:14px 18px; border-bottom:1px solid var(--line)}
+    .modal-body{display:grid; grid-template-columns:1.2fr .8fr; gap:16px; padding:16px}
+    .modal-close{appearance:none; border:0; background:#f2f4f7; width:36px; height:36px; border-radius:8px; font-size:18px; cursor:pointer}
+    .gallery-main{width:100%; aspect-ratio: 16/10; background:#f7f7f7; border-radius:12px; overflow:hidden}
+    .gallery-main img{width:100%; height:100%; object-fit:cover}
+    .thumbs{display:flex; gap:8px; margin-top:8px; flex-wrap:wrap}
+    .thumbs img{width:84px; height:64px; object-fit:cover; border-radius:8px; cursor:pointer; border:2px solid transparent}
+    @media (max-width: 640px){
+      .thumbs{
+        position: relative;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 4px;
+        flex-wrap: nowrap;
+      }
+      .thumbs img{ flex:0 0 auto; }
+      .thumbs{ scrollbar-width: none; }
+      .thumbs::-webkit-scrollbar{ display: none; }
+
+      /* Make the left gallery column a positioned context for the fixed arrow */
+      .modal-body > div:first-child{ position: relative; }
+
+      /* Fixed overlay arrow that does not scroll with the thumbnails */
+      .thumbs-arrow{
+        position: absolute;
+        right: -6px;               /* nudge just outside the strip */
+        bottom: auto;              /* we will control vertical position via JS */
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: rgba(15,23,32,.78);
+        color: #fff;
+        display: none;             /* shown via JS only if overflow exists and not at end */
+        place-items: center;
+        font-size: 16px;
+        line-height: 1;
+        pointer-events: none;
+        box-shadow: 0 2px 8px rgba(0,0,0,.25);
+        z-index: 2;
+      }
+    }
+    .thumbs img.active{border-color: var(--brand)}
+    .facts{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; color:#344054}
+    .facts div{background:#f8fafc; border:1px solid var(--line); border-radius:10px; padding:10px}
+    /* Listing modal (unified visual with Res/Com) */
+    .lm-panel{background:#f8fafc; border:1px solid var(--line); border-radius:14px; padding:16px; box-shadow:var(--shadow)}
+    .lm-price{font-size:32px; font-weight:700; margin:4px 0 10px}
+    .chips{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px}
+    .chip{display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--line); border-radius:999px; padding:6px 12px; color:#0f1720; font-weight:600}
+    .chip .dot{width:8px; height:8px; border-radius:50%; background:var(--brand)}
+    .lm-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:center;
+      align-items:center;
+      margin-top:14px;
+    }
+    /* Listing modal: better long-description handling */
+    .lm-right{display:flex; flex-direction:column; max-height:calc(88vh - 140px); overflow:auto; min-height:0}
+    .lm-panel{flex:1 1 auto; overflow:auto; max-height:none}
+    .lm-panel p{line-height:1.7; margin:8px 0 0; hyphens:auto}
+    /* Keep action buttons visible without scrolling the whole modal */
+    .lm-actions{position:sticky; bottom:0; padding:12px 0 4px; background:linear-gradient(180deg, rgba(255,255,255,0) 0%, #fff 32%)}
+    @media(max-width:900px){ .lm-right{max-height:none; overflow:visible} }
+    .btn-outline{
+      all:unset;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 16px;
+      border-radius:999px;
+      border:2px solid rgba(79,163,209,.35);
+      color:#1f6a91;
+      font-weight:700;
+      cursor:pointer
+    }
+    .btn-outline:hover{border-color:rgba(79,163,209,.6)}
+    @media(max-width:900px){ .modal-body{grid-template-columns:1fr} }
+
+    /* ===== Forms ===== */
+    /* Buy/Sell tabs for the lead form */
+    .form-tabs{display:flex; gap:8px; margin:0 0 12px; align-items:center}
+    .form-tab{all:unset; cursor:pointer; padding:8px 14px; border-radius:999px; font-weight:700; color:#0f1720; border:1px solid var(--line); background:#fff}
+    .form-tab[aria-selected="true"]{background:var(--brand); color:#fff; border-color:transparent; box-shadow:0 6px 14px var(--ring)}
+    .form-hint{color:var(--muted); font-size:14px; margin:0 0 10px}
+    .form{display:grid; grid-template-columns:repeat(12, minmax(0,1fr)); gap:16px; background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    /* Form actions layout */
+    .form-actions{grid-column:1/-1; display:flex; justify-content:flex-end; margin-top:10px}
+    @media (max-width: 640px){
+      .form-actions{justify-content:stretch}
+      .form-actions .btn-primary{width:100%; text-align:center}
+    }
+    label{display:flex; flex-direction:column; gap:6px; color:#344054; font-weight:600}
+    input, textarea, select{border:1px solid #d8dee8; border-radius:10px; padding:12px 14px; font:inherit; outline:0; transition:.2s ease border}
+    textarea{min-height:120px}
+    input:focus, textarea:focus, select:focus{border-color:#b4d9ef; box-shadow:0 0 0 4px var(--ring)}
+    .btn-primary{all:unset; display:inline-block; background:var(--brand); color:#fff; padding:12px 18px; border-radius:999px; cursor:pointer; font-weight:800; box-shadow:0 10px 20px var(--ring); transition:.25s ease transform, .25s ease box-shadow, .25s ease background}
+    .btn-primary:hover{background:var(--brand-2); transform:translateY(-1px); box-shadow:0 16px 28px var(--ring)}
+    /* Quick Brief submit button — match hero pills */
+    .panel .btn-primary{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      height:52px;               /* same as hero pills */
+      padding:0 20px;            /* horizontal padding only */
+      border-radius:999px;       /* pill shape */
+      box-shadow:none;           /* prevent glow from bleeding past rounded panel */
+    }
+
+    /* ===== Reveal Animations ===== */
+    .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease}
+    .reveal.in{opacity:1; transform:none}
+    @media (prefers-reduced-motion: reduce){
+      .reveal{opacity:1 !important; transform:none !important}
+      .feature:hover, .card:hover, .teaser:hover, .cta:hover{transform:none; box-shadow:var(--shadow)}
+    }
+
+    /* ===== Mobile polish for Index (hero, cards, forms) ===== */
+    @media (max-width: 960px){
+      .hero-inner{grid-template-columns:1fr; gap:22px; padding:44px 0}
+      /* center the left hero column text/buttons */
+      .hero-inner > .reveal:first-child{ text-align:center; }
+      .hero h1, .hero p { text-align:center; }
+      .hero .badge{ margin:0 auto 10px; }
+      .hero .actions{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+      /* keep the quick brief panel at a comfortable width */
+      .panel{ max-width:560px; margin:0 auto; }
+    }
+
+    @media (max-width: 720px){
+      /* compact the quick brief panel */
+      .panel{ max-width:420px; margin:0 auto; padding:12px; }
+      .panel small{ font-size:13px; }
+      .stack{ gap:10px; }
+      .panel input, .panel select{ padding:12px; }
+      .panel .btn-primary,
+      .panel button{
+        width:100%;
+        max-width:100%;
+        margin:12px 0 0;
+        text-align:center;
+        display:block;
+        align-items:center;
+        justify-content:center;
+        height:56px;                 /* bigger tap target on mobile */
+        padding:0 18px;
+        border-radius:999px;
+        transform:none;              /* prevent hover/press jump */
+        -webkit-appearance:none;     /* iOS: remove default styles */
+        -webkit-tap-highlight-color: transparent; /* iOS tap highlight */
+        box-shadow:none;             /* avoid clipped glow inside panel */
+        line-height:1;               /* perfect vertical centering */
+        pointer-events:auto;         /* ensure taps register */
+        box-sizing:border-box;
+        align-self:stretch;
+      }
+      .stack > div:last-child{ width:100%; align-self:stretch; }
+      /* When disabled during submit, keep size and show clear state */
+      .panel .btn-primary[disabled]{
+        opacity:.75;
+        cursor:not-allowed;
+      }
+
+      /* soften section spacing and card imagery */
+      section{ padding:46px 0; }
+      .guides .guide img{ height:160px; }
+
+      /* stats & why cards already wrap; ensure even spacing */
+      .why-card{ grid-column:span 12; }
+
+      /* Make hero pills equal width on small screens */
+      .hero .actions{ justify-content:center; align-items:stretch; gap:12px; }
+      .hero .actions > *{ flex:1 1 0; min-width:0; }
+      .hero .actions .cta,
+      .hero .actions .badge{ height:52px; padding:0 16px; }
+    }
+
+    @media (max-width: 420px){
+      .hero h1{ font-size:30px; }
+      .section-h{ font-size:26px; }
+      .guides .guide img{ height:140px; }
+      .why-stat strong{ font-size:24px; }
+    }
+  @media (max-width: 768px){
+    h1, h2, h3 { text-align: center; }
+  }
+  </style>
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"RealEstateAgent",
+    "name":"Omaha Property Group",
+    "areaServed":"Omaha, NE",
+    "telephone":"+14028896958",
+    "email":"jordan.estee@bhhsamb.com",
+    "url":"https://omahapropertygroup.com",
+    "address":{"@type":"PostalAddress","streetAddress":"10404 Essex Court Suite 201","addressLocality":"Omaha","addressRegion":"NE","postalCode":"68114"}
+  }
+  </script>
+</head>
+
+<body>
+  <!-- ===== Header (shared include) ===== -->
+<div id="opg-header-placeholder"></div>
+<script>
+  (function(){
+    const mount = document.getElementById('opg-header-placeholder');
+    fetch('./header.html', { cache: 'no-cache' })
+      .then(r => r.text())
+      .then(html => {
+        // Inject header markup
+        mount.outerHTML = html;
+        // Defer to allow DOM to update, then wire up menu/drawer
+        requestAnimationFrame(() => {
+          const menuBtn = document.querySelector('.menu-btn');
+          const drawer  = document.querySelector('.drawer');
+          if (menuBtn && drawer){
+            menuBtn.addEventListener('click', () => {
+              drawer.classList.toggle('open');
+            });
+            // Close drawer when a link is tapped
+            drawer.querySelectorAll('a').forEach(a => {
+              a.addEventListener('click', () => drawer.classList.remove('open'));
+            });
+          }
+        });
+      })
+      .catch(err => console.warn('[OPG] header include failed', err));
+  })();
+</script>
+
+  <!-- ===== Hero ===== -->
+  <!-- Remove any duplicate header above hero section -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="reveal">
+        <span class="badge">Commercial & Residential, Omaha, Nebraska</span>
+        <h1>Find property that moves your life and business forward</h1>
+        <p>We help buyers, sellers, and investors win with data-driven search, off-market access, and negotiation that protects your outcome.</p>
+        <div class="actions">
+          <a href="#listings" class="cta">View Listings</a>
+          <a href="#contact" id="cta-free-valuation-hero" class="badge" style="border-color:#86d0f7; color:#e9f7ff">Get a Free Valuation</a>
+        </div>
+      </div>
+
+      <div class="panel reveal" style="backdrop-filter: blur(6px);">
+        <strong style="display:block; margin-bottom:6px;">Quick Brief</strong>
+        <small>Tell us size, timing, and must-haves. We’ll send a shortlist within days.</small>
+        <form id="brief-form" class="stack" aria-label="Quick Brief Form" style="margin-top:10px"
+          action="https://formspree.io/f/movnqpdy" method="POST">
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none">
+          <label><small>Property Type</small>
+            <select name="type" aria-label="Property Type" autocomplete="on">
+              <option>Single Family</option><option>Condo</option><option>Office</option>
+              <option>Retail</option><option>Industrial</option><option>Multifamily</option>
+            </select>
+          </label>
+          <label><small>Size or Beds</small><input name="size" placeholder="5,000 SF or 4 beds" autocomplete="off" inputmode="text" /></label>
+          <label><small>Name</small><input name="name" placeholder="Your name" autocomplete="name" /></label>
+          <label><small>Email</small><input name="email" type="email" placeholder="you@company.com" required autocomplete="email" /></label>
+          <div><button class="btn-primary" type="submit">Send Brief</button></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <main>
+
+    <!-- ===== Listings ===== -->
+    <section id="listings">
+      <div class="wrap">
+        <h2 class="section-h reveal">Featured Listings</h2>
+        <div id="listing-grid" class="grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ===== Why Work With Us ===== -->
+    <section id="why" class="features">
+      <div class="wrap">
+        <span class="accent reveal"></span>
+        <h2 class="section-h reveal">Why work with us</h2>
+        <p class="section-sub reveal">Local insight, a disciplined process, and marketing that consistently delivers results.</p>
+        <p class="meta reveal" style="margin-top:-8px;max-width:900px">
+          We combine neighborhood expertise with a repeatable plan. Most clients receive a curated shortlist within forty eight hours,
+          plus private opportunities that never reach the public sites.
+        </p>
+
+        <div class="why-stats reveal">
+          <div class="why-stat"><strong>8+ years</strong><span>Omaha experience</span></div>
+          <div class="why-stat"><strong>48 hours</strong><span>to first shortlist</span></div>
+          <div class="why-stat"><strong>2 to 5 per month</strong><span>off market leads</span></div>
+        </div>
+
+        <div class="why-grid">
+          <div class="why-card reveal">
+            <div class="why-icon" aria-hidden="true"></div>
+            <div>
+              <h3>Market coverage</h3>
+              <p>Downtown, Aksarben, West Dodge, Sarpy, and Elkhorn. We help you compare neighborhoods so each tour day is efficient and useful.</p>
+            </div>
+          </div>
+
+          <div class="why-card reveal">
+            <div class="why-icon" aria-hidden="true" style="background:linear-gradient(135deg, #b9f3c0, #68b36b)"></div>
+            <div>
+              <h3>Private access</h3>
+              <p>Relationships and outreach surface opportunities before they appear on the web, then we package the best options for an easy review.</p>
+            </div>
+          </div>
+
+          <div class="why-card reveal">
+            <div class="why-icon" aria-hidden="true" style="background:linear-gradient(135deg, #ffc6a3, #ff8a4d)"></div>
+            <div>
+              <h3>Negotiation</h3>
+              <p>Beyond price, we focus on terms, timelines, rent, options, and deliverables so your outcome is protected from start to finish.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Residential / Commercial CTAs ===== -->
+    <section id="res">
+      <div class="wrap">
+        <h2 class="section-h reveal">Residential real estate in Omaha</h2>
+        <p class="section-sub reveal intro">
+          Discover a vibrant mix of homes, condos, and investment properties across Omaha’s most sought after neighborhoods, including Dundee, Aksarben, Westside, Elkhorn, and the Old Market. Whether you’re searching for a family friendly community, a walkable urban lifestyle, or a smart investment, Omaha offers something for everyone.<br>
+          <span style="display:inline-block; margin-top:10px;">
+            Enjoy top-rated schools, parks, and a thriving local culture, all with the benefit of stable property values and strong growth potential.
+          </span>
+          <span style="display:inline-block; color:var(--muted); margin-top:8px; font-size:15px;">
+            Our team specializes in guiding buyers, sellers, and investors through every step, from staging and pricing to negotiation and closing, so you can move forward with confidence.
+          </span>
+        </p>
+        <div class="grid">
+          <article class="col-6 card res-card reveal">
+            <div class="card-body">
+              <div class="pill">Residential</div>
+              <h3 style="margin:8px 0 6px">Buy or sell with confidence</h3>
+              <p class="meta">Expert guidance for Omaha homes, condos, and investments.</p>
+              <ul class="checklist">
+                <li><strong>Staging &amp; Presentation:</strong> Professional prep and photography to maximize appeal.</li>
+                <li><strong>Pricing Strategy:</strong> Data-driven analysis to position your property competitively.</li>
+                <li><strong>Negotiation:</strong> Advocate for your best terms, price, repairs, and timelines.</li>
+                <li><strong>Streamlined Process:</strong> Seamless showings, feedback, and closing coordination.</li>
+              </ul>
+              <p style="margin-bottom:12px; color:var(--ink); font-weight:500;">
+                From your first tour to final signatures, we handle the details so you can focus on your next chapter.
+              </p>
+              <a href="./residential.html" class="cta">Explore Residential</a>
+            </div>
+          </article>
+          <article id="com" class="col-6 card com-card reveal">
+            <div class="card-body">
+              <div class="pill">Commercial</div>
+              <h3 style="margin:8px 0 6px">Leasing, acquisitions, and dispositions</h3>
+              <p class="meta">Unlock Omaha’s diverse commercial opportunities.</p>
+              <ul class="checklist">
+                <li><strong>Office:</strong> Flexible spaces for startups to enterprise HQs.</li>
+                <li><strong>Retail:</strong> Prime storefronts and shopping centers in high-traffic corridors.</li>
+                <li><strong>Industrial:</strong> Warehousing, logistics, and flex properties across metro Omaha.</li>
+                <li><strong>Multifamily:</strong> Investment-grade apartments and value-add opportunities.</li>
+              </ul>
+              <p style="margin-bottom:12px; color:var(--ink); font-weight:500;">
+                We help you build a long term strategy, from site selection to lease negotiation and portfolio growth, so your business or investments thrive.
+              </p>
+              <a href="./commercial.html" class="cta">Explore Commercial</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===== Guides / Educational SEO Section ===== -->
+    <section id="guides" class="features">
+      <div class="wrap guides">
+        <h2 class="section-h reveal">Omaha buyer, seller & investor guides</h2>
+        <p class="section-sub reveal">Short, practical explainers we share with clients every week. Skim the highlights and reach out if you want the full playbook.</p>
+        <div class="grid">
+          <article class="col-4 guide reveal">
+            <img class="guide-img" data-name="buy" alt="Modern Omaha home exterior with pool" loading="lazy">
+            <div>
+              <div class="badge" aria-hidden="true">Residential</div>
+              <h3 style="margin:8px 0 6px">How to buy a home in Omaha (step-by-step)</h3>
+              <ul class="seo-note">
+                <li>Pre-approval, must haves, and tour days</li>
+                <li>Writing a competitive offer without overpaying</li>
+                <li>Inspections, appraisal, and closing timelines</li>
+              </ul>
+              <a class="cta" href="#contact" aria-label="Start your home search">Start your search</a>
+            </div>
+          </article>
+
+          <article class="col-4 guide reveal">
+            <img class="guide-img" data-name="sell" alt="Staged Omaha kitchen and living space" loading="lazy">
+            <div>
+              <div class="badge" aria-hidden="true">Seller</div>
+              <h3 style="margin:8px 0 6px">The 7-point Omaha home-selling checklist</h3>
+              <ul class="seo-note">
+                <li>Pricing strategy from comps &amp; absorption</li>
+                <li>Staging, photos, and launch week marketing</li>
+                <li>Negotiating offers, terms, and timelines</li>
+              </ul>
+              <a class="cta" href="#contact" aria-label="Get a free valuation" id="cta-free-valuation">Get a free valuation</a>
+            </div>
+          </article>
+
+          <article class="col-4 guide reveal">
+            <img class="guide-img" data-name="commercial" alt="Team reviewing a commercial lease document" loading="lazy">
+            <div>
+              <div class="badge" aria-hidden="true">Commercial</div>
+              <h3 style="margin:8px 0 6px">Commercial lease types (NNN vs Gross) explained</h3>
+              <ul class="seo-note">
+                <li>Base rent vs. NNN and what “CAMs” include</li>
+                <li>TI allowances, options, and renewal clauses</li>
+                <li>How to compare spaces apples to apples</li>
+              </ul>
+              <a class="cta" href="./commercial.html" aria-label="Explore commercial">Explore commercial</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ (SEO) ===== -->
+    <section id="faq">
+      <div class="wrap">
+        <h2 class="section-h reveal">Omaha real estate FAQ</h2>
+        <p class="section-sub reveal">Quick answers to the most common questions buyers, sellers, and tenants ask us.</p>
+        <div class="accordion">
+        <div class="faq reveal">
+          <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+            What are typical closing costs in Omaha?<span class="chev">▾</span>
+          </div>
+        <div class="faq-a">For buyers, plan on about 2 to 3% of the purchase price (lender, title, recording, and prepaid items). Sellers typically cover title insurance and their side of transfer/commission. We’ll estimate your net sheet up front.</div>
+        </div>
+        <div class="faq reveal">
+          <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+            How long does a home sale take from offer to close?<span class="chev">▾</span>
+          </div>
+        <div class="faq-a">A financed purchase is commonly 30 to 45 days. Cash deals can close in 10 to 14 days depending on inspections and title. We’ll tailor timelines to your move out or possession needs.</div>
+        </div>
+        <div class="faq reveal">
+          <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+            What’s the difference between NNN and Gross commercial leases?<span class="chev">▾</span>
+          </div>
+        <div class="faq-a">NNN (triple net) adds taxes, insurance, and maintenance to the base rent. Gross includes some or all expenses in one number. We model the all in cost so you can compare spaces fairly.</div>
+        </div>
+        <div class="faq reveal">
+          <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+            Do you work with off-market properties?<span class="chev">▾</span>
+          </div>
+        <div class="faq-a">Yes, our network regularly surfaces opportunities before they’re public. Tell us your criteria and we’ll set up targeted outreach and alerts.</div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Lead Form ===== -->
+    <section id="contact" class="features">
+      <div class="wrap">
+        <h2 class="section-h reveal">Start your Omaha real estate conversation</h2>
+        <div class="form-tabs reveal" role="tablist" aria-label="Inquiry type">
+          <button class="form-tab" role="tab" id="tab-buy"   aria-controls="lead-form" aria-selected="true"  data-mode="buy">I want to buy</button>
+          <button class="form-tab" role="tab" id="tab-sell"  aria-controls="lead-form" aria-selected="false" data-mode="sell">I want to sell</button>
+        </div>
+        <p id="form-hint" class="form-hint reveal">Tell us what you’re looking for and your ideal timing.</p>
+        <form id="lead-form" class="form reveal" aria-label="Lead form" data-mode="buy"
+          action="https://formspree.io/f/movnqpdy" method="POST">
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none">
+          <label class="col-6">Name<input name="name" placeholder="Your name" required autocomplete="name" /></label>
+          <label class="col-6">Email<input name="email" type="email" placeholder="you@example.com" required autocomplete="email" /></label>
+          <label class="col-6">Phone<input name="phone" placeholder="(402) 555-0123" autocomplete="tel" /></label>
+          <label class="col-6">Property Type<select name="type" autocomplete="off"><option>Residential</option><option>Commercial</option></select></label>
+          <label id="lead-address" class="col-6">Property Address
+            <input name="address" placeholder="123 Main St, Omaha, NE 68104" autocomplete="street-address" />
+          </label>
+          <label class="col-6">Message
+            <textarea id="lead-msg" name="msg" placeholder="Buy: beds/size, area, budget, and timing" rows="4" autocomplete="off"></textarea>
+          </label>
+          <div class="form-actions col-12"><button id="lead-submit" class="btn-primary" type="submit">Schedule a Consultation</button></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <div id="site-footer"></div>
+  <script>
+    (function(){
+      const mount = document.getElementById('site-footer');
+      fetch('./footer.html', { cache: 'no-cache' })
+        .then(r => r.text())
+        .then(html => { mount.outerHTML = html; })
+        .catch(err => console.warn('[OPG] footer include failed', err));
+    })();
+  </script>
+
+<script>
+  // === OPG: Listings from Google Sheets (Home) ===
+  const OPG_SHEET_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSKbZH8PCNmsSP2W2yvSDCuVS7jXDI7mo-SVHMq6XmiuOWvoNXeWCsGo_kGBQjTAg_Ffx_rMUfyz_ts/pub?gid=1969884902&single=true&output=csv";
+  const OPG_PLACEHOLDER = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+const OPG_DRIVE_API = "https://script.google.com/macros/s/AKfycbzNLigGtYuKJG3NraoCZeaORbGKmF5C2PQe_WmBTu00XdTJgIdikpH60izcaj1clG3Zhg/exec";
+  // Cache validated image lists per listing folder/id
+  const OPG_IMG_CACHE = new Map();
+  const OPG_PREVIEW_CACHE = new Map(); // per-listing preview (first image) cache to avoid flicker
+
+  // Turn any Drive link/ID into a direct lh3 image URL (and strip extra params)
+  function opgToDirect(u){
+    if(!u) return '';
+    const s = String(u).trim();
+
+    // If it's already an lh3 direct URL, normalize and ensure only one size param
+    if (/lh3\.googleusercontent\.com\/d\//i.test(s)){
+      return s
+        .replace(/\?.*$/, '')                 // drop any query
+        .replace(/=s\d+[^/]*$/, '=s1600');    // normalize size once
+    }
+
+    // Otherwise, extract Drive file id from uc?id=... OR /d/{id}/...
+    let id = null;
+    let m = s.match(/[?&]id=([^&]+)/);        // uc?id=FILEID
+    if(m) id = m[1];
+    if(!id){                                   // /d/FILEID/...
+      m = s.match(/\/d\/([^\/?#=]+)/);       // stop before ?, #, or = (in case of existing size)
+      if(m) id = m[1];
+    }
+    if(!id) return s.replace(/\?.*$/, '');
+
+    return `https://lh3.googleusercontent.com/d/${id}=s1600`;
+  }
+
+  // Force a size for Google lh3 URLs (keeps originals for non-lh3)
+  function opgSetSize(u, size='s1600'){
+    if(!u) return u;
+    const s = String(u);
+    if(/lh3\.googleusercontent\.com\/d\//i.test(s)){
+      // remove query and duplicate size params, then apply our size once
+      return s
+        .replace(/\?.*$/, '')
+        .replace(/=s\d+[^/]*$/, `=${size}`);
+    }
+    return u;
+  }
+  // Resolve the first promise that returns a non-empty string (with timeout)
+  async function opgFirstResolved(tasks, timeoutMs=5000){
+    return new Promise((resolve)=>{
+      let settled=false;
+      const timer = setTimeout(()=>{ if(!settled) resolve(''); }, timeoutMs);
+      const tryResolve = (val)=>{ if(!settled && typeof val==='string' && val){ settled=true; clearTimeout(timer); resolve(val); } };
+      tasks.forEach(p=>{
+        Promise.resolve(p).then(tryResolve).catch(()=>{});
+      });
+    });
+  }
+  function opgBest(arr){ return (Array.isArray(arr) && arr.length) ? String(arr[0]) : ''; }
+
+  // Helpers
+  function opgUsd(n){ return n!=='' && n!=null ? Number(n).toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}) : ''; }
+  function opgParseCSV(t){
+    const rows=[], cur=[]; let val='', q=false;
+    for(let i=0;i<t.length;i++){
+      const c=t[i], n=t[i+1];
+      if(c==='"' && !q){ q=true; continue; }
+      if(c==='"' && q){ if(n==='"'){ val+='"'; i++; continue; } q=false; continue; }
+      if(c===',' && !q){ cur.push(val); val=''; continue; }
+      if((c==='\n'||c==='\r') && !q){ if(val!==''||cur.length){ cur.push(val); rows.push(cur.slice()); cur.length=0; val=''; } continue; }
+      val+=c;
+    }
+    if(val!==''||cur.length){ cur.push(val); rows.push(cur.slice()); }
+    return rows;
+  }
+  // Map any header variant to our canonical property key
+    function opgKey(h){
+      const k = String(h||'').trim().toLowerCase().replace(/\s+|_/g,'');
+      const map = {
+        id:'id', type:'type', subtype:'subtype', status:'status',
+        title:'title', address:'address', city:'city', folder:'folder',
+        price:'price', leaserate:'leaseRate', rate:'leaseRate',
+        nnn:'nnn',
+        beds:'beds', bedrooms:'beds',
+        baths:'baths', bathrooms:'baths',
+        sqft:'sqft', squarefeet:'sqft', size:'size',
+        images:'images', photos:'images',
+        flyerurl:'flyerUrl', flyer:'flyerUrl',
+        description:'description', desc:'description',
+        // new: external listing links
+        zillow:'extUrl', zillowurl:'extUrl',
+        loopnet:'extUrl', loopneturl:'extUrl',
+        url:'extUrl', link:'extUrl', details:'extUrl', detailsurl:'extUrl',
+        more:'extUrl', moreurl:'extUrl', external:'extUrl', externalurl:'extUrl',
+        drivefolderid:'driveFolderId', drivefolder:'driveFolderId', folderid:'driveFolderId',
+        featured:'featured', published:'published',
+        thumburl:'thumbUrl',
+      };
+      return map[k] || h; // fall back to original if unknown
+    }
+
+    function opgRow(headers,row){
+      const o={};
+      headers.forEach((h,i)=>{ o[h] = row[i] ?? ''; });
+      // Coerce types
+      if(o.price!=='' ) o.price = Number(o.price);
+      if(o.leaseRate!=='') o.leaseRate = Number(o.leaseRate);
+      if(o.beds!=='') o.beds = Number(o.beds);
+      if(o.baths!=='') o.baths = Number(o.baths);
+      if(o.sqft!=='') o.sqft = Number(o.sqft);
+      // Images: split comma list, harden cleaning
+      o.images = (o.images||'').split(',').map(s=>String(s).trim().replace(/^['"]|['"]$/g,'')).filter(Boolean);
+      // normalize external url if present
+      if (o.extUrl) o.extUrl = String(o.extUrl).trim();
+      // Normalize Drive folder id if a full link was provided
+      if (o.driveFolderId) {
+        const id = opgExtractDriveId(o.driveFolderId);
+        if (id) o.driveFolderId = id;
+      }
+      return o;
+    }
+  // Build image candidates by guessing sequential filenames inside /assets/listings/{residential|commercial}/{folder}/ (new) or legacy /assets/listings/{folder}/
+  function opgBuildImages(L){
+    const folder = (L.folder || '').trim();
+    if (!folder) return [];
+    // Determine category from type; default to residential to be friendly
+    const type = String(L.type || '').toLowerCase();
+    const category = type.includes('commercial') ? 'commercial' : 'residential';
+
+    // Support all current and legacy folder structures (relative paths)
+    const bases = [
+      `./assets/listings/${category}/${folder}/`,  // new structure
+      `./assets/listings/${folder}/`,              // legacy structure (assets root)
+      `./listings/${category}/${folder}/`,         // your current structure
+      `./listings/${folder}/`                      // legacy simple listings root
+    ];
+
+    // common names – prioritize an explicit thumbnail file, then sequential
+    const names = ['thumb','thumbnail','cover','hero','front','exterior','1','2','3','4'];
+    for (let i = 1; i <= 24; i++) names.push(`file${i}`);
+
+    const exts = ['.jpg','.JPG','.jpeg','.JPEG','.png','.PNG'];
+    const candidates = [];
+    bases.forEach(base => {
+      names.forEach(n => exts.forEach(ext => candidates.push(base + n + ext)));
+    });
+    return candidates;
+  }
+
+  // Probe a list of candidate image URLs and keep only the ones that load
+function opgProbeImages(candidates, max=20){
+  return new Promise((resolve)=>{
+    if(!Array.isArray(candidates) || !candidates.length){ resolve([]); return; }
+
+    const keep=[];                 // original URLs to return
+    const seenLower=new Set();     // lowercase URLs to dedupe case-insensitively
+    let i=0;
+    let preferredBase=null;        // once we get a hit, keep testing only that base (/assets/... or /listings/...)
+
+    function tryNext(){
+      // stop when we have enough or no more work
+      if(i>=candidates.length || keep.length>=max){
+        resolve(keep);
+        return;
+      }
+
+      // Skip candidates that are not in the preferred base (after first hit)
+      const raw = candidates[i++];
+      if(preferredBase){
+        const norm = raw.replace(/^\.\//,'').toLowerCase();
+        if(!norm.startsWith(preferredBase)){ tryNext(); return; }
+      }
+
+      const src = encodeURI(raw);
+      const lower = src.toLowerCase();
+      if(seenLower.has(lower)){ tryNext(); return; }
+
+      const img = new Image();
+      const done = () => { tryNext(); };
+      img.onload = () => {
+        // Lock to the first successful base to prevent duplicate variants
+        if(!preferredBase){
+          // support ./assets/... or assets/... as well as ./listings/... or listings/...
+          const m = src.match(/^(?:\.\/)?((?:assets|listings)\/listings\/(?:[^/]+\/){1,2})/i);
+          if(m) preferredBase = m[1].toLowerCase();
+        }
+        seenLower.add(lower);
+        keep.push(src);
+        done();
+      };
+      img.onerror = done;
+      img.src = src;
+    }
+
+    // start a few in parallel for speed
+    let parallel = 8;
+    while(parallel--) tryNext();
+  });
+}
+  const opgImg = (L) => OPG_PLACEHOLDER;
+  function opgCardRes(L){
+    const el=document.createElement('article');
+    el.className='col-4 card reveal';
+    el.setAttribute('tabindex','0');
+    el.setAttribute('data-id', String(L.id||''));
+    // Build facts: city · sqft · size (AC) · beds bd · baths ba
+    const facts = [];
+    if (L.city) facts.push(String(L.city));
+    if (L.sqft) facts.push(`${Number(L.sqft).toLocaleString()} SF`);
+    if (L.size) {
+      const s = String(L.size).trim();
+      const sizeText = /ac|acre|sf|sq\s*ft/i.test(s) ? s : `${s} AC`;
+      facts.push(sizeText);
+    }
+    if (L.beds) facts.push(`${L.beds} bd`);
+    if (L.baths) facts.push(`${L.baths} ba`);
+    const factsText = facts.join(' · ');
+    el.innerHTML = `
+        <img src="${opgImg(L)}" loading="lazy" decoding="async" width="800" height="450" alt="" style="width:100%;height:180px;object-fit:cover;border-bottom:1px solid var(--line)">
+        <div class="card-body">
+          <div class="pill">${L.subtype || 'Residential'}</div>
+          <h3 style="margin:8px 0 6px">${L.title}</h3>
+          <div class="meta">${factsText}</div>
+          <div class="meta" style="margin-top:6px">${opgUsd(L.price)}</div>
+          <div style="margin-top:12px"><a class="cta opg-more" href="#" data-id="${L.id}">More Info</a></div>
+        </div>`;
+    return el;
+  }
+  function opgCardCom(L){
+    const el=document.createElement('article');
+    el.className='col-4 card reveal';
+    el.setAttribute('tabindex','0');
+    el.setAttribute('data-id', String(L.id||''));
+    // Build facts: city · sqft · size (AC) (show both if present)
+    const cf = [];
+    if (L.city) cf.push(String(L.city));
+    if (L.sqft) cf.push(`${Number(L.sqft).toLocaleString()} SF`);
+    if (L.size) {
+      const s = String(L.size).trim();
+      const sizeText = /ac|acre|sf|sq\s*ft/i.test(s) ? s : `${s} AC`;
+      cf.push(sizeText);
+    }
+    const cfText = cf.join(' · ');
+    el.innerHTML = `
+        <img src="${opgImg(L)}" loading="lazy" decoding="async" width="800" height="450" alt="" style="width:100%;height:180px;object-fit:cover;border-bottom:1px solid var(--line)">
+        <div class="card-body">
+          <div class="pill">${L.subtype || 'Commercial'}</div>
+          <h3 style="margin:8px 0 6px">${L.title}</h3>
+          <div class="meta">${cfText}</div>
+          <div class="meta" style="margin-top:6px">${L.leaseRate ? `$${L.leaseRate}/SF ${L.nnn||''}` : (L.price? opgUsd(L.price) : '')}</div>
+          <div style="margin-top:12px"><a class="cta opg-more" href="#" data-id="${L.id}">More Info</a></div>
+        </div>`;
+    return el;
+  }
+  const opgCardAny = L => (L.type||'').toLowerCase()==='commercial' ? opgCardCom(L) : opgCardRes(L);
+
+  // Extract a Google Drive file/folder id from any link or id-like string
+  function opgExtractDriveId(u){
+    if(!u) return '';
+    const s = String(u).trim();
+    // already an id (20+ safe chars)
+    if (/^[a-zA-Z0-9_-]{20,}$/.test(s)) return s;
+    // /folders/{id}
+    let m = s.match(/\/folders\/([a-zA-Z0-9_-]{20,})/);
+    if(m) return m[1];
+    // /d/{id}/...
+    m = s.match(/\/d\/([a-zA-Z0-9_-]{20,})/);
+    if(m) return m[1];
+    // uc?id={id}
+    m = s.match(/[?&]id=([a-zA-Z0-9_-]{20,})/);
+    if(m) return m[1];
+    return '';
+  }
+
+  // Fetch public image URLs for a Drive folder (Apps Script)
+  async function fetchDriveImages(folderId){
+    const fid = opgExtractDriveId(folderId);
+    if(!fid) return [];
+    try{
+      const url = `${OPG_DRIVE_API}?folderId=${encodeURIComponent(fid)}`;
+      const res = await fetch(url, {cache:'no-cache'});
+      const json = await res.json();
+      // Accept either an array or an object with { ok, images } or { files }
+      const rawArr = Array.isArray(json)
+          ? json
+          : (json && Array.isArray(json.images)
+              ? json.images
+              : (json && Array.isArray(json.files)
+                  ? json.files
+                  : []));
+      if (rawArr.length) {
+        const toEntry = (x) => {
+          if(!x) return null;
+          if(typeof x === 'string') return { url: x, name: '' };
+          const url = x.url ? x.url : (x.webViewLink ? x.webViewLink : (x.id ? `https://drive.google.com/uc?id=${x.id}&export=view` : ''));
+          return { url, name: (x.name||'') };
+        };
+
+        const entries = rawArr.map(toEntry).filter(Boolean);
+
+        // --- Match Commercial ordering: priority by filename, then alpha ---
+        function opgFilePriority(n){
+          const s = String(n||'').toLowerCase();
+          const m = s.match(/file\s*([0-9]+)/i);
+          if(m){
+            const k = parseInt(m[1],10);
+            if(k>=1 && k<=4) return k - 1; // file1..file4 first in order
+          }
+          if (/thumb/.test(s)) return 98;   // push generic thumbnails late
+          return 50;                         // everything else in the middle
+        }
+
+        const ordered = entries.slice().sort((a,b)=>{
+          const pa = opgFilePriority(a.name||a.url||'');
+          const pb = opgFilePriority(b.name||b.url||'');
+          if (pa !== pb) return pa - pb;
+          return String(a.name||a.url||'').localeCompare(String(b.name||b.url||''));
+        });
+
+        // Convert to direct image URLs (lh3) in this stable order
+        const urls = ordered.map(e => opgToDirect(e.url)).filter(Boolean);
+        return urls;
+      }
+    }catch(e){ console.warn('[OPG] Drive fetch failed', e); }
+    return [];
+  }
+
+
+  // Prefer Drive folderId → local probe → sheet list (simple & fast)
+  async function opgResolvePreview(L){
+    const key = String(L.id || L.folder || L.title || JSON.stringify(L));
+    // Restore original thumbnail handling for Drive images and relative paths
+    if (L.thumbUrl) {
+      const raw = String(L.thumbUrl).trim();
+      const allow = /^(?:\.{0,2}\/|https?:\/\/(?:lh3\.googleusercontent\.com|drive\.googleusercontent\.com|drive\.google\.com)\b)/i.test(raw);
+      if (allow) {
+        const fast = opgSetSize(opgToDirect(raw), 's1600');
+        OPG_PREVIEW_CACHE.set(key, fast);
+        return fast;
+      }
+    }
+    if (OPG_PREVIEW_CACHE.has(key)) return OPG_PREVIEW_CACHE.get(key);
+
+    // Prefer Drive folderId → local probe → sheet list (simple & fast)
+    const byFolderIdP = L.driveFolderId ? (async()=>{
+      try{ const arr = await fetchDriveImages(L.driveFolderId); return opgBest(arr); }catch{ return ''; }
+    })() : Promise.resolve('');
+
+    const probeP = (async()=>{
+      try{ const arr = await opgProbeImages(opgBuildImages(L), 1); return opgBest(arr); }catch{ return ''; }
+    })();
+
+    const sheetP = (async()=>{
+      try{ return (Array.isArray(L.images) && L.images.length) ? String(L.images[0]).trim() : ''; }catch{ return ''; }
+    })();
+
+    // Race the simple strategies (5s ceiling)
+    const first = await opgFirstResolved([byFolderIdP, probeP, sheetP], 5000);
+    const result = first || OPG_PLACEHOLDER;
+    OPG_PREVIEW_CACHE.set(key, result);
+    return result;
+  }
+
+  // Swap an <img> source directly (avoid CORS/CORB preloading issues)
+  function opgSwapImage(imgEl, nextSrc){
+    if(!imgEl || !nextSrc) return;
+    const current = imgEl.dataset.src || imgEl.getAttribute('src') || '';
+    if(current === nextSrc) return;
+    imgEl.src = nextSrc;
+    imgEl.dataset.src = nextSrc;
+  }
+
+  // Load home listings as a featured carousel (shows 3 at a time, Drive images)
+  (function loadHomeListings(){
+    const grid = document.getElementById('listing-grid');
+    if(!grid) return;
+
+    function parseCsvToObjects(csv){
+      const allRows = opgParseCSV(csv);
+      const rows = allRows.filter(r => Array.isArray(r) && r.some(cell => String(cell||'').trim().length));
+      if (!rows.length) return [];
+      let headerIndex = -1;
+      for (let i = 0; i < rows.length; i++){
+        const probe = rows[i].map(c => String(c||'').trim().toLowerCase());
+        if (probe.includes('title') || probe.includes('address') || probe.includes('city')){ headerIndex = i; break; }
+      }
+      if (headerIndex === -1) return [];
+      const headers = rows[headerIndex].map(opgKey);
+      const list = rows.slice(headerIndex + 1).map(r => opgRow(headers, r));
+      return list.filter(x => (x.title&&String(x.title).trim()) || (x.address&&String(x.address).trim()) || (x.city&&String(x.city).trim()));
+    }
+
+    function renderFeatured(list){
+      const isYes = v => String(v||'').trim().toLowerCase()==='yes';
+      const favs = list.filter(L => isYes(L.featured) || isYes(L.Featured));
+      const featured = (favs.length ? favs : list).slice(0,3);
+
+      grid.innerHTML = '';
+      featured.forEach(L => {
+        const card = opgCardAny(L);
+        card.setAttribute('tabindex','0');
+        grid.appendChild(card);
+        const imgEl = card.querySelector('img');
+        if(imgEl && !imgEl.getAttribute('src')) imgEl.src = OPG_PLACEHOLDER;
+        // Prefer a sheet-provided thumbnail if available for instant paint
+        if (L.thumbUrl) {
+          const thumb = opgSetSize(opgToDirect(L.thumbUrl), 's480');
+          opgSwapImage(imgEl, thumb);
+        } else {
+          // Otherwise resolve via Drive/Map/probe
+          opgResolvePreview(L)
+            .then(src => opgSwapImage(imgEl, opgSetSize(src,'s480')))
+            .catch(()=>{});
+        }
+      });
+      grid.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    }
+
+    function loadFromSheet(){
+      return fetch(OPG_SHEET_CSV, { cache: 'no-cache' })
+        .then(r => { if(!r.ok) throw new Error('Sheet HTTP ' + r.status); return r.text(); })
+        .then(csv => parseCsvToObjects(csv));
+    }
+
+    loadFromSheet()
+      .then(list => {
+        if(!Array.isArray(list) || list.length===0){
+          grid.innerHTML = `
+            <p class="meta">
+              No listings found in your Google Sheet.<br>
+              Make sure row 1 is headers and at least one row has a Title, Address, or City.<br>
+              <a href="${OPG_SHEET_CSV}" target="_blank" rel="noopener">Open CSV</a>
+            </p>`;
+          return;
+        }
+        window._opgListings = list;
+        renderFeatured(list);
+        // (Old background warm-up block removed)
+
+        // Proactive gallery cache: fetch + cache image lists for ALL listings at idle
+        (function warmGalleries(){
+          const listings = (window._opgListings || []).slice(0);
+          const MAX_CONCURRENCY = 3;
+          let inFlight = 0;
+
+          // Merge sources the same way openListing() does, but without touching the DOM
+          async function buildGallery(L){
+            const key = L.id || L.folder || JSON.stringify(L);
+            if (OPG_IMG_CACHE.has(key)) return;            // already cached
+
+            // Commercial ordering: Drive → Sheet → Probe
+            let driveList = [];
+            if (L.driveFolderId) {
+              try { driveList = await fetchDriveImages(L.driveFolderId); } catch { driveList = []; }
+            }
+            const sheetList = (Array.isArray(L.images) && L.images.length) ? L.images : [];
+            let probeList = [];
+            try { probeList = await opgProbeImages(opgBuildImages(L), 24); } catch { probeList = []; }
+
+            const merged = new Map();
+            [driveList, sheetList, probeList].forEach(arr => {
+              (arr || []).forEach(u => {
+                const s = opgToDirect(String(u||'').trim());
+                if (!s) return; const k = s.toLowerCase();
+                if (!merged.has(k)) merged.set(k, s);
+              });
+            });
+            let imgs = Array.from(merged.values());
+            if (!imgs.length) return;
+
+            // Keep Drive ordering intact: only add preview when Drive list is empty
+            try {
+              if (!(driveList && driveList.length)) {
+                const preview = await opgResolvePreview(L);
+                if (preview && !imgs.some(x => x.toLowerCase() === preview.toLowerCase())){
+                  imgs.unshift(preview);
+                }
+              }
+            } catch {}
+
+            // cache the gallery
+            OPG_IMG_CACHE.set(key, imgs);
+
+            // lightly warm the first few images into the browser cache
+            imgs.slice(0, 6).forEach(u => opgPreload(opgSetSize(u,'s1200')));
+          }
+
+          function next(){
+            if (!listings.length) return;
+            while (inFlight < MAX_CONCURRENCY && listings.length){
+              const L = listings.shift(); inFlight++;
+              (window.requestIdleCallback || setTimeout)(()=>{
+                buildGallery(L).finally(()=>{ inFlight--; next(); });
+              }, { timeout: 1500 });
+            }
+          }
+          next();
+        })();
+
+        // (Intent-based warm-up listeners removed)
+      })
+      .catch(err => {
+        console.error('[OPG] Index: Sheet fetch error ->', err);
+        grid.innerHTML = `
+          <p class="meta">
+            Unable to load listings from Google Sheet.<br>
+            Check: File → Share → Publish to web → (your listings tab) → CSV.<br>
+            <a href="${OPG_SHEET_CSV}" target="_blank" rel="noopener">Open CSV</a>
+          </p>`;
+      });
+  })();
+  // --- Background image prewarm (index): light & throttled ---
+  function opgPreload(url){
+    if(!url) return;
+    const img = new Image();
+    img.decoding = 'async';
+    img.loading  = 'eager';
+    img.src = url;
+  }
+
+  // === OPG: Global delegated openers for featured cards (click + keyboard) ===
+  (function(){
+    // Open when clicking anywhere on a card or the .opg-more link
+    document.addEventListener('click', function(e){
+      const more = e.target.closest('.opg-more');
+      const card = e.target.closest('.card[data-id]');
+      if (more || card){
+        e.preventDefault();
+        const id = (more && more.dataset.id) || (card && card.dataset.id);
+        if (id) openListing(String(id));
+      }
+    });
+
+    // Accessibility: open with Enter/Space when a card is focused
+    document.addEventListener('keydown', function(e){
+      if ((e.key === 'Enter' || e.key === ' ') && e.target instanceof HTMLElement){
+        const card = e.target.closest('.card[data-id]');
+        if (card && document.activeElement === card){
+          e.preventDefault();
+          const id = card.dataset.id;
+          if (id) openListing(String(id));
+        }
+      }
+    });
+  })();
+  // ===== Listing Modal Controller (race-safe & cache-aware) =====
+  async function openListing(id){
+    const list = window._opgListings || [];
+    const L = list.find(x => String(x.id) === String(id));
+    if(!L){ console.warn('Listing not found', id); return; }
+
+    const modal = document.getElementById('listing-modal');
+    const main = document.getElementById('lm-main');
+    const thumbs = document.getElementById('lm-thumbs');
+
+    // --- Reset UI immediately to avoid showing previous listing's images
+    main.removeAttribute('src');
+    thumbs.innerHTML = '';
+
+
+    document.getElementById('lm-title').textContent = L.title || 'Listing';
+    document.getElementById('lm-heading').textContent = L.address ? `${L.title}` : (L.title||'');
+    document.getElementById('lm-type').textContent = L.subtype || L.type || '';
+
+    const city = L.city || '';
+    // --- Size display logic: match Residential/Commercial cards (append AC or SF as appropriate) ---
+    let size = '';
+    if (L.size) {
+      const s = String(L.size).trim();
+      // If already has units, use as-is; else default to "AC"
+      size = /ac|acre|sf|sq\s*ft/i.test(s) ? s : `${s} AC`;
+    } else if (L.sqft) {
+      size = `${Number(L.sqft).toLocaleString()} SF`;
+    }
+    const price = L.price ? Number(L.price).toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}) : (L.leaseRate ? `$${L.leaseRate}/SF ${L.nnn||''}` : '');
+    // Price panel
+    const lmPriceEl = document.getElementById('lm-price');
+    if (lmPriceEl) lmPriceEl.textContent = price || '';
+
+    // Chips (city, size, beds, baths)
+    const chipCityWrap = document.getElementById('lm-chip-city-wrap');
+    const chipCity     = document.getElementById('lm-chip-city');
+    const chipSizeWrap = document.getElementById('lm-chip-size-wrap');
+    const chipSize     = document.getElementById('lm-chip-size');
+    const chipBedsWrap = document.getElementById('lm-chip-beds-wrap');
+    const chipBeds     = document.getElementById('lm-chip-beds');
+    const chipBathsWrap= document.getElementById('lm-chip-baths-wrap');
+    const chipBaths    = document.getElementById('lm-chip-baths');
+
+    if (chipCityWrap && chipCity){
+      if (city){ chipCity.textContent = city; chipCityWrap.style.display='inline-flex'; }
+      else { chipCityWrap.style.display='none'; }
+    }
+    if (chipSizeWrap && chipSize){
+      if (size){ chipSize.textContent = size; chipSizeWrap.style.display='inline-flex'; }
+      else { chipSizeWrap.style.display='none'; }
+    }
+    if (chipBedsWrap && chipBeds){
+      if (L.beds){ chipBeds.textContent = `${L.beds} bed`; chipBedsWrap.style.display='inline-flex'; }
+      else { chipBedsWrap.style.display='none'; }
+    }
+    if (chipBathsWrap && chipBaths){
+      if (L.baths){ chipBaths.textContent = `${L.baths} bath`; chipBathsWrap.style.display='inline-flex'; }
+      else { chipBathsWrap.style.display='none'; }
+    }
+
+    // Optional description
+    const descEl = document.getElementById('lm-desc');
+    if (descEl){ descEl.textContent = (L.description || '').toString().trim(); }
+
+    const facts = [];
+    if(L.address) facts.push(`<div><strong>Address</strong><br>${L.address}</div>`);
+    if(L.beds) facts.push(`<div><strong>Beds</strong><br>${L.beds}</div>`);
+    if(L.baths) facts.push(`<div><strong>Baths</strong><br>${L.baths}</div>`);
+    if(L.sqft) facts.push(`<div><strong>Sq Ft</strong><br>${Number(L.sqft).toLocaleString()}</div>`);
+    // --- Size/acreage display: append AC or SF as appropriate, match cards ---
+    if (L.size) {
+      const s = String(L.size).trim();
+      const sizeText = /ac|acre|sf|sq\s*ft/i.test(s) ? s : `${s} AC`;
+      facts.push(`<div><strong>Size</strong><br>${sizeText}</div>`);
+    }
+    if(L.price) facts.push(`<div><strong>Price</strong><br>${price}</div>`);
+    if(L.leaseRate) facts.push(`<div><strong>Rate</strong><br>$${L.leaseRate}/SF ${L.nnn||''}</div>`);
+    const factsEl = document.getElementById('lm-facts');
+    if (factsEl) {
+      factsEl.innerHTML = facts.join('');
+    }
+
+    // External link (Zillow/LoopNet/etc.)
+    const lmExt = document.getElementById('lm-ext');
+    if (L.extUrl && /^https?:\/\//i.test(L.extUrl)) {
+      let label = 'View Details';
+      try {
+        const host = new URL(L.extUrl).hostname.replace(/^www\./,'').toLowerCase();
+        if (host.includes('zillow')) label = 'View on Zillow';
+        else if (host.includes('loopnet')) label = 'View on LoopNet';
+      } catch {}
+      lmExt.textContent = label;
+      lmExt.href = L.extUrl;
+      lmExt.style.display = 'inline-flex';
+    } else {
+      lmExt.removeAttribute('href');
+      lmExt.style.display = 'none';
+    }
+
+    // --- Request token to prevent races when user opens/changes quickly
+    const token = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    modal.dataset.req = token;
+
+    // Small placeholder while we fetch
+    main.src = OPG_PLACEHOLDER;
+
+    // Open the modal immediately for instant feedback (images load progressively)
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    document.addEventListener('keydown', escClose);
+    modal.addEventListener('click', backdropClose);
+
+    // Normalize explicit images from the sheet (if provided)
+    const preferSheet = (L.images && L.images.length)
+      ? L.images.map(s => String(s).trim().replace(/^['"]|['"]$/g,'')).filter(Boolean)
+      : [];
+    // Always fetch the preview concurrently so we can include it in the modal gallery
+    const previewPromise = opgResolvePreview(L).catch(()=> '');
+    // Helper to include preview (if not already present) at front of arr
+    function includePreview(arr, preview){
+      const out = Array.isArray(arr)? arr.slice():[];
+      if(preview){
+        const has = out.some(u=>String(u).toLowerCase()===String(preview).toLowerCase());
+        if(!has) out.unshift(preview);
+      }
+      return out;
+    }
+
+    function stillCurrent(){ return modal.dataset.req === token; }
+
+    function renderGallery(arr){
+      if(!stillCurrent()) return; // stale
+      const uniq = new Map();
+      (arr || []).forEach(u=>{
+        const orig = String(u).trim().replace(/^['"]|['"]$/g,'');
+        const key = orig.toLowerCase();
+        if(!uniq.has(key)) uniq.set(key, orig);
+      });
+      const clean = Array.from(uniq.values());
+      // Normalize sizes (bigger for main, medium for rest)
+      const sized = clean.map((u,i)=> i===0 ? opgSetSize(u,'s1600') : opgSetSize(u,'s1200'));
+
+      // Persist images on modal for swipe/next controls
+      modal._imgs = sized;
+      modal._idx  = 0;
+
+      // main image
+      const first = sized[0] || OPG_PLACEHOLDER;
+      main.src = encodeURI(first);
+      main.onerror = () => { console.warn('[OPG] Main image failed:', main.src); main.src = OPG_PLACEHOLDER; };
+
+      // thumbs
+      thumbs.innerHTML = '';
+      sized.forEach((src,i)=>{
+        const t = document.createElement('img');
+        t.src = encodeURI(opgSetSize(src,'s400'));
+        if(i===0) t.classList.add('active');
+        t.onerror = () => { t.style.display = 'none'; };
+        t.addEventListener('click', ()=>{
+          if(!stillCurrent()) return;
+          modal._idx = i;
+          main.src = encodeURI(src);
+          thumbs.querySelectorAll('img').forEach((x,j)=> x.classList.toggle('active', j===i));
+        });
+        thumbs.appendChild(t);
+      });
+
+      // --- Fixed arrow indicator on mobile (does not scroll with strip)
+      if (window.matchMedia('(max-width: 640px)').matches) {
+        const wrap = thumbs.parentElement;          // the left column container
+        if (wrap) {
+          // ensure positioned context
+          if (getComputedStyle(wrap).position === 'static') wrap.style.position = 'relative';
+
+          let arrow = wrap.querySelector('.thumbs-arrow');
+          if (!arrow) {
+            arrow = document.createElement('div');
+            arrow.className = 'thumbs-arrow';
+            arrow.setAttribute('aria-hidden', 'true');
+            arrow.textContent = '›';
+            wrap.appendChild(arrow);
+          }
+
+          const placeArrow = () => {
+            // center the arrow vertically on the thumbnail strip (relative to wrap)
+            const top = thumbs.offsetTop + (thumbs.clientHeight / 2) - (arrow.offsetHeight / 2);
+            arrow.style.top = `${Math.max(thumbs.offsetTop, top)}px`;
+          };
+
+          const updateArrow = () => {
+            const overflow = thumbs.scrollWidth > thumbs.clientWidth + 2;
+            const atEnd = Math.ceil(thumbs.scrollLeft + thumbs.clientWidth) >= (thumbs.scrollWidth - 1);
+            arrow.style.display = (overflow && !atEnd) ? 'grid' : 'none';
+            placeArrow();
+          };
+
+          // Initial placement/visibility
+          updateArrow();
+
+          // Recompute on scroll/resize/content changes
+          thumbs.addEventListener('scroll', updateArrow, { passive: true });
+          window.addEventListener('resize', updateArrow);
+          // small async to capture image load resizing
+          setTimeout(updateArrow, 100);
+        }
+      }
+
+
+      // Swipe + tap support on main image (mobile-friendly)
+      (function bindSwipe(){
+        if (main._swipeBound) return; // prevent duplicate listeners
+        let startX = 0;
+        const onStart = (e)=>{ startX = (e.touches?.[0]?.clientX ?? e.clientX); };
+        const toIndex = (idx)=>{
+          const imgs = Array.isArray(modal._imgs) ? modal._imgs : [];
+          if (!imgs.length) return;
+          if (idx < 0) idx = imgs.length - 1;
+          if (idx >= imgs.length) idx = 0;
+          modal._idx = idx;
+          main.src = encodeURI(imgs[idx]);
+          const thumbEls = thumbs.querySelectorAll('img');
+          thumbEls.forEach((x,j)=> x.classList.toggle('active', j===idx));
+        };
+        const onEnd = (e)=>{
+          const endX = (e.changedTouches?.[0]?.clientX ?? e.clientX);
+          const dx = endX - startX;
+          if (Math.abs(dx) < 40) return; // small drags ignored
+          toIndex((modal._idx || 0) + (dx < 0 ? 1 : -1)); // left swipe → next
+        };
+        main.addEventListener('touchstart', onStart, { passive:true });
+        main.addEventListener('touchend',   onEnd,   { passive:true });
+        // Tap to advance everywhere
+        main.addEventListener('click', ()=> toIndex((modal._idx || 0) + 1));
+        main._swipeBound = true;
+      })();
+    }
+
+    // --- Resolve images (Commercial order: Drive → Sheet → Local probe, and preview logic)
+    const cacheKey = L.id || L.folder || JSON.stringify(L);
+    if (OPG_IMG_CACHE.has(cacheKey)){
+      const cached = OPG_IMG_CACHE.get(cacheKey);
+      const preview = await previewPromise;
+      // Only include preview if Drive list was not present (match Commercial order)
+      const withPreview = (Array.isArray(cached) && cached.length && L.driveFolderId && cached.some(u => String(u).toLowerCase().includes('lh3.googleusercontent.com/d/')))
+        ? cached
+        : includePreview(cached, preview);
+      OPG_IMG_CACHE.set(cacheKey, withPreview);
+      renderGallery(withPreview);
+    } else {
+      // Gather images with Commercial ordering: Drive → Sheet → Local probe
+      let driveList = [];
+      if (L.driveFolderId) {
+        try { driveList = await fetchDriveImages(L.driveFolderId); } catch { driveList = []; }
+      }
+      const sheetList = preferSheet;
+      let probeList = [];
+      try { probeList = await opgProbeImages(opgBuildImages(L), 40); } catch { probeList = []; }
+
+      // Merge & dedupe preserving order by source priority
+      const mergedMap = new Map();
+      [driveList, sheetList, probeList].forEach(arr => {
+        (arr || []).forEach(u => {
+          const s = String(u||'').trim();
+          if (!s) return;
+          const key = s.toLowerCase();
+          if (!mergedMap.has(key)) mergedMap.set(key, s);
+        });
+      });
+      let imgs = Array.from(mergedMap.values());
+
+      // Ensure at least one image
+      if (!imgs.length) imgs = [OPG_PLACEHOLDER];
+
+      // Include preview only when no Drive list was available (keeps Drive order identical to Commercial)
+      const preview = await previewPromise;
+      const withPreview = (driveList && driveList.length)
+        ? imgs
+        : includePreview(imgs, preview);
+
+      OPG_IMG_CACHE.set(cacheKey, withPreview);
+      renderGallery(withPreview);
+    }
+
+  }
+  function closeListing(){
+    const modal = document.getElementById('listing-modal');
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    document.removeEventListener('keydown', escClose);
+    modal.removeEventListener('click', backdropClose);
+  }
+  function escClose(e){ if(e.key==='Escape') closeListing(); }
+  function backdropClose(e){ if(e.target.id==='listing-modal') closeListing(); }
+
+  /* ===== Lead Form: Buy/Sell toggle ===== */
+  (function(){
+    const form   = document.getElementById('lead-form');
+    if(!form) return;
+    const tabBuy = document.getElementById('tab-buy');
+    const tabSell= document.getElementById('tab-sell');
+    const addressWrap = document.getElementById('lead-address');
+    const hint   = document.getElementById('form-hint');
+    const msg    = document.getElementById('lead-msg');
+    const submit = document.getElementById('lead-submit');
+
+    function setMode(mode){
+      form.dataset.mode = mode;
+      const selling = mode === 'sell';
+
+      // Tabs ARIA state
+      tabBuy.setAttribute('aria-selected', selling ? 'false':'true');
+      tabSell.setAttribute('aria-selected', selling ? 'true':'false');
+
+      // Address only for sellers; required for sellers
+      if(addressWrap){
+        addressWrap.style.display = selling ? '' : 'none';
+        const input = addressWrap.querySelector('input');
+        if(input){ input.required = selling; }
+      }
+
+      // Copy and CTA text
+      if(hint)  hint.textContent = selling
+        ? 'Selling? Tell us your address, condition, and ideal timing. We’ll send a valuation and plan.'
+        : 'Buying? Share size, area, budget, and timing. We’ll send a shortlist within days.';
+
+      if(msg)   msg.placeholder = selling
+        ? 'Sell: address is required; tell us condition, updates, and your ideal timeline'
+        : 'Buy: beds/size, area, budget, and timing';
+
+      if(submit) submit.textContent = selling ? 'Get a Free Valuation' : 'Schedule a Consultation';
+    }
+
+    // Default to buy
+    setMode('buy');
+
+    // Event listeners
+    if(tabBuy)  tabBuy.addEventListener('click', ()=> setMode('buy'));
+    if(tabSell) tabSell.addEventListener('click', ()=> setMode('sell'));
+  })();
+
+  // Auto-select sell mode if a Free Valuation CTA is clicked
+  document.addEventListener('DOMContentLoaded', ()=>{
+    const ids = ['cta-free-valuation', 'cta-free-valuation-hero'];
+    ids.forEach(id => {
+      const cta = document.getElementById(id);
+      if (!cta) return;
+      cta.addEventListener('click', ()=>{
+        // wait a moment for the page to scroll to #contact, then toggle to Sell
+        setTimeout(()=>{
+          const tabSell = document.getElementById('tab-sell');
+          if (tabSell) tabSell.click();
+        }, 200);
+      });
+    });
+  });
+
+  // === Formspree integration ===
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/movnqpdy';
+
+  async function sendToFormspree(form) {
+    const formData = new FormData(form);
+
+    if (!formData.has('_subject')) {
+      let subject = 'OPG Website Inquiry';
+      if (form.id === 'brief-form')      subject = 'OPG Quick Brief';
+      if (form.id === 'lead-form')       subject = 'OPG Consultation Request';
+      if (form.id === 'sub-form')        subject = 'OPG Newsletter Subscribe';
+      formData.append('_subject', subject);
+    }
+
+    formData.append('source_url', location.href);
+
+    const res = await fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: formData
+    });
+
+    if (res.ok) return { ok: true };
+    try {
+      const data = await res.json();
+      return { ok: false, error: (data.errors && data.errors.map(e=>e.message).join(', ')) || 'Submission failed' };
+    } catch {
+      return { ok: false, error: 'Submission failed' };
+    }
+  }
+
+  async function onFormSubmit(e){
+    e.preventDefault();
+    const form = e.target;
+
+    const btn = form.querySelector('button[type="submit"], .btn-primary, .cta');
+    const prev = btn ? btn.textContent : '';
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+
+    const result = await sendToFormspree(form);
+
+    if (btn) { btn.disabled = false; btn.textContent = prev; }
+
+    if (result.ok) {
+      const note = document.createElement('div');
+      note.textContent = 'Thanks — we’ll reply shortly.';
+      note.style.cssText = 'margin-top:10px;color:#1f6a91;font-weight:700;display:block;white-space:nowrap;';
+      form.appendChild(note);
+      try { form.reset(); } catch {}
+      setTimeout(()=> note.remove(), 6000);
+    } else {
+      alert(result.error || 'Sorry, something went wrong.');
+    }
+  }
+
+  ['brief-form','lead-form','sub-form'].forEach(id=>{
+    const f = document.getElementById(id);
+    if (f) f.addEventListener('submit', onFormSubmit);
+  });
+
+  /* ===== Reveal on Scroll ===== */
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); }
+    });
+  }, {threshold: .12});
+  document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+</script>
+  <!-- Listing detail modal -->
+  <div id="listing-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-head">
+        <strong id="lm-title">Listing</strong>
+        <button class="modal-close" aria-label="Close" onclick="closeListing()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <div class="gallery-main"><img id="lm-main" alt="listing image"></div>
+          <div id="lm-thumbs" class="thumbs"></div>
+        </div>
+              <div class="lm-right">
+        <div class="pill" id="lm-type" style="margin-bottom:8px"></div>
+        <h3 id="lm-heading" style="margin:6px 0 12px"></h3>
+
+        <div class="lm-panel">
+          <div id="lm-price" class="lm-price"></div>
+          <div class="chips">
+            <span class="chip" id="lm-chip-city-wrap"  style="display:none"><span class="dot"></span><span id="lm-chip-city"></span></span>
+            <span class="chip" id="lm-chip-size-wrap"  style="display:none"><span class="dot"></span><span id="lm-chip-size"></span></span>
+            <span class="chip" id="lm-chip-beds-wrap"  style="display:none"><span class="dot"></span><span id="lm-chip-beds"></span></span>
+            <span class="chip" id="lm-chip-baths-wrap" style="display:none"><span class="dot"></span><span id="lm-chip-baths"></span></span>
+          </div>
+          <p id="lm-desc" class="meta" style="font-size:18px; color:#344054; margin:6px 0 0;"></p>
+        </div>
+
+        <div class="lm-actions">
+          <a id="lm-inquire" class="cta" href="#contact">Inquire</a>
+          <a id="lm-ext" class="btn-outline" style="display:none" target="_blank" rel="noopener">View Listing</a>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // FAQ toggle
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const p = q.closest('.faq');
+        const open = p.classList.toggle('open');
+        q.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      q.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); q.click(); }
+      });
+    });
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{
+      "@type": "Question",
+      "name": "What are typical closing costs in Omaha?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For buyers, plan on about 2-3% of the purchase price covering lender, title, recording, and prepaid items. Sellers typically cover title insurance and their side of transfer/commission."
+      }
+    },{
+      "@type": "Question",
+      "name": "How long does a home sale take from offer to close?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A financed purchase is commonly 30-45 days; cash deals can close in 10-14 days depending on inspections and title."
+      }
+    },{
+      "@type": "Question",
+      "name": "What's the difference between NNN and Gross commercial leases?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "NNN (triple-net) adds taxes, insurance, and maintenance to the base rent. Gross includes some or all expenses in one number."
+      }
+    },{
+      "@type": "Question",
+      "name": "Do you work with off‑market properties?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes - our network regularly surfaces opportunities before they’re public. Share your criteria and we will set up targeted outreach and alerts."
+      }
+    }]
+  }
+  </script>
+<script>
+    // Resolve guide card images across possible folders; fall back gracefully
+    (function(){
+      const PLACEHOLDERS = {
+        buy: 'https://images.unsplash.com/photo-1505691723518-36a5ac3b2d95?q=80&w=1200&auto=format&fit=crop',
+        sell: 'https://images.unsplash.com/photo-1493809842364-78817add7ffb?q=80&w=1200&auto=format&fit=crop',
+        commercial: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=1200&auto=format&fit=crop'
+      };
+      const CANDIDATES = (name)=>[
+        `./images/guides/${name}.jpg`,
+        `./images/guides/${name}.jpeg`,
+        `./assets/images/guides/${name}.jpg`,
+        `./assets/images/guides/${name}.jpeg`,
+        `./assets/guides/${name}.jpg`,
+        `./assets/guides/${name}.jpeg`,
+      ];
+      function tryLoad(img, list, i=0){
+        if(i>=list.length){ img.src = PLACEHOLDERS[img.dataset.name] || PLACEHOLDERS.buy; return; }
+        const probe = new Image();
+        const url = list[i];
+        probe.onload = ()=>{ img.src = list[i]; };
+        probe.onerror = ()=>{ tryLoad(img, list, i+1); };
+        probe.src = url;
+      }
+      document.querySelectorAll('img.guide-img[data-name]').forEach(img=>{
+        const name = img.dataset.name;
+        tryLoad(img, CANDIDATES(name));
+      });
+    })();
+  </script>
+</body>
+</html>
+  <!-- Newsletter subscription form (hidden or in footer, example) -->
+  <!--
+  <form id="sub-form" action="https://formspree.io/f/movnqpdy" method="POST">
+    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none">
+    ...fields...
+  </form>
+  -->
+  /* ===== Thumb scroll indicator for modal gallery ===== */
+  .thumb-scroll-indicator {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: rgba(0,0,0,0.4);
+    pointer-events: none;
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .thumbs {
+      position: relative;
+      overflow-x: auto;
+    }
+    .thumb-scroll-indicator {
+      display: block;
+    }
+  }
