@@ -48,7 +48,26 @@
       padding:10px 16px;font-weight:700;box-shadow:0 6px 14px rgba(79,163,209,.28)
     }
     .site-footer .cta:hover{background:#1f6a91}
-    @media (max-width:960px){ .site-footer .foot{grid-template-columns:1fr;gap:16px} }
+    @media (max-width:960px){
+      .site-footer .foot {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        text-align: center;
+      }
+      .site-footer .brand {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .site-footer .brand .divider {
+        display: none;
+      }
+      .site-footer .brand .logo,
+      .site-footer .brand .parent {
+        width: 160px;
+        height: auto;
+        margin: 0 auto;
+      }
+    }
   </style>
 
   <div class="wrap foot">
