@@ -964,6 +964,10 @@
         images:'images', photos:'images', published:'published',
         zillow:'extUrl', url:'extUrl', link:'extUrl',
         drivefolderid:'driveFolderId', driveid:'driveFolderId', drivefolder:'driveFolderId', thumburl:'thumbUrl',
+        sold:'Sold',
+        is_sold:'Sold',
+        soldstatus:'Sold',
+        status_sold:'Sold',
       };
       const key = h => MAP[String(h||'').toLowerCase().replace(/\s+/g,'')] || String(h||'').trim();
       // Robust CSV parser: handles commas and NEWLINES inside quotes
@@ -1134,37 +1138,39 @@ const arr = await getListingImages(L, 1);
 return arr[0] || OPG_PLACEHOLDER;
       }
       function opgCardCom(L){
-        const el=document.createElement('article');
-        el.className='col-4 card reveal';
-        el.setAttribute('tabindex','0');
-        el.setAttribute('data-id', String(L.id||''));
+        const el = document.createElement('article');
+        el.className = 'col-4 card';
 
-        const isSold = String(L.Sold || L.sold || '').trim().toLowerCase() === 'yes';
-
-        const cf = [];
-        if (L.city) cf.push(String(L.city));
-        if (L.sqft) cf.push(`${Number(L.sqft).toLocaleString()} SF`);
+        // Build facts safely
+        const facts = [];
+        if (L.city) facts.push(String(L.city));
+        if (L.sqft) facts.push(`${Number(L.sqft).toLocaleString()} SF`);
         if (L.size) {
-          const s = String(L.size).trim();
-          const sizeText = /ac|acre|sf|sq\s*ft/i.test(s) ? s : `${s} AC`;
-          cf.push(sizeText);
+          const sizeStr = String(L.size).match(/ac|acre/i) ? L.size : `${L.size} AC`;
+          facts.push(sizeStr);
         }
-        const cfText = cf.join(' · ');
+        if (L.type) facts.push(L.type);
+        const factsText = facts.filter(Boolean).join(' · ');
+        const priceText = L.price ? fmtUSD(L.price) : '';
+
+        // Detect Sold (robust)
+        const soldRaw = (L.Sold ?? L.sold ?? L['SOLD'] ?? '').toString().trim().toLowerCase();
+        const isSold = soldRaw === 'yes' || soldRaw === 'sold' || soldRaw === 'true' || soldRaw === '1';
 
         el.innerHTML = `
-          <div style="position:relative;">
-            <img src="${OPG_PLACEHOLDER}" loading="lazy" decoding="async" width="800" height="450"
-              alt="" style="width:100%;height:180px;object-fit:cover;border-bottom:1px solid var(--line)">
+          <div class="card-media" style="position:relative;">
+            <img src="${OPG_PLACEHOLDER}" alt="" loading="lazy" style="width:100%;height:200px;object-fit:cover;border-bottom:1px solid #e8edf3">
             ${isSold ? '<div class="sold-banner">SOLD</div>' : ''}
           </div>
           <div class="card-body">
-            <div class="pill">${L.subtype || 'Commercial'}</div>
-            <h3 style="margin:8px 0 6px">${L.title}</h3>
-            <div class="meta">${cfText}</div>
-            <div class="meta" style="margin-top:6px">${L.leaseRate ? `$${L.leaseRate}/SF ${L.nnn||''}` : (L.price? opgUsd(L.price) : '')}</div>
-            <div style="margin-top:12px"><a class="cta opg-more" href="#" data-id="${L.id}">More Info</a></div>
+            <div class="pill">Commercial</div>
+            <h3 style="margin:8px 0 6px">${(L.title || L.address || '(Untitled)')}</h3>
+            <div class="meta">${factsText}</div>
+            <div class="meta" style="margin-top:6px">${priceText}</div>
+            <div style="margin-top:12px"><a class="cta opg-more" href="#" data-id="${(L.id ?? '')}">More Info</a></div>
           </div>`;
-        // swap real thumbnail when ready
+
+        // Swap in thumbnail once ready
         firstImage(L).then(src=>{
           const img = el.querySelector('img');
           if(img){ img.onerror = ()=> img.src = OPG_PLACEHOLDER; img.src = src; }

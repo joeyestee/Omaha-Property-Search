@@ -1169,15 +1169,15 @@ let OPG_DRIVE_MAP; // in-memory cache of the Drive JSON map
         const factsText = facts.filter(Boolean).join(' · ');
         const priceText = L.price ? fmtUSD(L.price) : '';
 
-        // Add sold banner logic
-        let soldHTML = '';
-        if (L.Sold && String(L.Sold).toLowerCase() === "yes") {
-          soldHTML = '<div class="sold-banner">SOLD</div>';
-        }
+        // Detect Sold
+        const isSold = String(L.Sold || '').trim().toLowerCase() === 'yes';
 
+        // NOTE: Wrap the image in a positioned container so .sold-banner can sit on top
         el.innerHTML = `
-          ${soldHTML}
-          <img src="${OPG_PLACEHOLDER}" alt="" loading="lazy" style="width:100%;height:200px;object-fit:cover">
+          <div class="card-media" style="position:relative;">
+            <img src="${OPG_PLACEHOLDER}" alt="" loading="lazy" style="width:100%;height:200px;object-fit:cover;border-bottom:1px solid #e8edf3">
+            ${isSold ? '<div class="sold-banner">SOLD</div>' : ''}
+          </div>
           <div class="card-body">
             <div class="pill">Residential</div>
             <h3 style="margin:8px 0 6px">${(L.title || L.address || '(Untitled)')}</h3>
