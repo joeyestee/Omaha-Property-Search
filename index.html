@@ -9,6 +9,20 @@
   <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin>
 
   <style>
+    .sold-banner {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #c0392b;
+      color: #fff;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,.3);
+      font-size: 14px;
+      letter-spacing: 1px;
+      z-index: 2;
+    }
     /* ===== Design Tokens ===== */
     :root{
       --bg:#0c1116;              /* page background behind sections */
@@ -967,7 +981,9 @@ function opgProbeImages(candidates, max=20){
     el.className='col-4 card reveal';
     el.setAttribute('tabindex','0');
     el.setAttribute('data-id', String(L.id||''));
-    // Build facts: city · sqft · size (AC) · beds bd · baths ba
+
+    const isSold = String(L.Sold || L.sold || '').trim().toLowerCase() === 'yes';
+
     const facts = [];
     if (L.city) facts.push(String(L.city));
     if (L.sqft) facts.push(`${Number(L.sqft).toLocaleString()} SF`);
@@ -979,15 +995,20 @@ function opgProbeImages(candidates, max=20){
     if (L.beds) facts.push(`${L.beds} bd`);
     if (L.baths) facts.push(`${L.baths} ba`);
     const factsText = facts.join(' · ');
+
     el.innerHTML = `
-        <img src="${opgImg(L)}" loading="lazy" decoding="async" width="800" height="450" alt="" style="width:100%;height:180px;object-fit:cover;border-bottom:1px solid var(--line)">
-        <div class="card-body">
-          <div class="pill">${L.subtype || 'Residential'}</div>
-          <h3 style="margin:8px 0 6px">${L.title}</h3>
-          <div class="meta">${factsText}</div>
-          <div class="meta" style="margin-top:6px">${opgUsd(L.price)}</div>
-          <div style="margin-top:12px"><a class="cta opg-more" href="#" data-id="${L.id}">More Info</a></div>
-        </div>`;
+      <div style="position:relative;">
+        <img src="${opgImg(L)}" loading="lazy" decoding="async" width="800" height="450"
+          alt="" style="width:100%;height:180px;object-fit:cover;border-bottom:1px solid var(--line)">
+        ${isSold ? '<div class="sold-banner">SOLD</div>' : ''}
+      </div>
+      <div class="card-body">
+        <div class="pill">${L.subtype || 'Residential'}</div>
+        <h3 style="margin:8px 0 6px">${L.title}</h3>
+        <div class="meta">${factsText}</div>
+        <div class="meta" style="margin-top:6px">${opgUsd(L.price)}</div>
+        <div style="margin-top:12px"><a class="cta opg-more" href="#" data-id="${L.id}">More Info</a></div>
+      </div>`;
     return el;
   }
   function opgCardCom(L){
@@ -995,7 +1016,9 @@ function opgProbeImages(candidates, max=20){
     el.className='col-4 card reveal';
     el.setAttribute('tabindex','0');
     el.setAttribute('data-id', String(L.id||''));
-    // Build facts: city · sqft · size (AC) (show both if present)
+
+    const isSold = String(L.Sold || L.sold || '').trim().toLowerCase() === 'yes';
+
     const cf = [];
     if (L.city) cf.push(String(L.city));
     if (L.sqft) cf.push(`${Number(L.sqft).toLocaleString()} SF`);
@@ -1005,15 +1028,20 @@ function opgProbeImages(candidates, max=20){
       cf.push(sizeText);
     }
     const cfText = cf.join(' · ');
+
     el.innerHTML = `
-        <img src="${opgImg(L)}" loading="lazy" decoding="async" width="800" height="450" alt="" style="width:100%;height:180px;object-fit:cover;border-bottom:1px solid var(--line)">
-        <div class="card-body">
-          <div class="pill">${L.subtype || 'Commercial'}</div>
-          <h3 style="margin:8px 0 6px">${L.title}</h3>
-          <div class="meta">${cfText}</div>
-          <div class="meta" style="margin-top:6px">${L.leaseRate ? `$${L.leaseRate}/SF ${L.nnn||''}` : (L.price? opgUsd(L.price) : '')}</div>
-          <div style="margin-top:12px"><a class="cta opg-more" href="#" data-id="${L.id}">More Info</a></div>
-        </div>`;
+      <div style="position:relative;">
+        <img src="${opgImg(L)}" loading="lazy" decoding="async" width="800" height="450"
+          alt="" style="width:100%;height:180px;object-fit:cover;border-bottom:1px solid var(--line)">
+        ${isSold ? '<div class="sold-banner">SOLD</div>' : ''}
+      </div>
+      <div class="card-body">
+        <div class="pill">${L.subtype || 'Commercial'}</div>
+        <h3 style="margin:8px 0 6px">${L.title}</h3>
+        <div class="meta">${cfText}</div>
+        <div class="meta" style="margin-top:6px">${L.leaseRate ? `$${L.leaseRate}/SF ${L.nnn||''}` : (L.price? opgUsd(L.price) : '')}</div>
+        <div style="margin-top:12px"><a class="cta opg-more" href="#" data-id="${L.id}">More Info</a></div>
+      </div>`;
     return el;
   }
   const opgCardAny = L => (L.type||'').toLowerCase()==='commercial' ? opgCardCom(L) : opgCardRes(L);
