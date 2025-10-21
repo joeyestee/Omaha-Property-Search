@@ -8,6 +8,20 @@
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin>
   <style>
+  .sold-banner {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #c0392b;
+    color: #fff;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.3);
+    font-size: 14px;
+    letter-spacing: 1px;
+    z-index: 2;
+  }
     :root{ --bg:#0c1116; --surface:#ffffff; --ink:#0f1720; --muted:#667085; --line:#e8edf3; --soft:#f5f7fb; --brand:#4FA3D1; --brand-2:#1f6a91; --ring:rgba(79,163,209,.28); --wrap:1200px; --radius:14px; --shadow:0 10px 30px rgba(16,24,40,.08); --shadow-hover:0 16px 44px rgba(16,24,40,.14); }
     *{box-sizing:border-box} html,body{height:100%}
     body{margin:0; background:#fff; color:var(--ink); font:16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif}
@@ -1119,37 +1133,35 @@
 const arr = await getListingImages(L, 1);
 return arr[0] || OPG_PLACEHOLDER;
       }
-      function cardCom(L){
-        const el = document.createElement('article');
-        el.className = 'col-4 card';
-        el.style.minHeight = 'unset';
-        // Build facts line: city · 2,400 SF · 1 AC (show both if present)
-        const facts = [];
-        if (L.city) facts.push(String(L.city));
-        if (L.sqft) {
-          facts.push(`${Number(L.sqft).toLocaleString()} SF`);
-        }
+      function opgCardCom(L){
+        const el=document.createElement('article');
+        el.className='col-4 card reveal';
+        el.setAttribute('tabindex','0');
+        el.setAttribute('data-id', String(L.id||''));
+
+        const isSold = String(L.Sold || L.sold || '').trim().toLowerCase() === 'yes';
+
+        const cf = [];
+        if (L.city) cf.push(String(L.city));
+        if (L.sqft) cf.push(`${Number(L.sqft).toLocaleString()} SF`);
         if (L.size) {
           const s = String(L.size).trim();
           const sizeText = /ac|acre|sf|sq\s*ft/i.test(s) ? s : `${s} AC`;
-          facts.push(sizeText);
+          cf.push(sizeText);
         }
-        const factsText = facts.filter(Boolean).join(' · ');
-        const priceText = (()=>{
-          if (L.price) return fmtUSD(L.price);
-          if (L.leaseRate){
-            const rate = `$${L.leaseRate}/SF`;
-            return L.nnn ? `${rate} · ${L.nnn}` : rate;
-          }
-          return '';
-        })();
+        const cfText = cf.join(' · ');
+
         el.innerHTML = `
-          <img src="${OPG_PLACEHOLDER}" alt="" loading="lazy" style="width:100%;height:220px;object-fit:cover">
+          <div style="position:relative;">
+            <img src="${OPG_PLACEHOLDER}" loading="lazy" decoding="async" width="800" height="450"
+              alt="" style="width:100%;height:180px;object-fit:cover;border-bottom:1px solid var(--line)">
+            ${isSold ? '<div class="sold-banner">SOLD</div>' : ''}
+          </div>
           <div class="card-body">
-            <div class="pill">Commercial</div>
-            <h3 style="margin:8px 0 6px">${(L.title||L.address||'(Untitled)')}</h3>
-            <div class="meta">${factsText}</div>
-            <div class="meta" style="margin-top:6px">${priceText}</div>
+            <div class="pill">${L.subtype || 'Commercial'}</div>
+            <h3 style="margin:8px 0 6px">${L.title}</h3>
+            <div class="meta">${cfText}</div>
+            <div class="meta" style="margin-top:6px">${L.leaseRate ? `$${L.leaseRate}/SF ${L.nnn||''}` : (L.price? opgUsd(L.price) : '')}</div>
             <div style="margin-top:12px"><a class="cta opg-more" href="#" data-id="${L.id}">More Info</a></div>
           </div>`;
         // swap real thumbnail when ready
@@ -1193,7 +1205,12 @@ return arr[0] || OPG_PLACEHOLDER;
             grid.innerHTML = '<div class="meta">No commercial listings available right now.</div>';
             return;
           }
-          list.forEach(L => grid.appendChild(cardCom(L)));
+          list.forEach(L => grid.appendChild(opgCardCom(L)));
+      // USD formatter for opgCardCom
+      function opgUsd(n){
+        try { return Number(n).toLocaleString('en-US', {style:'currency',currency:'USD',maximumFractionDigits:0}); }
+        catch { return n; }
+      }
           // Proactive gallery cache: fetch + cache image lists for ALL commercial listings at idle
           (function warmGalleries(){
             const listings = (OPG_LIST || []).slice(0);
