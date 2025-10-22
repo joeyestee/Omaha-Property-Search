@@ -15,7 +15,7 @@
       --shadow:0 10px 30px rgba(16, 24, 40, .08); --shadow-hover:0 16px 44px rgba(16, 24, 40, .14);
     }
     *{box-sizing:border-box} html,body{height:100%}
-    body{margin:0;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    body{margin:0;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;font:16px/1.6 'Poppins', Arial, sans-serif}
     a{color:var(--brand);text-decoration:none} a:hover{color:var(--brand-2)}
     .wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
 
@@ -354,7 +354,7 @@
     (async function(){
       try{
         POST_LIST = await loadPosts();
-      }catch(err){ console.warn('[OPG] Blog CSV load failed, falling back to empty list', err); POST_LIST = []; }
+      }catch(err){ console.warn('[ESTEE] Blog CSV load failed, falling back to empty list', err); POST_LIST = []; }
       render();
     })();
   </script>
