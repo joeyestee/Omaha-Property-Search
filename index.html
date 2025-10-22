@@ -3,11 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Omaha Property Group | Omaha Residential & Commercial</title>
-  <meta name="description" content="Buy, sell, or lease in Omaha with Omaha Property Group. Residential and commercial advisors with off-market access, data-driven pricing, and fast timelines." />
+  <title>Estee Real Estate Team | BHHS Ambassador Real Estate</title>
+  <meta name="description" content="Explore residential and commercial real estate in Omaha with the Estee Real Estate Team — part of BHHS Ambassador Real Estate. Trusted local agents, expert guidance, and seamless service." />
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin>
 
+  <!-- BHHS 2024 Brand Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&family=Marcellus&display=swap" rel="stylesheet">
   <style>
     .sold-banner {
       position: absolute;
@@ -46,9 +48,9 @@
     body{
       margin:0;
       background:var(--bg);
-      color:var(--ink);
+      color:#000000;
       -webkit-font-smoothing:antialiased;
-      font:16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      font:16px/1.6 'Manrope', Arial, sans-serif;
     }
     img{max-width:100%; height:auto; display:block}
     a{color:var(--brand); text-decoration:none}
@@ -460,7 +462,24 @@
       .why-stat strong{ font-size:24px; }
     }
   @media (max-width: 768px){
-    h1, h2, h3 { text-align: center; }
+    h1, h2, h3 { 
+      text-align: center;
+      font-family: 'Marcellus', serif;
+      color: #670038;
+    }
+
+    a.cta {
+      background-color: #670038;
+      color: #ffffff;
+      border: none;
+    }
+    a.cta:hover {
+      background-color: #50002a;
+    }
+    .badge {
+      border-color: #670038;
+      color: #670038;
+    }
   }
   </style>
 
@@ -468,13 +487,10 @@
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
-    "@type":"RealEstateAgent",
-    "name":"Omaha Property Group",
-    "areaServed":"Omaha, NE",
-    "telephone":"+14028896958",
-    "email":"jordan.estee@bhhsamb.com",
-    "url":"https://omahapropertygroup.com",
-    "address":{"@type":"PostalAddress","streetAddress":"10404 Essex Court Suite 201","addressLocality":"Omaha","addressRegion":"NE","postalCode":"68114"}
+    "@type":"WebPage",
+    "name":"Estee Real Estate Team | BHHS Ambassador Real Estate",
+    "url":"https://esteerealestateteam.com",
+    "about":"Residential and commercial real estate in Omaha with the Estee Real Estate Team, part of BHHS Ambassador Real Estate."
   }
   </script>
 </head>
@@ -505,7 +521,7 @@
           }
         });
       })
-      .catch(err => console.warn('[OPG] header include failed', err));
+      .catch(err => console.warn('[ESTEE] header include failed', err));
   })();
 </script>
 
@@ -515,8 +531,8 @@
     <div class="wrap hero-inner">
       <div class="reveal">
         <span class="badge">Commercial & Residential, Omaha, Nebraska</span>
-        <h1>Find property that moves your life and business forward</h1>
-        <p>We help buyers, sellers, and investors win with data-driven search, off-market access, and negotiation that protects your outcome.</p>
+        <h1>Estee Real Estate Team</h1>
+        <p>Residential & Commercial Real Estate | BHHS Ambassador Real Estate</p>
         <div class="actions">
           <a href="#listings" class="cta">View Listings</a>
           <a href="#contact" id="cta-free-valuation-hero" class="badge" style="border-color:#86d0f7; color:#e9f7ff">Get a Free Valuation</a>
@@ -773,7 +789,7 @@
       fetch('./footer.html', { cache: 'no-cache' })
         .then(r => r.text())
         .then(html => { mount.outerHTML = html; })
-        .catch(err => console.warn('[OPG] footer include failed', err));
+        .catch(err => console.warn('[ESTEE] footer include failed', err));
     })();
   </script>
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Residential | Omaha Property Group</title>
+  <title>Residential | Estee Real Estate Team</title>
   <meta name="description" content="Residential real estate in Omaha: buying, selling, valuations, and guidance with a built-in mortgage calculator." />
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <style>
@@ -319,7 +319,7 @@
   {
     "@context":"https://schema.org",
     "@type":"WebPage",
-    "name":"Residential | Omaha Property Group",
+    "name":"Residential | Estee Real Estate Team",
     "url":"https://omahapropertygroup.com/residential",
     "about":"Residential real estate in Omaha"
   }
@@ -370,7 +370,7 @@
             }
           });
         })
-        .catch(err => console.warn('[OPG] header include failed', err));
+        .catch(err => console.warn('[ESTEE] header include failed', err));
     })();
   </script>
 
@@ -708,7 +708,7 @@
       fetch('./footer.html', { cache: 'no-cache' })
         .then(r => r.text())
         .then(html => { mount.outerHTML = html; })
-        .catch(err => console.warn('[OPG] footer include failed', err));
+        .catch(err => console.warn('[ESTEE] footer include failed', err));
     })();
   </script>
 
@@ -876,13 +876,17 @@
 
     // ===================== Residential Listings (from Google Sheet) =====================
     (function(){
-      const OPG_DRIVE_API = "https://script.google.com/macros/s/AKfycbxNkS7_zSzWGYg8KOm_3QDfvvmb6bhmEGoJTzBrRemJsakVyOZVDPT4_xEKo-hwe8o9Aw/exec";
+      const ESTEE_DRIVE_API = "https://script.google.com/macros/s/AKfycbxNkS7_zSzWGYg8KOm_3QDfvvmb6bhmEGoJTzBrRemJsakVyOZVDPT4_xEKo-hwe8o9Aw/exec";
+      // Backward compatibility for existing Apps Script integrations
+      const OPG_DRIVE_API = ESTEE_DRIVE_API;
       const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSKbZH8PCNmsSP2W2yvSDCuVS7jXDI7mo-SVHMq6XmiuOWvoNXeWCsGo_kGBQjTAg_Ffx_rMUfyz_ts/pub?gid=1969884902&single=true&output=csv";
-      const OPG_DRIVE_ROOT = "1MOdvuCVRUyp6q-OmsPf5LIsd-mX6_Vgb"; // Omaha Property Group root
-let OPG_DRIVE_MAP; // in-memory cache of the Drive JSON map
+      const ESTEE_DRIVE_ROOT = "1MOdvuCVRUyp6q-OmsPf5LIsd-mX6_Vgb"; // Estee Real Estate Team root
+      // Backward compatibility for spreadsheets and scripts referencing OPG_DRIVE_ROOT
+      const OPG_DRIVE_ROOT = ESTEE_DRIVE_ROOT;
+let ESTEE_DRIVE_MAP; // in-memory cache of the Drive JSON map
       // --- Shared Drive helpers (map + direct URL normalizer) ---
       // Helper to normalize Drive URLs to direct links
-      function opgToDirect(u){
+      function esteeToDirect(u){
         if(!u) return '';
         // Already a direct lh3 link? normalize to a single =s1600
         if(/\/\/lh3\.googleusercontent\.com\//i.test(u)){
@@ -899,7 +903,7 @@ let OPG_DRIVE_MAP; // in-memory cache of the Drive JSON map
       }
 
       // Extract a plain Google Drive file/folder ID from varied URL shapes
-      function opgExtractDriveId(input){
+      function esteeExtractDriveId(input){
         if(!input) return '';
         const s = String(input).trim();
         // Explicit id= query
@@ -912,7 +916,7 @@ let OPG_DRIVE_MAP; // in-memory cache of the Drive JSON map
         return '';
       }
 
-      function opgSetSize(url, size='s1600'){
+      function esteeSetSize(url, size='s1600'){
         if(!url) return '';
         // Replace any trailing =s#### (Drive size param) with the size we want
         return String(url).replace(/=s\d+[^/]*$/, `=${size}`);
@@ -1021,7 +1025,7 @@ let OPG_DRIVE_MAP; // in-memory cache of the Drive JSON map
 
       // ----- Drive image helpers -----
       async function fetchDriveImages(folderId){
-        const id = opgExtractDriveId(folderId);
+        const id = esteeExtractDriveId(folderId);
         if (!id) return [];
         // Removed: console.log('[OPG] Fetching Drive images for', id, '(raw:', folderId, ')');
         try{
@@ -1047,7 +1051,7 @@ let OPG_DRIVE_MAP; // in-memory cache of the Drive JSON map
             };
             const entries = json.images.map(toEntry).filter(Boolean);
             const ordered = entries.slice().sort((a,b)=> score(a)-score(b));
-            const urls = ordered.map(e => opgToDirect(e.url)).filter(Boolean);
+            const urls = ordered.map(e => esteeToDirect(e.url)).filter(Boolean);
             // Removed: console.log('[OPG] Normalized Drive URLs (file1-4 priority)', urls);
             return urls;
           }
@@ -1088,7 +1092,7 @@ let OPG_DRIVE_MAP; // in-memory cache of the Drive JSON map
               return m ? parseInt(m[1],10) : 999;
             };
             const ordered = json.images.map(toEntry).filter(Boolean).sort((a,b)=> score(a)-score(b));
-            const urls = ordered.map(e=> opgToDirect(e.url)).filter(Boolean);
+            const urls = ordered.map(e=> esteeToDirect(e.url)).filter(Boolean);
             // Removed: console.log('[OPG] Normalized Drive URLs (by address, file1-4 priority)', urls);
             return urls;
           }
@@ -1103,7 +1107,7 @@ let OPG_DRIVE_MAP; // in-memory cache of the Drive JSON map
           // Removed: console.log('[OPG] getListingImages for', L && L.id, L);
           // 1) If a Drive folder id/link is present, prefer it
           if (L && L.driveFolderId) {
-            const arr = await fetchDriveImages(L.driveFolderId);
+          const arr = await fetchDriveImages(L.driveFolderId);
             if (arr && arr.length) return arr.slice(0, limit);
           }
           // 2) Fallback: Drive path by address under root (Active Listings / {type} / {address} / Photos)
@@ -1135,8 +1139,8 @@ let OPG_DRIVE_MAP; // in-memory cache of the Drive JSON map
 
       // Local placeholder (inline SVG) so thumbs never block on network
       const OPG_PLACEHOLDER = 'data:image/svg+xml;utf8,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800"><rect width="100%" height="100%" fill="#eef2f7"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#9aa6b2" font-family="Inter,system-ui,Arial" font-size="28">Loading…</text></svg>`);
-      const OPG_IMG_CACHE = new Map();
-      function opgPreload(url){
+      const ESTEE_IMG_CACHE = new Map();
+      function esteePreload(url){
         if(!url) return;
         const img = new Image();
         img.decoding = 'async';
@@ -1146,7 +1150,7 @@ let OPG_DRIVE_MAP; // in-memory cache of the Drive JSON map
 
       async function firstImage(L){
   if (L.thumbUrl) {
-    return opgSetSize(opgToDirect(L.thumbUrl), 's480');
+    return esteeSetSize(esteeToDirect(L.thumbUrl), 's480');
   }
   const arr = await getListingImages(L, 1);
   return arr[0] || OPG_PLACEHOLDER;
@@ -1267,7 +1271,7 @@ let OPG_DRIVE_MAP; // in-memory cache of the Drive JSON map
 
             async function buildCache(L){
               const key = L.id || L.folder || JSON.stringify(L);
-              if (OPG_IMG_CACHE.has(key)) return;
+              if (ESTEE_IMG_CACHE.has(key)) return;
 
               const tasks = [];
               const sheetList = (Array.isArray(L.images) && L.images.length) ? L.images : [];
@@ -1278,20 +1282,20 @@ let OPG_DRIVE_MAP; // in-memory cache of the Drive JSON map
               const results = await Promise.all(tasks);
               const merged = new Map();
               results.flat().forEach(u=>{
-                const s = opgToDirect(String(u||'').trim());
+          const s = esteeToDirect(String(u||'').trim());
                 if(!s) return; const k = s.toLowerCase();
                 if(!merged.has(k)) merged.set(k, s);
               });
               let imgs = Array.from(merged.values());
               if (!imgs.length) return;
 
-              const preview = L.thumbUrl ? opgSetSize(opgToDirect(L.thumbUrl), 's1600') : '';
+              const preview = L.thumbUrl ? esteeSetSize(esteeToDirect(L.thumbUrl), 's1600') : '';
               if (preview && !imgs.some(x=>x.toLowerCase()===preview.toLowerCase())){
                 imgs.unshift(preview);
               }
 
-              OPG_IMG_CACHE.set(key, imgs);
-              imgs.slice(0,6).forEach(u=> opgPreload(opgSetSize(u,'s1200')));
+              ESTEE_IMG_CACHE.set(key, imgs);
+              imgs.slice(0,6).forEach(u=> esteePreload(esteeSetSize(u,'s1200')));
             }
 
             function next(){
@@ -1313,13 +1317,13 @@ let OPG_DRIVE_MAP; // in-memory cache of the Drive JSON map
           if(r){ r.addEventListener('click', (e)=>{ e.preventDefault(); location.reload(); }); }
         });
       // --- Modal helpers (Residential) ---
-      let OPG_LM_TOKEN = 0;
+let ESTEE_LM_TOKEN = 0;
 
       async function buildGallery(L, token){
         // If a newer listing has been opened, abort this render
-        if (token !== OPG_LM_TOKEN) return;
+        if (token !== ESTEE_LM_TOKEN) return;
 
-        const lmPreview = L.thumbUrl ? opgSetSize(opgToDirect(L.thumbUrl), 's1600') : '';
+        const lmPreview = L.thumbUrl ? esteeSetSize(esteeToDirect(L.thumbUrl), 's1600') : '';
         const hero = document.getElementById('lm-hero');
         const thumbs = document.getElementById('lm-thumbs');
         if (!hero || !thumbs) return;
@@ -1329,14 +1333,14 @@ let OPG_DRIVE_MAP; // in-memory cache of the Drive JSON map
 
         // If gallery is already cached, render it immediately without fetching
         const cacheKey = L.id || L.folder || JSON.stringify(L);
-        let listFromCache = OPG_IMG_CACHE.get(cacheKey);
+        let listFromCache = ESTEE_IMG_CACHE.get(cacheKey);
         if (Array.isArray(listFromCache) && listFromCache.length){
           let list = listFromCache.slice(0,24);
           if (lmPreview && !list.includes(lmPreview)) list.unshift(lmPreview);
           if (!list.length) list = [OPG_PLACEHOLDER];
 
           const setHero = (src) => {
-            if (token !== OPG_LM_TOKEN) return;
+            if (token !== ESTEE_LM_TOKEN) return;
             hero.onerror = () => { hero.src = OPG_PLACEHOLDER; };
             hero.src = src || OPG_PLACEHOLDER;
           };
@@ -1352,7 +1356,7 @@ let OPG_DRIVE_MAP; // in-memory cache of the Drive JSON map
             im.onerror = () => { im.style.display = 'none'; };
             if(i===0) im.classList.add('active');
             im.addEventListener('click', () => {
-              if (token !== OPG_LM_TOKEN) return;
+              if (token !== ESTEE_LM_TOKEN) return;
               document.querySelectorAll('.lm-thumbs img').forEach(t => t.classList.remove('active'));
               im.classList.add('active');
               hero._idx = i;
@@ -1384,11 +1388,11 @@ let OPG_DRIVE_MAP; // in-memory cache of the Drive JSON map
         {
           const imgs = await getListingImages(L, 24);
           // If a newer listing has been opened while we awaited, abort
-          if (token !== OPG_LM_TOKEN) return;
+          if (token !== ESTEE_LM_TOKEN) return;
           list = Array.isArray(imgs) ? imgs.slice(0,24) : [];
           // Cache the result for instant future opens
           const cacheKey = L.id || L.folder || JSON.stringify(L);
-          if (list.length) OPG_IMG_CACHE.set(cacheKey, list.slice());
+          if (list.length) ESTEE_IMG_CACHE.set(cacheKey, list.slice());
         }
         if (lmPreview) {
           // Prepend the sheet thumbnail if it’s not already first
@@ -1397,7 +1401,7 @@ let OPG_DRIVE_MAP; // in-memory cache of the Drive JSON map
         if (!list.length) list = [OPG_PLACEHOLDER];
 
         const setHero = (src) => {
-          if (token !== OPG_LM_TOKEN) return; // stale
+          if (token !== ESTEE_LM_TOKEN) return; // stale
           hero.onerror = () => { hero.src = OPG_PLACEHOLDER; };
           hero.src = src || OPG_PLACEHOLDER;
         };
@@ -1415,7 +1419,7 @@ let OPG_DRIVE_MAP; // in-memory cache of the Drive JSON map
           im.onerror = () => { im.style.display = 'none'; };
           if(i===0) im.classList.add('active');
           im.addEventListener('click', () => {
-            if (token !== OPG_LM_TOKEN) return;
+            if (token !== ESTEE_LM_TOKEN) return;
             document.querySelectorAll('.lm-thumbs img').forEach(t => t.classList.remove('active'));
             im.classList.add('active');
             hero._idx = i;            // keep state in sync
@@ -1490,12 +1494,12 @@ let OPG_DRIVE_MAP; // in-memory cache of the Drive JSON map
         if(!L) return;
         // Removed: console.log('[OPG] Open listing', id, L);
         // Token for this open call; used to cancel stale async renders
-        const myToken = ++OPG_LM_TOKEN;
+        const myToken = ++ESTEE_LM_TOKEN;
 
         // Reset hero/thumbs immediately so previous listing doesn't linger
         const heroEl = document.getElementById('lm-hero');
         const thumbsEl = document.getElementById('lm-thumbs');
-        const lmPreview = L.thumbUrl ? opgSetSize(opgToDirect(L.thumbUrl), 's1600') : '';
+        const lmPreview = L.thumbUrl ? esteeSetSize(esteeToDirect(L.thumbUrl), 's1600') : '';
         if (thumbsEl) thumbsEl.innerHTML = '';
         if (heroEl){
           heroEl.onerror = null;
